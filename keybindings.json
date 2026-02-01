@@ -1,0 +1,224 @@
+// 将键绑定放在此文件中以覆盖默认值
+[
+	{
+		"key": "cmd+2",
+		"command": "editor.action.formatDocument",
+		"when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+	},
+	{
+		"key": "shift+alt+f",
+		"command": "-editor.action.formatDocument",
+		"when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+	},
+	{
+		"key": "cmd+1",
+		"command": "editor.action.marker.nextInFiles",
+		"when": "editorFocus"
+	},
+	{
+		"key": "ctrl+enter",
+		"command": "-github.copilot.generate",
+		"when": "editorTextFocus && github.copilot.activated && !commentEditorFocused && !inInteractiveInput && !interactiveEditorFocused"
+	},
+	{
+		"key": "cmd+1",
+		"command": "-workbench.action.focusFirstEditorGroup"
+	},
+	{
+		"key": "cmd+2",
+		"command": "-workbench.action.focusSecondEditorGroup"
+	},
+	{
+		"key": "cmd+3",
+		"command": "-workbench.action.focusThirdEditorGroup"
+	},
+	{
+		"key": "cmd+l cmd+o",
+		"command": "-extension.liveServer.goOnline",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "cmd+l cmd+c",
+		"command": "-extension.liveServer.goOffline",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "cmd+3",
+		"command": "extension.liveServer.goOnline"
+	},
+	{
+		"key": "cmd+f12",
+		"command": "workbench.profiles.actions.exportProfile"
+	},
+	{
+		"key": "cmd+f12",
+		"command": "-editor.action.revealDefinition",
+		"when": "editorHasDefinitionProvider && editorTextFocus && isWeb"
+	},
+	{
+		"key": "cmd+f12",
+		"command": "-editor.action.goToImplementation",
+		"when": "editorHasImplementationProvider && editorTextFocus"
+	},
+	{
+		"key": "ctrl+d",
+		"command": "editor.action.addSelectionToNextFindMatch",
+		"when": "editorFocus"
+	},
+	{
+		"key": "cmd+d",
+		"command": "editor.action.copyLinesDownAction",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	//insert模式按下option+d，删除当前行
+	{
+		"key": "alt+d", // 对应 Mac 上的 Option 键
+		"command": "vim.remap",
+		"when": "vim.mode == 'Insert'",
+		"args": {
+			"after": [
+				"<Esc>",
+				"c",
+				"c"
+			]
+		}
+	},
+	//更改补全接受按键
+	{
+		"key": "enter",
+		"command": "editor.action.inlineSuggest.commit",
+		"when": "inlineSuggestionVisible && !suggestWidgetVisible"
+	},
+	{
+		"key": "tab",
+		"command": "-editor.action.inlineSuggest.commit",
+		"when": "inlineSuggestionVisible && !suggestWidgetVisible"
+	},
+	{
+		"key": "tab",
+		"command": "acceptSelectedSuggestion",
+		"when": "suggestWidgetVisible"
+	},
+	{
+		"key": "cmd+i",
+		"command": "extension.aceJump"
+	},
+	{
+		"key": "cmd+i",
+		"command": "findThenJump.initiate"
+	},
+	{
+		"key": "alt+=",
+		"command": "workbench.action.nextEditor"
+	},
+	{
+		"key": "alt+-",
+		"command": "workbench.action.previousEditor"
+	},
+	{
+		"key": "cmd+n",
+		"command": "welcome.showNewFileEntries"
+	},
+	// Vim normal模式下，Option+Z映射到Gzz
+	{
+		"key": "alt+z",
+		"command": "vim.remap",
+		"when": "vim.mode == 'Normal'",
+		"args": {
+			"after": [
+				"G",
+				"z",
+				"z"
+			]
+		}
+	},
+	// Option+j/k 移动行（Vim 模式下）
+	{
+		"key": "alt+j",
+		"command": "editor.action.moveLinesDownAction",
+		"when": "vim.mode != 'Insert' && editorTextFocus"
+	},
+	{
+		"key": "alt+k",
+		"command": "editor.action.moveLinesUpAction",
+		"when": "vim.mode != 'Insert' && editorTextFocus"
+	},
+	// Option+V 进入 Visual Block 模式（竖直选择）
+	{
+		"key": "alt+v",
+		"command": "vim.remap",
+		"args": {
+			"after": [
+				"<C-v>"
+			]
+		}
+	},
+	// 删除 Option+V 的默认绑定（粘贴）
+	{
+		"key": "alt+v",
+		"command": "-editor.action.clipboardPasteAction"
+	},
+	// Option+Q 切换资源管理器
+	{
+		"key": "alt+q",
+		"command": "workbench.action.toggleSidebarVisibility"
+	},
+	// Option+h/l 移动到行首/行尾（Normal 模式）
+	{
+		"key": "alt+h",
+		"command": "vim.remap",
+		"when": "vim.mode == 'Normal'",
+		"args": {
+			"after": [
+				"^"
+			]
+		}
+	},
+	{
+		"key": "alt+l",
+		"command": "vim.remap",
+		"when": "vim.mode == 'Normal'",
+		"args": {
+			"after": [
+				"$"
+			]
+		}
+	},
+	// S 键触发 EasyMotion 单字符搜索（Normal 模式）
+	{
+		"key": "s",
+		"command": "vim.remap",
+		"when": "vim.mode == 'Normal'",
+		"args": {
+			"after": [
+				"<leader>",
+				"<leader>",
+				"s"
+			]
+		}
+	},
+	// Ctrl+D 清除当前行并进入插入模式（Normal 和 Insert 模式）
+	{
+		"key": "ctrl+d",
+		"command": "vim.remap",
+		"when": "vim.mode == 'Normal'",
+		"args": {
+			"after": [
+				"c",
+				"c"
+			]
+		}
+	},
+	{
+		"key": "ctrl+d",
+		"command": "vim.remap",
+		"when": "vim.mode == 'Insert'",
+		"args": {
+			"after": [
+				"<Esc>",
+				"c",
+				"c"
+			]
+		}
+	}
+]

@@ -1,0 +1,11 @@
+# macOS
+.DS_Store
+
+# Claude Code 项目数据
+.claude/
+
+# VSCode 存储（可能包含敏感信息）
+globalStorage/
+workspaceStorage/
+History/
+sync/
