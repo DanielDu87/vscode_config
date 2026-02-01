@@ -184,9 +184,9 @@
 			]
 		}
 	},
-	// S 键触发 EasyMotion 单字符搜索（Normal 模式）
+	// Leader+s 触发 EasyMotion 单字符搜索（Normal 模式）
 	{
-		"key": "s",
+		"key": "space s",
 		"command": "vim.remap",
 		"when": "vim.mode == 'Normal'",
 		"args": {
