@@ -101,3 +101,9 @@ Automatically switches between Chinese (ITABC) and English (ABC) input methods:
 - Always test Option key mappings - they may not work if `vim.handleKeys` is not configured
 - The `s` key is remapped to EasyMotion, overriding default Vim behavior
 - Ctrl+D is remapped to clear line (not default Vim half-page down)
+
+始终使用中文回答
+所有配置文件每一行都要以英文逗号结尾
+所有配置文件保持Tab缩进
+不要主动提交，我告诉你提交的时候再提交
+提交时严格使用"+%Y-%m-%d %H:%M 内容"这种格式的提交信息，先通过date "+%Y-%m-%d %H:%M"获取实际时间，然后按照上述提交信息格式进行提交，内容信息要用中文

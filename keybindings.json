@@ -186,7 +186,7 @@
 	},
 	// Leader+s 触发 EasyMotion 单字符搜索（Normal 模式）
 	{
-		"key": "space s",
+		"key": ", s",
 		"command": "vim.remap",
 		"when": "vim.mode == 'Normal'",
 		"args": {
@@ -220,5 +220,19 @@
 				"c"
 			]
 		}
+	},
+	{
+		"key": "shift+cmd+h",
+		"command": "-workbench.action.replaceInFiles"
+	},
+	{
+		"key": "cmd+r",
+		"command": "editor.action.startFindReplaceAction",
+		"when": "editorFocus || editorIsOpen"
+	},
+	{
+		"key": "alt+cmd+f",
+		"command": "-editor.action.startFindReplaceAction",
+		"when": "editorFocus || editorIsOpen"
 	}
 ]
