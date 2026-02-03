@@ -299,6 +299,7 @@
 	"python.analysis.typeCheckingMode": "standard",
 	"python.defaultInterpreterPath": "/Users/dyx/Code/0.python-venv/mySite-django5.0-py3.12/bin/python3",
 	"python.venvPath": "/Users/dyx/Code/0.python-venv",
+	"python.languageServer": "Pylance",
 	// Notebook / Interactive 
 	"notebook.output.wordWrap": true,
 	"interactiveWindow.executeWithShiftEnter": true,
