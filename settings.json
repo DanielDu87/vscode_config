@@ -148,7 +148,7 @@
 	"workbench.preferredDarkColorTheme": "Atom One Dark",
 	"workbench.iconTheme": "a-file-icon-vscode",
 	"workbench.colorCustomizations": {
-		"editorCursor.foreground": "#51d237"
+		"editorCursor.foreground": "#c31818"
 	},
 	// 标签页管理 
 	"workbench.editor.enablePreview": false,
@@ -295,9 +295,10 @@
 	"liveServer.settings.AdvanceCustomBrowserCmdLine": "/Applications/Arc.app",
 	"liveServer.settings.fullReload": true,
 	"liveServer.settings.CustomBrowser": "/Applications/Arc.app",
-	// Python 
+	// Python
 	"python.analysis.typeCheckingMode": "standard",
 	"python.defaultInterpreterPath": "/Users/dyx/Code/0.python-venv/mySite-django5.0-py3.12/bin/python3",
+	"python.venvPath": "/Users/dyx/Code/0.python-venv",
 	// Notebook / Interactive 
 	"notebook.output.wordWrap": true,
 	"interactiveWindow.executeWithShiftEnter": true,
@@ -505,4 +506,9 @@
 		],
 	},
 	"markdown-preview-enhanced.liveUpdate": true,
+	"code-runner.clearPreviousOutput": true,
+	"code-runner.ignoreSelection": true,
+	"code-runner.saveAllFilesBeforeRun": true,
+	"code-runner.runInTerminal": true,
+	"code-runner.saveFileBeforeRun": true,
 }
