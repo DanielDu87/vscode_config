@@ -1,125 +1,164 @@
-// 将键绑定放在此文件中以覆盖默认值
 [
-	{
-		"key": "cmd+2",
-		"command": "editor.action.formatDocument",
-		"when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
-	},
-	{
-		"key": "shift+alt+f",
-		"command": "-editor.action.formatDocument",
-		"when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
-	},
+	// ============================================================
+	// 窗口与视图管理 (Window & View Management)
+	// ============================================================
+	// 编辑器组焦点切换
 	{
 		"key": "cmd+1",
-		"command": "editor.action.marker.nextInFiles",
-		"when": "editorFocus"
-	},
-	{
-		"key": "ctrl+enter",
-		"command": "-github.copilot.generate",
-		"when": "editorTextFocus && github.copilot.activated && !commentEditorFocused && !inInteractiveInput && !interactiveEditorFocused"
-	},
-	{
-		"key": "cmd+1",
-		"command": "-workbench.action.focusFirstEditorGroup"
+		"command": "-workbench.action.focusFirstEditorGroup",
 	},
 	{
 		"key": "cmd+2",
-		"command": "-workbench.action.focusSecondEditorGroup"
+		"command": "-workbench.action.focusSecondEditorGroup",
 	},
 	{
 		"key": "cmd+3",
-		"command": "-workbench.action.focusThirdEditorGroup"
+		"command": "-workbench.action.focusThirdEditorGroup",
+	},
+	// 侧边栏/面板切换
+	{
+		"key": "alt+q",
+		"command": "workbench.action.toggleSidebarVisibility",
+	},
+	// {
+	// 	"key": ", t",
+	// 	"command": "workbench.action.terminal.toggleTerminal",
+	// },
+	// 编辑器标签页切换
+	{
+		"key": "alt+=",
+		"command": "workbench.action.nextEditor",
 	},
 	{
-		"key": "cmd+l cmd+o",
-		"command": "-extension.liveServer.goOnline",
-		"when": "editorTextFocus"
+		"key": "alt+-",
+		"command": "workbench.action.previousEditor",
 	},
+	// 新建/欢迎页
 	{
-		"key": "cmd+l cmd+c",
-		"command": "-extension.liveServer.goOffline",
-		"when": "editorTextFocus"
+		"key": "cmd+n",
+		"command": "welcome.showNewFileEntries",
 	},
-	{
-		"key": "cmd+3",
-		"command": "extension.liveServer.goOnline"
-	},
-	{
-		"key": "cmd+f12",
-		"command": "workbench.profiles.actions.exportProfile"
-	},
+	// ============================================================
+	// 代码导航 (Code Navigation)
+	// ============================================================
+	// 定义/实现跳转
 	{
 		"key": "cmd+f12",
 		"command": "-editor.action.revealDefinition",
-		"when": "editorHasDefinitionProvider && editorTextFocus && isWeb"
+		"when": "editorHasDefinitionProvider && editorTextFocus && isWeb",
 	},
 	{
 		"key": "cmd+f12",
 		"command": "-editor.action.goToImplementation",
-		"when": "editorHasImplementationProvider && editorTextFocus"
+		"when": "editorHasImplementationProvider && editorTextFocus",
+	},
+	{
+		"key": "cmd+f12",
+		"command": "workbench.profiles.actions.exportProfile",
+	},
+	// AceJump / FindThenJump 快速跳转
+	{
+		"key": "cmd+i",
+		"command": "extension.aceJump",
+	},
+	{
+		"key": "cmd+i",
+		"command": "findThenJump.initiate",
+	},
+	// 错误/警告跳转
+	{
+		"key": "cmd+1",
+		"command": "editor.action.marker.nextInFiles",
+		"when": "editorFocus",
+	},
+	// ============================================================
+	// 代码编辑 (Code Editing)
+	// ============================================================
+	// 格式化文档
+	{
+		"key": "cmd+2",
+		"command": "editor.action.formatDocument",
+		"when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor",
+	},
+	{
+		"key": "shift+alt+f",
+		"command": "-editor.action.formatDocument",
+		"when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor",
+	},
+	// 查找与替换
+	{
+		"key": "cmd+r",
+		"command": "editor.action.startFindReplaceAction",
+		"when": "editorFocus || editorIsOpen",
+	},
+	{
+		"key": "alt+cmd+f",
+		"command": "-editor.action.startFindReplaceAction",
+		"when": "editorFocus || editorIsOpen",
+	},
+	{
+		"key": "shift+cmd+h",
+		"command": "-workbench.action.replaceInFiles",
 	},
 	{
 		"key": "ctrl+d",
 		"command": "editor.action.addSelectionToNextFindMatch",
-		"when": "editorFocus"
+		"when": "editorFocus",
 	},
+	// 行操作
 	{
 		"key": "cmd+d",
 		"command": "editor.action.copyLinesDownAction",
-		"when": "editorTextFocus && !editorReadonly"
+		"when": "editorTextFocus && !editorReadonly",
 	},
-	//insert模式按下option+d，删除当前行
 	{
-		"key": "alt+d", // 对应 Mac 上的 Option 键
+		"key": "alt+j",
+		"command": "editor.action.moveLinesDownAction",
+		"when": "vim.mode != 'Insert' && editorTextFocus",
+	},
+	{
+		"key": "alt+k",
+		"command": "editor.action.moveLinesUpAction",
+		"when": "vim.mode != 'Insert' && editorTextFocus",
+	},
+	// 代码补全与建议
+	{
+		"key": "enter",
+		"command": "editor.action.inlineSuggest.commit",
+		"when": "inlineSuggestionVisible && !suggestWidgetVisible",
+	},
+	{
+		"key": "tab",
+		"command": "-editor.action.inlineSuggest.commit",
+		"when": "inlineSuggestionVisible && !suggestWidgetVisible",
+	},
+	{
+		"key": "tab",
+		"command": "acceptSelectedSuggestion",
+		"when": "suggestWidgetVisible",
+	},
+	{
+		"key": "ctrl+enter",
+		"command": "-github.copilot.generate",
+		"when": "editorTextFocus && github.copilot.activated && !commentEditorFocused && !inInteractiveInput && !interactiveEditorFocused",
+	},
+	// ============================================================
+	// Vim 集成与模拟 (Vim Integration)
+	// ============================================================
+	// Insert 模式：Option+d 删除当前行
+	{
+		"key": "alt+d",
 		"command": "vim.remap",
 		"when": "vim.mode == 'Insert'",
 		"args": {
 			"after": [
 				"<Esc>",
 				"c",
-				"c"
-			]
-		}
+				"c",
+			],
+		},
 	},
-	//更改补全接受按键
-	{
-		"key": "enter",
-		"command": "editor.action.inlineSuggest.commit",
-		"when": "inlineSuggestionVisible && !suggestWidgetVisible"
-	},
-	{
-		"key": "tab",
-		"command": "-editor.action.inlineSuggest.commit",
-		"when": "inlineSuggestionVisible && !suggestWidgetVisible"
-	},
-	{
-		"key": "tab",
-		"command": "acceptSelectedSuggestion",
-		"when": "suggestWidgetVisible"
-	},
-	{
-		"key": "cmd+i",
-		"command": "extension.aceJump"
-	},
-	{
-		"key": "cmd+i",
-		"command": "findThenJump.initiate"
-	},
-	{
-		"key": "alt+=",
-		"command": "workbench.action.nextEditor"
-	},
-	{
-		"key": "alt+-",
-		"command": "workbench.action.previousEditor"
-	},
-	{
-		"key": "cmd+n",
-		"command": "welcome.showNewFileEntries"
-	},
-	// Vim normal模式下，Option+Z映射到Gzz
+	// Normal 模式：Option+z 居中显示
 	{
 		"key": "alt+z",
 		"command": "vim.remap",
@@ -128,51 +167,34 @@
 			"after": [
 				"G",
 				"z",
-				"z"
-			]
-		}
+				"z",
+			],
+		},
 	},
-	// Option+j/k 移动行（Vim 模式下）
-	{
-		"key": "alt+j",
-		"command": "editor.action.moveLinesDownAction",
-		"when": "vim.mode != 'Insert' && editorTextFocus"
-	},
-	{
-		"key": "alt+k",
-		"command": "editor.action.moveLinesUpAction",
-		"when": "vim.mode != 'Insert' && editorTextFocus"
-	},
-	// Option+V 进入 Visual Block 模式（竖直选择）
+	// Visual Block 模式 (Option+V)
 	{
 		"key": "alt+v",
 		"command": "vim.remap",
 		"args": {
 			"after": [
-				"<C-v>"
-			]
-		}
+				"<C-v>",
+			],
+		},
 	},
-	// 删除 Option+V 的默认绑定（粘贴）
 	{
 		"key": "alt+v",
-		"command": "-editor.action.clipboardPasteAction"
+		"command": "-editor.action.clipboardPasteAction",
 	},
-	// Option+Q 切换资源管理器
-	{
-		"key": "alt+q",
-		"command": "workbench.action.toggleSidebarVisibility"
-	},
-	// Option+h/l 移动到行首/行尾（Normal 模式）
+	// 行首/行尾跳转 (Option+H/L)
 	{
 		"key": "alt+h",
 		"command": "vim.remap",
 		"when": "vim.mode == 'Normal'",
 		"args": {
 			"after": [
-				"^"
-			]
-		}
+				"^",
+			],
+		},
 	},
 	{
 		"key": "alt+l",
@@ -180,24 +202,24 @@
 		"when": "vim.mode == 'Normal'",
 		"args": {
 			"after": [
-				"$"
-			]
-		}
+				"$",
+			],
+		},
 	},
-	// Leader+s 触发 EasyMotion 单字符搜索（Normal 模式）
-	{
-		"key": ", s",
-		"command": "vim.remap",
-		"when": "vim.mode == 'Normal'",
-		"args": {
-			"after": [
-				"<leader>",
-				"<leader>",
-				"s"
-			]
-		}
-	},
-	// Ctrl+D 清除当前行并进入插入模式（Normal 和 Insert 模式）
+	// EasyMotion 快捷键
+	// {
+	// 	"key": ", s",
+	// 	"command": "vim.remap",
+	// 	"when": "vim.mode == 'Normal'",
+	// 	"args": {
+	// 		"after": [
+	// 			"<leader>",
+	// 			"<leader>",
+	// 			"s",
+	// 		],
+	// 	},
+	// },
+	// Ctrl+D 清除行并进入插入模式
 	{
 		"key": "ctrl+d",
 		"command": "vim.remap",
@@ -205,9 +227,9 @@
 		"args": {
 			"after": [
 				"c",
-				"c"
-			]
-		}
+				"c",
+			],
+		},
 	},
 	{
 		"key": "ctrl+d",
@@ -217,26 +239,30 @@
 			"after": [
 				"<Esc>",
 				"c",
-				"c"
-			]
-		}
+				"c",
+			],
+		},
+	},
+	// ============================================================
+	// 扩展插件 (Extensions)
+	// ============================================================
+	// Live Server
+	{
+		"key": "cmd+l cmd+o",
+		"command": "-extension.liveServer.goOnline",
+		"when": "editorTextFocus",
 	},
 	{
-		"key": "shift+cmd+h",
-		"command": "-workbench.action.replaceInFiles"
+		"key": "cmd+l cmd+c",
+		"command": "-extension.liveServer.goOffline",
+		"when": "editorTextFocus",
 	},
 	{
-		"key": "cmd+r",
-		"command": "editor.action.startFindReplaceAction",
-		"when": "editorFocus || editorIsOpen"
+		"key": "delete",
+		"command": "fiveServer.start"
 	},
 	{
-		"key": "alt+cmd+f",
-		"command": "-editor.action.startFindReplaceAction",
-		"when": "editorFocus || editorIsOpen"
-	},
-	{
-		"key": ", t",
-		"command": "workbench.action.terminal.toggleTerminal"
+		"key": "cmd+3",
+		"command": "extension.liveServer.goOnline"
 	}
 ]
