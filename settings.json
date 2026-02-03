@@ -148,7 +148,7 @@
 	"workbench.preferredDarkColorTheme": "Atom One Dark",
 	"workbench.iconTheme": "a-file-icon-vscode",
 	"workbench.colorCustomizations": {
-		"editorCursor.foreground": "#c31818"
+		"editorCursor.foreground": "#51d237"
 	},
 	// 标签页管理 
 	"workbench.editor.enablePreview": false,

@@ -20,6 +20,11 @@
 		"key": "alt+q",
 		"command": "workbench.action.toggleSidebarVisibility",
 	},
+	// 终端切换 (Ctrl+\)
+	{
+		"key": "ctrl+\\",
+		"command": "workbench.action.terminal.toggleTerminal",
+	},
 	// {
 	// 	"key": ", t",
 	// 	"command": "workbench.action.terminal.toggleTerminal",
@@ -261,8 +266,31 @@
 		"key": "delete",
 		"command": "fiveServer.start"
 	},
+	// ============================================================
+	// 智能运行文件 (Smart File Runner - Cmd+3)
+	// ============================================================
+	// HTML: 启动 Live Server
 	{
 		"key": "cmd+3",
-		"command": "extension.liveServer.goOnline"
-	}
+		"command": "extension.liveServer.goOnline",
+		"when": "editorLangId == html && editorTextFocus",
+	},
+	// Python: 在终端运行
+	{
+		"key": "cmd+3",
+		"command": "python.execInTerminal",
+		"when": "editorLangId == python && editorTextFocus",
+	},
+	// JavaScript: 用 Node.js 运行
+	{
+		"key": "cmd+3",
+		"command": "code-runner.run",
+		"when": "editorLangId == javascript && editorTextFocus",
+	},
+	// TypeScript: 用 ts-node 运行
+	{
+		"key": "cmd+3",
+		"command": "code-runner.run",
+		"when": "editorLangId == typescript && editorTextFocus",
+	},
 ]
