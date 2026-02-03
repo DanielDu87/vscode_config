@@ -512,4 +512,8 @@
 	"code-runner.saveAllFilesBeforeRun": true,
 	"code-runner.runInTerminal": true,
 	"code-runner.saveFileBeforeRun": true,
+	"code-runner.executorMap": {
+		"javascript": "/opt/homebrew/bin/node",
+		"typescript": "/opt/homebrew/bin/node",
+	},
 }
