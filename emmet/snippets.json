@@ -1,0 +1,7 @@
+{
+	"html": {
+		"abbreviations": {
+			"!": "!!!doctype html>html(lang=zh-CN)>head>meta[charset=UTF-8]+meta[name=viewport content=\"width=device-width,initial-scale=1.0\"]+title{页面标题}+script[src=\"https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4\"]+link[rel=stylesheet href=styles.css]^body"
+		}
+	}
+}

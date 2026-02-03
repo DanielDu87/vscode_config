@@ -293,4 +293,24 @@
 		"command": "code-runner.run",
 		"when": "editorLangId == typescript && editorTextFocus",
 	},
+	{
+		"key": "ctrl+shift+l",
+		"command": "codeLogPlus.insertLog",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "ctrl+alt+l",
+		"command": "-codeLogPlus.insertLog",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "shift+cmd+l",
+		"command": "turboConsoleLog.insertConsoleDebug",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "cmd+k cmd+b",
+		"command": "-turboConsoleLog.insertConsoleDebug",
+		"when": "editorTextFocus"
+	},
 ]

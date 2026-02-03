@@ -1,30 +1,30 @@
 {
-	// ============================================================ 
-	// Vim 插件核心配置 
-	// ============================================================ 
-	// 注意：部分按键映射已迁移到 ~/.vimrc 文件 
+	// ============================================================
+	// Vim 插件核心配置
+	// ============================================================
+	// 注意：部分按键映射已迁移到 ~/.vimrc 文件
 	// VSCode Vim 插件会自动读取该文件中的配置
 	"vim.vimrc.enable": true,
 	"vim.vimrc.path": "/Users/dyx/.vimrc",
 	// 显式设置 Leader 键为空格
 	"vim.leader": " ",
 	// 使用 Neovim 作为后端（关闭以保持原生稳定）	"vim.enableNeovim": false,
-	// 启用 EasyMotion 快速跳转插件 
+	// 启用 EasyMotion 快速跳转插件
 	"vim.easymotion": true,
-	// 启用 Sneak 快速跳转（s{char}{char}） 
+	// 启用 Sneak 快速跳转（s{char}{char}）
 	"vim.sneak": true,
 	"vim.sneakUseIgnorecaseAndSmartcase": true,
-	// 驼峰命名移动支持（ciW, caW 等） 
+	// 驼峰命名移动支持（ciW, caW 等）
 	"vim.camelCaseMotion.enable": true,
-	// 寄存器增强功能（替换时保留寄存器内容） 
+	// 寄存器增强功能（替换时保留寄存器内容）
 	"vim.replaceWithRegister": true,
-	// 高亮复制的内容 
+	// 高亮复制的内容
 	"vim.highlightedyank.enable": true,
-	// 鼠标选择不自动进入可视模式 
+	// 鼠标选择不自动进入可视模式
 	"vim.mouseSelectionGoesIntoVisualMode": false,
-	// 相对行号智能显示（Vim 模式必备） 
+	// 相对行号智能显示（Vim 模式必备）
 	"vim.smartRelativeLine": true,
-	// 光标样式配置（随模式变化） 
+	// 光标样式配置（随模式变化）
 	"vim.cursorStylePerMode": {
 		"insert": "line",
 		"normal": "block",
@@ -33,7 +33,7 @@
 		"visualblock": "block",
 		"visualline": "block",
 	},
-	// 按键拦截控制（决定由 VSCode 还是 Vim 处理） 
+	// 按键拦截控制（决定由 VSCode 还是 Vim 处理）
 	"vim.handleKeys": {
 		"<C-v>": true,
 		"<C-c>": false,
@@ -42,58 +42,37 @@
 		"<A-h>": false,
 		"<A-l>": false,
 	},
-	// 自定义文本对象映射 
+	// 自定义文本对象映射
 	"vim.textobjKeybindings": [
 		{
-			"before": [
-				"iq",
-			],
-			"after": [
-				"i",
-				"\"",
-			],
+			"before": ["iq"],
+			"after": ["i", "\""],
 		},
 		{
-			"before": [
-				"ie",
-			],
-			"after": [
-				"i",
-				"'",
-			],
+			"before": ["ie"],
+			"after": ["i", "'"],
 		},
 		{
-			"before": [
-				"ib",
-			],
-			"after": [
-				"i",
-				"(",
-			],
+			"before": ["ib"],
+			"after": ["i", "("],
 		},
 	],
 	// Normal 模式快捷键映射
 	"vim.normalModeKeyBindingsNonRecursive": [
 		{
-			"before": [
-				"s",
-			],
-			"after": [
-				"<leader>",
-				"<leader>",
-				"s",
-			],
+			"before": ["s"],
+			"after": ["<leader>", "<leader>", "s"],
 		},
 	],
-	// ============================================================ 
-	// 编辑器基础配置 (Editor) 
-	// ============================================================ 
-	// 字体设置 
+	// ============================================================
+	// 编辑器基础配置 (Editor)
+	// ============================================================
+	// 字体设置
 	"editor.fontFamily": "'JetBrains Mono', 'PingFang SC', 'Menlo', 'Monaco', 'Courier New', monospace",
 	"editor.fontSize": 13,
 	"editor.fontWeight": "700",
 	"editor.fontLigatures": true,
-	// 缩进与格式化 (强制使用 Tab) 
+	// 缩进与格式化 (强制使用 Tab)
 	"editor.tabSize": 4,
 	"editor.insertSpaces": false,
 	"editor.detectIndentation": false,
@@ -102,15 +81,13 @@
 	"editor.formatOnSave": true,
 	"editor.formatOnSaveMode": "file",
 	"editor.formatOnType": true,
-	// 视觉显示 
+	// 视觉显示
 	"editor.lineNumbers": "relative",
 	"editor.renderWhitespace": "all",
 	"editor.renderControlCharacters": true,
 	"editor.glyphMargin": false,
 	"editor.minimap.enabled": false,
-	"editor.rulers": [
-		180,
-	],
+	"editor.rulers": [180],
 	"editor.wordWrap": "on",
 	"editor.foldingImportsByDefault": true,
 	"editor.selectionHighlightMultiline": true,
@@ -124,13 +101,13 @@
 				"scope": "comment",
 				"settings": {
 					"fontStyle": "",
-				}
+				},
 			},
 		],
 	},
 	"editor.unicodeHighlight.includeComments": false,
 	"editor.unicodeHighlight.nonBasicASCII": false,
-	// 交互行为 
+	// 交互行为
 	"editor.codeActions.triggerOnFocusChange": true,
 	"editor.definitionLinkOpensInPeek": true,
 	"editor.stablePeek": true,
@@ -138,41 +115,49 @@
 	"editor.inertialScroll": true,
 	"editor.accessibilitySupport": "off",
 	"editor.allowVariableFontsInAccessibilityMode": true,
-	// 性能与实验性功能 
+	// 性能与实验性功能
 	"editor.experimentalInlineEdit.enabled": true,
-	// ============================================================ 
-	// 工作区与界面 (Workbench & Window) 
-	// ============================================================ 
-	// 主题 
+	// ============================================================
+	// 工作区与界面 (Workbench & Window)
+	// ============================================================
+	// 主题
 	"workbench.colorTheme": "Atom One Dark",
 	"workbench.preferredDarkColorTheme": "Atom One Dark",
 	"workbench.iconTheme": "a-file-icon-vscode",
 	"workbench.colorCustomizations": {
-		"editorCursor.foreground": "#51d237"
+		"editorCursor.foreground": "#c31818",
 	},
-	// 标签页管理 
+	"indentRainbow.indicatorStyle": "light",
+	"indentRainbow.lightIndicatorStyleLineWidth": 1,
+	"indentRainbow.colors": [
+		"rgba(255,255,64,0.3)",
+		"rgba(127,255,127,0.3)",
+		"rgba(255,127,255,0.3)",
+		"rgba(79,236,236,0.3)",
+	],
+	// 标签页管理
 	"workbench.editor.enablePreview": false,
 	"workbench.editor.wrapTabs": true,
 	"workbench.editor.sharedViewState": true,
 	"workbench.editor.highlightModifiedTabs": true,
 	"workbench.editor.alwaysShowEditorActions": true,
 	"workbench.editor.preferHistoryBasedLanguageDetection": true,
-	// 资源管理器 
+	// 资源管理器
 	"explorer.compactFolders": false,
 	"explorer.decorations.colors": false,
-	// 声音 
+	// 声音
 	"workbench.enableSounds": false,
 	"workbench.sounds.volume": 0,
-	// 本地历史 
+	// 本地历史
 	"workbench.localHistory.mergeWindow": 1,
-	// 列表滚动 
+	// 列表滚动
 	"workbench.list.smoothScrolling": true,
-	// 窗口行为 
+	// 窗口行为
 	"window.newWindowProfile": "默认",
 	"window.autoDetectHighContrast": false,
-	// ============================================================ 
-	// 文件与搜索 (Files & Search) 
-	// ============================================================ 
+	// ============================================================
+	// 文件与搜索 (Files & Search)
+	// ============================================================
 	"files.autoSave": "afterDelay",
 	"files.autoSaveDelay": 10,
 	"files.exclude": {
@@ -188,32 +173,32 @@
 	"search.globalFindClipboard": true,
 	"search.quickOpen.includeSymbols": true,
 	"search.experimental.closedNotebookRichContentResults": true,
-	// ============================================================ 
-	// 终端 (Terminal) 
-	// ============================================================ 
+	// ============================================================
+	// 终端 (Terminal)
+	// ============================================================
 	"terminal.integrated.fontFamily": "CodeNewRoman Nerd Font Mono",
 	"terminal.integrated.fontSize": 16,
 	"terminal.integrated.fontWeight": "normal",
 	"terminal.integrated.smoothScrolling": true,
-	// ============================================================ 
-	// 版本控制 (Git) 
-	// ============================================================ 
+	// ============================================================
+	// 版本控制 (Git)
+	// ============================================================
 	"git.openRepositoryInParentFolders": "always",
 	"scm.alwaysShowRepositories": true,
 	"scm.autoReveal": false,
-	// ============================================================ 
-	// 调试 (Debug) 
-	// ============================================================ 
+	// ============================================================
+	// 调试 (Debug)
+	// ============================================================
 	"debug.allowBreakpointsEverywhere": true,
 	"debug.autoExpandLazyVariables": "on",
 	"debug.closeReadonlyTabsOnEnd": true,
 	"debug.confirmOnExit": "always",
 	"debug.console.acceptSuggestionOnEnter": "on",
 	"debug.console.closeOnEnd": true,
-	// ============================================================ 
-	// 代码格式化与规范 (Formatter & Linting) 
-	// ============================================================ 
-	// Prettier 通用配置 (强制使用 Tab) 
+	// ============================================================
+	// 代码格式化与规范 (Formatter & Linting)
+	// ============================================================
+	// Prettier 通用配置 (强制使用 Tab)
 	"prettier.useTabs": true,
 	"prettier.tabWidth": 4,
 	"prettier.printWidth": 1000,
@@ -224,25 +209,20 @@
 	"prettier.requireConfig": false,
 	"prettier.proseWrap": "never",
 	"prettier.embeddedLanguageFormatting": "auto",
-	// ESLint 
+	// ESLint
 	"eslint.debug": true,
 	"eslint.format.enable": false,
-	"eslint.validate": [
-		"javascript",
-		"javascriptreact",
-		"typescript",
-		"typescriptreact",
-	],
-	// Standard 
+	"eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
+	// Standard
 	"standard.autoFixOnSave": true,
 	"standard.enableGlobally": true,
-	// 保存时自动操作 
+	// 保存时自动操作
 	"editor.codeActionsOnSave": {
 		"source.fixAll": "always",
 	},
-	// ============================================================ 
-	// 语言特定配置 (Language Specific) 
-	// ============================================================ 
+	// ============================================================
+	// 语言特定配置 (Language Specific)
+	// ============================================================
 	"[css]": {
 		"editor.defaultFormatter": "vscode.css-language-features",
 	},
@@ -259,15 +239,42 @@
 		"prettier.bracketSameLine": true,
 	},
 	"[javascript]": {
-		"editor.defaultFormatter": "vscode.typescript-language-features",
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4,
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4,
+	},
+	"[javascriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4,
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4,
+	},
+	"[python]": {
+		"editor.insertSpaces": true,
+		"editor.tabSize": 4,
+		"editor.defaultFormatter": "ms-python.autopep8",
+		"editor.formatOnSave": true,
 	},
 	"[json]": {
-		"editor.defaultFormatter": "vscode.json-language-features",
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4,
 	},
 	"[jsonc]": {
-		"editor.defaultFormatter": "vscode.json-language-features",
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4,
 	},
-	// Web 前端 (HTML/CSS/Emmet) 
+	// Web 前端 (HTML/CSS/Emmet)
 	"html.format.enable": false,
 	"html.format.extraLiners": " ",
 	"html.format.indentHandlebars": true,
@@ -281,17 +288,17 @@
 	"html.format.preserveNewLines": true,
 	"html.format.unformattedContent": "script,style",
 	"css.autoValidation": "always",
-	"css.enabledLanguages": [
-		"html",
-	],
-	"css.styleSheets": [
-		"src/**/*.css",
-	],
+	"css.enabledLanguages": ["html"],
+	"css.styleSheets": ["src/**/*.css"],
 	"emmet.showSuggestionsAsSnippets": true,
 	"emmet.triggerExpansionOnTab": true,
+	"emmet.extensionsPath": ["/Users/dyx/Library/Application Support/Code/User/emmet"],
+	"emmet.preferences": {
+		"style.sheet": "tab",
+	},
 	"html-css-class-completion.enableEmmetSupport": true,
 	"tailwindCSS.emmetCompletions": true,
-	// Live Server 
+	// Live Server
 	"liveServer.settings.AdvanceCustomBrowserCmdLine": "/Applications/Arc.app",
 	"liveServer.settings.fullReload": true,
 	"liveServer.settings.CustomBrowser": "/Applications/Arc.app",
@@ -300,23 +307,26 @@
 	"python.defaultInterpreterPath": "/Users/dyx/Code/0.python-venv/mySite-django5.0-py3.12/bin/python3",
 	"python.venvPath": "/Users/dyx/Code/0.python-venv",
 	"python.languageServer": "Pylance",
-	// Notebook / Interactive 
+	// Django Commands 插件配置
+	"djangoCommands.historyMaxLength": 50,
+	"djangoCommands.showTerminalOnCommand": true,
+	// Notebook / Interactive
 	"notebook.output.wordWrap": true,
 	"interactiveWindow.executeWithShiftEnter": true,
-	// ============================================================ 
-	// 安全与网络 (Security & Network) 
-	// ============================================================ 
+	// ============================================================
+	// 安全与网络 (Security & Network)
+	// ============================================================
 	"security.promptForLocalFileProtocolHandling": false,
 	"security.workspace.trust.untrustedFiles": "open",
 	"http.proxy": "http://127.0.0.1:7890",
-	// ============================================================ 
-	// AI 与智能输入 (AI & Input) 
-	// ============================================================ 
+	// ============================================================
+	// AI 与智能输入 (AI & Input)
+	// ============================================================
 	"editor.aiStats.enabled": true,
 	"editor.experimental.asyncTokenizationLogging": true,
 	"editor.bracketPairColorization.independentColorPoolPerBracketType": true,
 	"markdown-preview-enhanced.HTML5EmbedUseImageSyntax": false,
-	// Smart Input Pro (中英文自动切换配置) 
+	// Smart Input Pro (中英文自动切换配置)
 	"smartInputPro.config": {
 		"enableAutoSwitch": true,
 		"enableStatusBar": true,
@@ -385,33 +395,28 @@
 					".xhtml",
 					".xml",
 					".xaml",
-					".svg"
+					".svg",
 				],
 				"stringLanguage": "ENGLISH",
 				"singleLineCommentLanguage": "MOTHER_TONGUE",
 				"multiLineCommentLanguage": "MOTHER_TONGUE",
 				"docCommentLanguage": "MOTHER_TONGUE",
-				"defaultLanguage": "ENGLISH"
+				"defaultLanguage": "ENGLISH",
 			},
 			{
 				"name": "文档文件默认规则",
-				"fileTypes": [
-					".md",
-					".txt"
-				],
+				"fileTypes": [".md", ".txt"],
 				"stringLanguage": "MOTHER_TONGUE",
 				"singleLineCommentLanguage": "MOTHER_TONGUE",
 				"multiLineCommentLanguage": "MOTHER_TONGUE",
 				"docCommentLanguage": "MOTHER_TONGUE",
-				"defaultLanguage": "ENGLISH"
-			}
+				"defaultLanguage": "ENGLISH",
+			},
 		],
 		"chineseSymbolReplaceRules": [
 			{
 				"name": "常用中文替换",
-				"fileTypes": [
-					".md"
-				],
+				"fileTypes": [".md"],
 				"symbols": [
 					"《",
 					"》",
@@ -434,9 +439,9 @@
 					"！",
 					"—",
 					"·",
-					"￥"
-				]
-			}
+					"￥",
+				],
+			},
 		],
 		"regexMatchRules": [
 			{
@@ -487,13 +492,13 @@
 					".htm",
 					".xhtml",
 					".xml",
-					".svg"
+					".svg",
 				],
 				"leftPattern": ".*[\\u4e00-\\u9fa5\\u3000-\\u303f\\uff00-\\uffef]$",
 				"rightPattern": "^[\\u4e00-\\u9fa5\\u3000-\\u303f\\uff00-\\uffef].*",
 				"matchCondition": "ANY",
-				"language": "MOTHER_TONGUE"
-			}
+				"language": "MOTHER_TONGUE",
+			},
 		],
 		"vimModeSwitchRules": [
 			{
@@ -502,9 +507,9 @@
 				"normal": "ENGLISH",
 				"insert": "MOTHER_TONGUE",
 				"visual": "ENGLISH",
-				"replace": "MOTHER_TONGUE"
-			}
-		]
+				"replace": "MOTHER_TONGUE",
+			},
+		],
 	},
 	"markdown-preview-enhanced.liveUpdate": true,
 	"code-runner.clearPreviousOutput": true,
@@ -516,4 +521,32 @@
 		"javascript": "/opt/homebrew/bin/node",
 		"typescript": "/opt/homebrew/bin/node",
 	},
+	"typescript.suggest.paths": false,
+	"javascript.suggest.paths": false,
+	"auto-rename-tag.activationOnLanguage": ["*"],
+	"EnglishChineseDictionary.enableHover": true,
+	"tktbtranslation.youdao.appKey": "28b96dba99259615",
+	"tktbtranslation.youdao.key": "5qAYyj5qxzsHe9oWxPo0cW2yRLCwCA0u",
+	"codeLogPlus.addEmptyLineAfterLog": true,
+	"codeLogPlus.addEmptyLineBeforeLogMessage": true,
+	"codeLogPlus.isLogMessageWrapped": true,
+	"gitlens.ai.model": "vscode",
+	"gitlens.ai.vscode.model": "copilot:gpt-4.1",
+	"explorer.fileNesting.patterns": {
+		"*.ts": "${capture}.js",
+		"*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+		"*.jsx": "${capture}.js",
+		"*.tsx": "${capture}.ts",
+		"tsconfig.json": "tsconfig.*.json",
+		"package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock",
+		"*.sqlite": "${capture}.${extname}-*",
+		"*.db": "${capture}.${extname}-*",
+		"*.sqlite3": "${capture}.${extname}-*",
+		"*.db3": "${capture}.${extname}-*",
+		"*.sdb": "${capture}.${extname}-*",
+		"*.s3db": "${capture}.${extname}-*",
+	},
+	"npm-intellisense.scanDevDependencies": true,
+	"npm-intellisense.packageSubfoldersIntellisense": true,
+	"npm-intellisense.showBuildInLibs": true,
 }
