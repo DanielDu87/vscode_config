@@ -1,0 +1,196 @@
+{
+	"Docker Compose - 基础模板": {
+		"prefix": "base",
+		"body": [
+			"version: '3.8'",
+			"",
+			"services:",
+			"\t${1:app}:",
+			"\t\tbuild: .",
+			"\t\tports:",
+			"\t\t\t- \"${2:8000}:8000\"",
+			"\t\tvolumes:",
+			"\t\t\t- .:/app",
+			"\t\tenvironment:",
+			"\t\t\t- DEBUG=1",
+			"\t\t\t- DATABASE_URL=postgresql://user:pass@db:5432/mydb",
+			"\t\tdepends_on:",
+			"\t\t\t- db",
+			"",
+			"\tdb:",
+			"\t\timage: postgres:16-alpine",
+			"\t\tenvironment:",
+			"\t\t\t- POSTGRES_DB=mydb",
+			"\t\t\t- POSTGRES_USER=user",
+			"\t\t\t- POSTGRES_PASSWORD=pass",
+			"\t\tvolumes:",
+			"\t\t\t- postgres_data:/var/lib/postgresql/data",
+			"",
+			"volumes:",
+			"\tpostgres_data:",
+			"$0"
+		],
+		"description": "Docker Compose 基础模板（Web + 数据库）"
+	},
+	"Docker Compose - Django 项目": {
+		"prefix": "django",
+		"body": [
+			"version: '3.8'",
+			"",
+			"services:",
+			"\tweb:",
+			"\t\tbuild: .",
+			"\t\tcommand: python manage.py runserver 0.0.0.0:8000",
+			"\t\tvolumes:",
+			"\t\t\t- .:/app",
+			"\t\tports:",
+			"\t\t\t- \"8000:8000\"",
+			"\t\tenvironment:",
+			"\t\t\t- DEBUG=1",
+			"\t\t\t- DATABASE_URL=postgresql://postgres:postgres@db:5432/postgres",
+			"\t\tdepends_on:",
+			"\t\t\t- db",
+			"",
+			"\tdb:",
+			"\t\timage: postgres:16-alpine",
+			"\t\tenvironment:",
+			"\t\t\t- POSTGRES_DB=postgres",
+			"\t\t\t- POSTGRES_USER=postgres",
+			"\t\t\t- POSTGRES_PASSWORD=postgres",
+			"\t\tvolumes:",
+			"\t\t\t- postgres_data:/var/lib/postgresql/data",
+			"",
+			"volumes:",
+			"\tpostgres_data:",
+			"$0"
+		],
+		"description": "Django 项目 Docker Compose 模板"
+	},
+	"Docker Compose - Node.js 项目": {
+		"prefix": "nodejs",
+		"body": [
+			"version: '3.8'",
+			"",
+			"services:",
+			"\tapp:",
+			"\t\tbuild: .",
+			"\t\tports:",
+			"\t\t\t- \"3000:3000\"",
+			"\t\tvolumes:",
+			"\t\t\t- .:/app",
+			"\t\t\t- /app/node_modules",
+			"\t\tenvironment:",
+			"\t\t\t- NODE_ENV=development",
+			"\t\t\t- CHOKIDAR_USEPOLLING=true",
+			"$0"
+		],
+		"description": "Node.js 项目 Docker Compose 模板"
+	},
+	"Docker Compose - Nginx 反向代理": {
+		"prefix": "nginx",
+		"body": [
+			"version: '3.8'",
+			"",
+			"services:",
+			"\tnginx:",
+			"\t\timage: nginx:alpine",
+			"\t\tports:",
+			"\t\t\t- \"80:80\"",
+			"\t\tvolumes:",
+			"\t\t\t- ./nginx.conf:/etc/nginx/nginx.conf:ro",
+			"\t\t\t- ./static:/usr/share/nginx/html:ro",
+			"\t\tdepends_on:",
+			"\t\t\t- app",
+			"",
+			"\tapp:",
+			"\t\tbuild: .",
+			"\t\texpose:",
+			"\t\t\t- \"8000\"",
+			"$0"
+		],
+		"description": "Nginx 反向代理 Compose 模板"
+	},
+	"Docker Compose - Redis + Celery": {
+		"prefix": "celery",
+		"body": [
+			"version: '3.8'",
+			"",
+			"services:",
+			"\tweb:",
+			"\t\tbuild: .",
+			"\t\tcommand: python manage.py runserver 0.0.0.0:8000",
+			"\t\tvolumes:",
+			"\t\t\t- .:/app",
+			"\t\tports:",
+			"\t\t\t- \"8000:8000\"",
+			"\t\tenvironment:",
+			"\t\t\t- CELERY_BROKER_URL=redis://redis:6379/0",
+			"\t\tdepends_on:",
+			"\t\t\t- redis",
+			"",
+			"\tcelery:",
+			"\t\tbuild: .",
+			"\t\tcommand: celery -A myproject worker -l info",
+			"\t\tvolumes:",
+			"\t\t\t- .:/app",
+			"\t\tenvironment:",
+			"\t\t\t- CELERY_BROKER_URL=redis://redis:6379/0",
+			"\t\tdepends_on:",
+			"\t\t\t- redis",
+			"",
+			"\tredis:",
+			"\t\timage: redis:7-alpine",
+			"\t\tports:",
+			"\t\t\t- \"6379:6379\"",
+			"$0"
+		],
+		"description": "Redis + Celery Compose 模板"
+	},
+	"Service - 基础服务": {
+		"prefix": "service",
+		"body": [
+			"\t${1:service_name}:",
+			"\t\tbuild: .",
+			"\t\tports:",
+			"\t\t\t- \"${2:8000}:8000\"",
+			"\t\tvolumes:",
+			"\t\t\t- .:/app",
+			"\t\tenvironment:",
+			"\t\t\t- DEBUG=1",
+			"$0"
+		],
+		"description": "基础服务定义"
+	},
+	"Service - 使用镜像": {
+		"prefix": "image",
+		"body": [
+			"\t${1:service}:",
+			"\t\timage: ${2:postgres:16-alpine}",
+			"\t\tenvironment:",
+			"\t\t\t- ${3:POSTGRES_DB}=mydb",
+			"\t\tvolumes:",
+			"\t\t\t- ${4:data}:/var/lib/postgresql/data",
+			"$0"
+		],
+		"description": "使用现有镜像的服务"
+	},
+	"Volume - 数据卷": {
+		"prefix": "vol",
+		"body": [
+			"volumes:",
+			"\t${1:volume_name}:",
+			"$0"
+		],
+		"description": "定义数据卷"
+	},
+	"Network - 网络": {
+		"prefix": "net",
+		"body": [
+			"networks:",
+			"\t${1:network_name}:",
+			"\t\tdriver: bridge",
+			"$0"
+		],
+		"description": "定义网络"
+	},
+}

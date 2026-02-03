@@ -125,7 +125,7 @@
 	"workbench.preferredDarkColorTheme": "Atom One Dark",
 	"workbench.iconTheme": "a-file-icon-vscode",
 	"workbench.colorCustomizations": {
-		"editorCursor.foreground": "#c31818",
+		"editorCursor.foreground": "#51d237",
 	},
 	"indentRainbow.indicatorStyle": "light",
 	"indentRainbow.lightIndicatorStyleLineWidth": 1,
@@ -312,6 +312,28 @@
 	// Django Commands 插件配置
 	"djangoCommands.historyMaxLength": 50,
 	"djangoCommands.showTerminalOnCommand": true,
+	// Docker 配置
+	"docker.languageserver.formatter.ignoreMultilineInstructions": true,
+	"docker.linter.diagnosticsDelay": 500,
+	"docker.images.templating.enabled": true,
+	"docker.compose.automaticComposeUp": false,
+	"files.associations": {
+		"Dockerfile*": "dockerfile",
+		"docker-compose*.*": "yaml",
+		"*.dockerfile": "dockerfile",
+	},
+	"[dockerfile]": {
+		"editor.formatOnSave": true,
+		"editor.defaultFormatter": "ms-azuretools.vscode-docker",
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4,
+	},
+	"[yaml]": {
+		"editor.formatOnSave": true,
+		"editor.defaultFormatter": "redhat.vscode-yaml",
+		"editor.insertSpaces": false,
+		"editor.tabSize": 2,
+	},
 	// Notebook / Interactive
 	"notebook.output.wordWrap": true,
 	"interactiveWindow.executeWithShiftEnter": true,
@@ -551,4 +573,6 @@
 	"npm-intellisense.scanDevDependencies": true,
 	"npm-intellisense.packageSubfoldersIntellisense": true,
 	"npm-intellisense.showBuildInLibs": true,
+	"containers.containerClient": "com.microsoft.visualstudio.containers.docker",
+	"containers.orchestratorClient": "com.microsoft.visualstudio.orchestrators.dockercompose",
 }

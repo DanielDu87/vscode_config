@@ -1,0 +1,155 @@
+{
+	"Dockerfile - Python 基础模板": {
+		"prefix": "py",
+		"body": [
+			"FROM python:3.12-slim",
+			"",
+			"WORKDIR /app",
+			"",
+			"ENV PYTHONDONTWRITEBYTECODE=1",
+			"ENV PYTHONUNBUFFERED=1",
+			"",
+			"COPY requirements.txt .",
+			"RUN pip install --no-cache-dir -r requirements.txt",
+			"",
+			"COPY . .",
+			"",
+			'CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]',
+			"$0"
+		],
+		"description": "Python Django/Flask 基础 Dockerfile 模板"
+	},
+	"Dockerfile - Node.js 基础模板": {
+		"prefix": "node",
+		"body": [
+			"FROM node:20-alpine",
+			"",
+			"WORKDIR /app",
+			"",
+			"COPY package*.json ./",
+			"RUN npm install",
+			"",
+			"COPY . .",
+			"",
+			"EXPOSE 3000",
+			'CMD ["npm", "start"]',
+			"$0"
+		],
+		"description": "Node.js 基础 Dockerfile 模板"
+	},
+	"Dockerfile - Nginx 反向代理": {
+		"prefix": "nginx",
+		"body": [
+			"FROM nginx:alpine",
+			"",
+			"COPY nginx.conf /etc/nginx/nginx.conf",
+			"COPY static /usr/share/nginx/html",
+			"",
+			"EXPOSE 80",
+			'CMD ["nginx", "-g", "daemon off;"]',
+			"$0"
+		],
+		"description": "Nginx 反向代理 Dockerfile 模板"
+	},
+	"Dockerfile - 多阶段构建": {
+		"prefix": "multi",
+		"body": [
+			"# 构建阶段",
+			"FROM node:20-alpine AS builder",
+			"WORKDIR /app",
+			"COPY package*.json ./",
+			"RUN npm ci",
+			"COPY . .",
+			"RUN npm run build",
+			"",
+			"# 生产阶段",
+			"FROM nginx:alpine",
+			"COPY --from=builder /app/dist /usr/share/nginx/html",
+			"EXPOSE 80",
+			'$0'
+		],
+		"description": "多阶段构建 Dockerfile 模板"
+	},
+	"FROM - 基础镜像": {
+		"prefix": "from",
+		"body": [
+			"FROM ${1:python:3.12-slim}",
+			"$0"
+		],
+		"description": "FROM 基础镜像指令"
+	},
+	"WORKDIR - 工作目录": {
+		"prefix": "work",
+		"body": [
+			"WORKDIR ${1:/app}",
+			"$0"
+		],
+		"description": "WORKDIR 工作目录指令"
+	},
+	"COPY - 复制文件": {
+		"prefix": "copy",
+		"body": [
+			"COPY ${1:.} ${2:/app}",
+			"$0"
+		],
+		"description": "COPY 复制文件指令"
+	},
+	"RUN - 执行命令": {
+		"prefix": "run",
+		"body": [
+			"RUN ${1:apt-get update && apt-get install -y \\}",
+			"\t${2:curl \\}",
+			"\t&& rm -rf /var/lib/apt/lists/*",
+			"$0"
+		],
+		"description": "RUN 执行命令指令"
+	},
+	"EXPOSE - 暴露端口": {
+		"prefix": "expose",
+		"body": [
+			"EXPOSE ${1:8000}",
+			"$0"
+		],
+		"description": "EXPOSE 暴露端口指令"
+	},
+	"ENV - 环境变量": {
+		"prefix": "env",
+		"body": [
+			"ENV ${1:KEY}=${2:value}",
+			"$0"
+		],
+		"description": "ENV 环境变量指令"
+	},
+	"CMD - 启动命令": {
+		"prefix": "cmd",
+		"body": [
+			'CMD ["${1:python}", "${2:manage.py}", "${3:runserver}"]',
+			"$0"
+		],
+		"description": "CMD 启动命令指令"
+	},
+	"ENTRYPOINT - 入口点": {
+		"prefix": "entry",
+		"body": [
+			'ENTRYPOINT ["${1:python}"]',
+			'$0'
+		],
+		"description": "ENTRYPOINT 入口点指令"
+	},
+	"VOLUME - 挂载卷": {
+		"prefix": "volume",
+		"body": [
+			"VOLUME [\"${1:/data}\"]",
+			"$0"
+		],
+		"description": "VOLUME 挂载卷指令"
+	},
+	"USER - 切换用户": {
+		"prefix": "user",
+		"body": [
+			"USER ${1:appuser}",
+			"$0"
+		],
+		"description": "USER 切换用户指令"
+	},
+}
