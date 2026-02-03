@@ -234,5 +234,9 @@
 		"key": "alt+cmd+f",
 		"command": "-editor.action.startFindReplaceAction",
 		"when": "editorFocus || editorIsOpen"
+	},
+	{
+		"key": ", t",
+		"command": "workbench.action.terminal.toggleTerminal"
 	}
 ]

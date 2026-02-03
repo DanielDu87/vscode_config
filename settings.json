@@ -86,16 +86,6 @@
             ]
         }
     ],
-    // ---------- 自动切换输入法 ----------
-    "vim.autoSwitchInputMethod.enable": true,
-    "vim.autoSwitchInputMethod.defaultIM": "com.apple.keylayout.ABC",
-    "vim.autoSwitchInputMethod.obtainIMCmd": "/opt/homebrew/bin/im-select",
-    "vim.autoSwitchInputMethod.switchIMCmd": "/opt/homebrew/bin/im-select {im}",
-    // ---------- 输入法切换插件配置 ----------
-    "ime-and-cursor.ChineseIM": "com.apple.inputmethod.SCIM.ITABC",
-    "ime-and-cursor.EnglishIM": "com.apple.keylayout.ABC",
-    "ime-and-cursor.obtainIMCmd": "/opt/homebrew/bin/im-select",
-    "ime-and-cursor.switchIMCmd": "/opt/homebrew/bin/im-select {im}",
     // ============================================================
     // 编辑器基础配置
     // ============================================================
@@ -160,14 +150,14 @@
             }
         ]
     },
-    	// ---------- Unicode 高亮 ----------
-    	"editor.unicodeHighlight.includeComments": false, // 注释中不警告非 ASCII 字符
-    	"editor.unicodeHighlight.nonBasicASCII": false,
-    	// ---------- 自动换行 ----------
-    	"editor.wordWrap": "on", // 在视口边界换行
-    	// ============================================================
-    	// 工作区与界面配置
-    	// ============================================================    // ---------- 资源管理器 ----------
+    // ---------- Unicode 高亮 ----------
+    "editor.unicodeHighlight.includeComments": false, // 注释中不警告非 ASCII 字符
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    // ---------- 自动换行 ----------
+    "editor.wordWrap": "on", // 在视口边界换行
+    // ============================================================
+    // 工作区与界面配置
+    // ============================================================    // ---------- 资源管理器 ----------
     "explorer.compactFolders": false, // 禁用紧凑文件夹显示
     "explorer.decorations.colors": false, // 禁用装饰颜色
     // ---------- 文件配置 ----------
@@ -183,7 +173,9 @@
     "workbench.colorTheme": "Atom One Dark",
     "workbench.preferredDarkColorTheme": "Atom One Dark",
     "workbench.iconTheme": "a-file-icon-vscode",
-    "workbench.colorCustomizations": {},
+    "workbench.colorCustomizations": {
+        "editorCursor.foreground": "#51d237"
+    },
     // ---------- 编辑器标签页 ----------
     "workbench.editor.alwaysShowEditorActions": true,
     "workbench.editor.enablePreview": false, // 禁用预览模式（单击文件打开而非预览）
@@ -258,18 +250,19 @@
     "[css]": {
         "editor.defaultFormatter": "vscode.css-language-features"
     },
-    	"[html]": {
-    		"editor.defaultFormatter": "esbenp.prettier-vscode",
-    		"editor.insertSpaces": true,
-    		"editor.tabSize": 4,
-    		"editor.formatOnSave": true,
-    		"editor.formatOnPaste": true,
-    		"editor.formatOnType": false,
-    		"prettier.printWidth": 1000,
-    		"prettier.htmlWhitespaceSensitivity": "ignore",
-    		"prettier.singleAttributePerLine": false,
-    		"prettier.bracketSameLine": true
-    	},    "[javascript]": {
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4,
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true,
+        "editor.formatOnType": false,
+        "prettier.printWidth": 1000,
+        "prettier.htmlWhitespaceSensitivity": "ignore",
+        "prettier.singleAttributePerLine": false,
+        "prettier.bracketSameLine": true
+    },
+    "[javascript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
     },
     "[json]": {
@@ -283,12 +276,13 @@
     "html.format.extraLiners": " ", // 在标签前额外空行
     "html.format.indentHandlebars": true, // 缩进 Handlebars
     "html.format.indentInnerHtml": true, // 缩进内部 HTML
-    	"html.format.templating": true, // 启用模板语法支持
-    	"html.format.maxPreserveNewLines": 300, // 最大保留空行数
-    	"html.format.wrapLineLength": 10000, // 设置极大值，彻底禁用内置格式化器的自动换行
-    	"html.format.wrapAttributes": "off", // 禁止属性换行
-    	"html.format.unformatted": "script", // 不换行的标签
-    	"html.format.contentUnformatted": "script,style", // script 和 style 标签内容不格式化    "html.format.preserveNewLines": true, // 保持原有换行，不再强行压缩或扩充
+    "html.format.templating": true, // 启用模板语法支持
+    "html.format.maxPreserveNewLines": 300, // 最大保留空行数
+    "html.format.wrapLineLength": 10000, // 设置极大值，彻底禁用内置格式化器的自动换行
+    "html.format.wrapAttributes": "off", // 禁止属性换行
+    "html.format.unformatted": "script", // 不换行的标签
+    "html.format.contentUnformatted": "script,style", // script 和 style 标签内容不格式化
+    "html.format.preserveNewLines": true, // 保持原有换行，不再强行压缩或扩充
     "html.format.unformattedContent": "script,style", // 不格式化的内容
     // ============================================================
     // Web 前端开发
@@ -342,5 +336,194 @@
     "workbench.list.smoothScrolling": true,
     "terminal.integrated.smoothScrolling": true,
     "notebook.output.wordWrap": true,
-    "interactiveWindow.executeWithShiftEnter": true
+    "interactiveWindow.executeWithShiftEnter": true,
+    "smartInputPro.config": {
+        "enableAutoSwitch": true,
+        "enableStatusBar": true,
+        "cursorColorChinese": "#c31818",
+        "cursorColorEnglish": "#51d237",
+        "enableCursorDecorations": true,
+        "enableCursorColor": true,
+        "inputMethodForWindows": "",
+        "inputMethodForLinux": "",
+        "inputMethodSwitchShortcutForWindows": "Shift",
+        "englishInputMethodForMac": "U.S.",
+        "motherTongueInputMethodForMac": "Pinyin – Simplified",
+        "inputMethodSwitchShortcutForMac": "Shift",
+        "defaultContextLanguage": [
+            {
+                "name": "代码文件默认规则",
+                "fileTypes": [
+                    ".lua",
+                    ".asm",
+                    ".proto",
+                    ".less",
+                    ".sass",
+                    ".scss",
+                    ".css",
+                    ".dart",
+                    ".ts",
+                    ".js",
+                    ".tsx",
+                    ".jsx",
+                    ".vue",
+                    ".ets",
+                    ".java",
+                    ".kt",
+                    ".groovy",
+                    ".php",
+                    ".cpp",
+                    ".c",
+                    ".cc",
+                    ".h",
+                    ".hpp",
+                    ".hxx",
+                    ".cxx",
+                    ".m",
+                    ".mm",
+                    ".swift",
+                    ".rb",
+                    ".go",
+                    ".cs",
+                    ".fs",
+                    ".rs",
+                    ".py",
+                    ".gd",
+                    ".sql",
+                    ".sh",
+                    ".bash",
+                    ".zsh",
+                    ".fish",
+                    ".csh",
+                    ".tcsh",
+                    ".zshrc",
+                    ".ipynb",
+                    ".v",
+                    ".vh",
+                    ".html",
+                    ".htm",
+                    ".xhtml",
+                    ".xml",
+                    ".xaml",
+                    ".svg"
+                ],
+                "stringLanguage": "ENGLISH",
+                "singleLineCommentLanguage": "MOTHER_TONGUE",
+                "multiLineCommentLanguage": "MOTHER_TONGUE",
+                "docCommentLanguage": "MOTHER_TONGUE",
+                "defaultLanguage": "ENGLISH"
+            },
+            {
+                "name": "文档文件默认规则",
+                "fileTypes": [
+                    ".md",
+                    ".txt"
+                ],
+                "stringLanguage": "MOTHER_TONGUE",
+                "singleLineCommentLanguage": "MOTHER_TONGUE",
+                "multiLineCommentLanguage": "MOTHER_TONGUE",
+                "docCommentLanguage": "MOTHER_TONGUE",
+                "defaultLanguage": "ENGLISH"
+            }
+        ],
+        "chineseSymbolReplaceRules": [
+            {
+                "name": "常用中文替换",
+                "fileTypes": [
+                    ".md"
+                ],
+                "symbols": [
+                    "《",
+                    "》",
+                    "「",
+                    "」",
+                    "『",
+                    "』",
+                    "【",
+                    "】",
+                    "（",
+                    "）",
+                    "“",
+                    "”",
+                    "‘",
+                    "’",
+                    "？",
+                    "：",
+                    "；",
+                    "、",
+                    "！",
+                    "—",
+                    "·",
+                    "￥"
+                ]
+            }
+        ],
+        "regexMatchRules": [
+            {
+                "name": "中文之间",
+                "fileTypes": [
+                    ".dart",
+                    ".md",
+                    ".txt",
+                    ".ts",
+                    ".js",
+                    ".tsx",
+                    ".jsx",
+                    ".vue",
+                    ".ets",
+                    ".java",
+                    ".kt",
+                    ".groovy",
+                    ".php",
+                    ".cpp",
+                    ".c",
+                    ".cc",
+                    ".h",
+                    ".hpp",
+                    ".hxx",
+                    ".cxx",
+                    ".m",
+                    ".mm",
+                    ".swift",
+                    ".rb",
+                    ".go",
+                    ".cs",
+                    ".fs",
+                    ".rs",
+                    ".py",
+                    ".gd",
+                    ".sql",
+                    ".sh",
+                    ".bash",
+                    ".zsh",
+                    ".fish",
+                    ".csh",
+                    ".tcsh",
+                    ".zshrc",
+                    ".ipynb",
+                    ".v",
+                    ".vh",
+                    ".html",
+                    ".htm",
+                    ".xhtml",
+                    ".xml",
+                    ".svg"
+                ],
+                "leftPattern": ".*[\\u4e00-\\u9fa5\\u3000-\\u303F\\uff00-\\uffef]$",
+                "rightPattern": "^[\\u4e00-\\u9fa5\\u3000-\\u303F\\uff00-\\uffef].*",
+                "matchCondition": "ANY",
+                "language": "MOTHER_TONGUE"
+            }
+        ],
+        "vimModeSwitchRules": [
+            {
+                "name": "Vim模式自动切换",
+                "fileTypes": [],
+                "normal": "ENGLISH",
+                "insert": "MOTHER_TONGUE",
+                "visual": "ENGLISH",
+                "replace": "MOTHER_TONGUE"
+            }
+        ]
+    },
 }
