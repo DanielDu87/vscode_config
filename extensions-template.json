@@ -1,0 +1,149 @@
+{
+	"recommendations": [
+		// ========================================
+		// 核心插件
+		// ========================================
+		"vscodevim.vim",
+		"esbenp.prettier-vscode",
+		"dbaeumer.vscode-eslint",
+		"editorconfig.editorconfig",
+		"aaron-bond.better-comments",
+		"usernamehw.errorlens",
+		"fabiospampinato.vscode-todo-plus",
+		"gruntfuggly.todo-tree",
+		"vivaxy.vscode-conventional-commits",
+		"shardulm94.trailing-spaces",
+		"oderwat.indent-rainbow",
+
+		// ========================================
+		// Python
+		// ========================================
+		"ms-python.python",
+		"ms-python.vscode-pylance",
+		"ms-python.autopep8",
+		"ms-python.debugpy",
+		"ms-python.vscode-python-envs",
+		"eliazbobadilla.python-ultisnippets",
+		"batisteo.vscode-django",
+		"bigonesystems.django",
+		"maxchamps.django-commands",
+
+		// ========================================
+		// Docker & 容器
+		// ========================================
+		"ms-azuretools.vscode-docker",
+		"ms-azuretools.vscode-containers",
+		"george3447.docker-run",
+		"henriiik.docker-linter",
+		"redhat.vscode-yaml",
+		"timonwong.shellcheck",
+
+		// ========================================
+		// Web 前端
+		// ========================================
+		"ritwickdey.liveserver",
+		"bradlc.vscode-tailwindcss",
+		"andrewmcodes.tailwindcss-extension-pack",
+		"austenc.tailwind-docs",
+		"macieklad.tailwind-sass-syntax",
+		"formulahendry.code-runner",
+		"hcommand.run-runner",
+		"formulahendry.auto-close-tag",
+		"formulahendry.auto-rename-tag",
+		"vincaslt.highlight-matching-tag",
+		"pranaygp.vscode-css-peek",
+		"davidanson.vscode-markdownlint",
+		"yzhang.markdown-all-in-one",
+		"shd101wyy.markdown-preview-enhanced",
+
+		// ========================================
+		// JavaScript / TypeScript
+		// ========================================
+		"christian-kohler.npm-intellisense",
+		"christian-kohler.path-intellisense",
+		"wix.vscode-import-cost",
+		"yoavbls.pretty-ts-errors",
+		"temir.javascriptsnippets",
+		"beqadogonadze.react-js-snippets",
+
+		// ========================================
+		// Angular & NestJS
+		// ========================================
+		"angular.ng-template",
+		"imgildev.vscode-angular-generator",
+		"imgildev.vscode-nestjs-generator",
+		"imgildev.vscode-nestjs-snippets-extension",
+		"imgildev.vscode-nextjs-generator",
+		"imgildev.vscode-typescript-generator",
+		"imgildev.vscode-typescript-pack",
+		"imgildev.vscode-auto-barrel",
+		"imgildev.vscode-json-flow",
+		"willluke.nextjs",
+		"jwy.vue-snippets-self",
+
+		// ========================================
+		// Git & 版本控制
+		// ========================================
+		"eamodio.gitlens",
+		"mhutchie.git-graph",
+		"kisstkondoros.vscode-gutter-preview",
+		"github.remotehub",
+		"ms-vscode.azure-repos",
+
+		// ========================================
+		// 远程开发
+		// ========================================
+		"ms-vscode-remote.remote-ssh",
+		"ms-vscode-remote.remote-ssh-edit",
+		"ms-vscode.remote-explorer",
+		"ms-vscode.remote-repositories",
+
+		// ========================================
+		// GraphQL
+		// ========================================
+		"graphql.vscode-graphql",
+		"graphql.vscode-graphql-syntax",
+
+		// ========================================
+		// 数据库
+		// ========================================
+		"qwtel.sqlite-viewer",
+		"mechatroner.rainbow-csv",
+
+		// ========================================
+		// AI & 智能辅助
+		// ========================================
+		"github.copilot",
+		"github.copilot-chat",
+		"xiaolvpuzi.smart-input-pro-vscode",
+		"xiaolvpuzi.vim-smart-input-pro",
+		"chakrounanas.turbo-console-log",
+
+		// ========================================
+		// 主题 & 图标
+		// ========================================
+		"akamud.vscode-theme-onedark",
+		"github.github-vscode-theme",
+		"tobiasalthoff.atom-material-theme",
+		"atommaterial.a-file-icon-vscode",
+
+		// ========================================
+		// 工具
+		// ========================================
+		"mikestead.dotenv",
+		"jeff-hykin.polacode-2019",
+		"jmkrivocapich.drawfolderstructure",
+		"heybourn.headwind",
+		"aaravb.chrome-extension-developer-tools",
+
+		// ========================================
+		// 中文支持
+		// ========================================
+		"ms-ceintl.vscode-language-pack-zh-hans",
+
+		// ========================================
+		// Docker 缩进支持
+		// ========================================
+		"j-zeppenfeld.tab-indent-space-align"
+	]
+}

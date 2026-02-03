@@ -125,7 +125,7 @@
 	"workbench.preferredDarkColorTheme": "Atom One Dark",
 	"workbench.iconTheme": "a-file-icon-vscode",
 	"workbench.colorCustomizations": {
-		"editorCursor.foreground": "#51d237",
+		"editorCursor.foreground": "#c31818",
 	},
 	"indentRainbow.indicatorStyle": "light",
 	"indentRainbow.lightIndicatorStyleLineWidth": 1,
