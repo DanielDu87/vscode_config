@@ -85,7 +85,7 @@
 	"editor.lineNumbers": "relative",
 	"editor.renderWhitespace": "all",
 	"editor.renderControlCharacters": true,
-	"editor.glyphMargin": false,
+	"editor.glyphMargin": true,
 	"editor.minimap.enabled": false,
 	"editor.rulers": [180],
 	"editor.wordWrap": "on",
@@ -307,6 +307,8 @@
 	"python.defaultInterpreterPath": "/Users/dyx/Code/0.python-venv/mySite-django5.0-py3.12/bin/python3",
 	"python.venvPath": "/Users/dyx/Code/0.python-venv",
 	"python.languageServer": "Pylance",
+	"python.terminal.activateEnvironment": false,
+	"python.terminal.activateEnvInCurrentTerminal": false,
 	// Django Commands 插件配置
 	"djangoCommands.historyMaxLength": 50,
 	"djangoCommands.showTerminalOnCommand": true,
