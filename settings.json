@@ -385,32 +385,32 @@
 					".xhtml",
 					".xml",
 					".xaml",
-					".svg",
+					".svg"
 				],
 				"stringLanguage": "ENGLISH",
 				"singleLineCommentLanguage": "MOTHER_TONGUE",
 				"multiLineCommentLanguage": "MOTHER_TONGUE",
 				"docCommentLanguage": "MOTHER_TONGUE",
-				"defaultLanguage": "ENGLISH",
+				"defaultLanguage": "ENGLISH"
 			},
 			{
 				"name": "文档文件默认规则",
 				"fileTypes": [
 					".md",
-					".txt",
+					".txt"
 				],
 				"stringLanguage": "MOTHER_TONGUE",
 				"singleLineCommentLanguage": "MOTHER_TONGUE",
 				"multiLineCommentLanguage": "MOTHER_TONGUE",
 				"docCommentLanguage": "MOTHER_TONGUE",
-				"defaultLanguage": "ENGLISH",
-			},
+				"defaultLanguage": "ENGLISH"
+			}
 		],
 		"chineseSymbolReplaceRules": [
 			{
 				"name": "常用中文替换",
 				"fileTypes": [
-					".md",
+					".md"
 				],
 				"symbols": [
 					"《",
@@ -434,9 +434,9 @@
 					"！",
 					"—",
 					"·",
-					"￥",
-				],
-			},
+					"￥"
+				]
+			}
 		],
 		"regexMatchRules": [
 			{
@@ -487,13 +487,13 @@
 					".htm",
 					".xhtml",
 					".xml",
-					".svg",
+					".svg"
 				],
 				"leftPattern": ".*[\\u4e00-\\u9fa5\\u3000-\\u303f\\uff00-\\uffef]$",
 				"rightPattern": "^[\\u4e00-\\u9fa5\\u3000-\\u303f\\uff00-\\uffef].*",
 				"matchCondition": "ANY",
-				"language": "MOTHER_TONGUE",
-			},
+				"language": "MOTHER_TONGUE"
+			}
 		],
 		"vimModeSwitchRules": [
 			{
@@ -502,9 +502,9 @@
 				"normal": "ENGLISH",
 				"insert": "MOTHER_TONGUE",
 				"visual": "ENGLISH",
-				"replace": "MOTHER_TONGUE",
-			},
-		],
+				"replace": "MOTHER_TONGUE"
+			}
+		]
 	},
 	"markdown-preview-enhanced.liveUpdate": true,
 	"code-runner.clearPreviousOutput": true,
