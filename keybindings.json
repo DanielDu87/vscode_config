@@ -156,11 +156,7 @@
 		"command": "vim.remap",
 		"when": "vim.mode == 'Insert'",
 		"args": {
-			"after": [
-				"<Esc>",
-				"c",
-				"c",
-			],
+			"after": ["<Esc>", "c", "c"],
 		},
 	},
 	// Normal 模式：Option+z 居中显示
@@ -169,11 +165,7 @@
 		"command": "vim.remap",
 		"when": "vim.mode == 'Normal'",
 		"args": {
-			"after": [
-				"G",
-				"z",
-				"z",
-			],
+			"after": ["G", "z", "z"],
 		},
 	},
 	// Visual Block 模式 (Option+V)
@@ -181,9 +173,7 @@
 		"key": "alt+v",
 		"command": "vim.remap",
 		"args": {
-			"after": [
-				"<C-v>",
-			],
+			"after": ["<C-v>"],
 		},
 	},
 	{
@@ -196,9 +186,7 @@
 		"command": "vim.remap",
 		"when": "vim.mode == 'Normal'",
 		"args": {
-			"after": [
-				"^",
-			],
+			"after": ["^"],
 		},
 	},
 	{
@@ -206,9 +194,7 @@
 		"command": "vim.remap",
 		"when": "vim.mode == 'Normal'",
 		"args": {
-			"after": [
-				"$",
-			],
+			"after": ["$"],
 		},
 	},
 	// EasyMotion 快捷键
@@ -230,10 +216,7 @@
 		"command": "vim.remap",
 		"when": "vim.mode == 'Normal'",
 		"args": {
-			"after": [
-				"c",
-				"c",
-			],
+			"after": ["c", "c"],
 		},
 	},
 	{
@@ -241,11 +224,7 @@
 		"command": "vim.remap",
 		"when": "vim.mode == 'Insert'",
 		"args": {
-			"after": [
-				"<Esc>",
-				"c",
-				"c",
-			],
+			"after": ["<Esc>", "c", "c"],
 		},
 	},
 	// ============================================================
@@ -264,7 +243,7 @@
 	},
 	{
 		"key": "delete",
-		"command": "fiveServer.start"
+		"command": "fiveServer.start",
 	},
 	// ============================================================
 	// 智能运行文件 (Smart File Runner - Cmd+3)
@@ -296,21 +275,31 @@
 	{
 		"key": "ctrl+shift+l",
 		"command": "codeLogPlus.insertLog",
-		"when": "editorTextFocus"
+		"when": "editorTextFocus",
 	},
 	{
 		"key": "ctrl+alt+l",
 		"command": "-codeLogPlus.insertLog",
-		"when": "editorTextFocus"
+		"when": "editorTextFocus",
 	},
 	{
 		"key": "shift+cmd+l",
 		"command": "turboConsoleLog.insertConsoleDebug",
-		"when": "editorTextFocus"
+		"when": "editorTextFocus",
 	},
 	{
 		"key": "cmd+k cmd+b",
 		"command": "-turboConsoleLog.insertConsoleDebug",
-		"when": "editorTextFocus"
+		"when": "editorTextFocus",
+	},
+	{
+		"key": "delete",
+		"command": "deleteRight",
+		"when": "textInputFocus",
+	},
+	{
+		"key": "ctrl+d",
+		"command": "-deleteRight",
+		"when": "textInputFocus",
 	},
 ]
