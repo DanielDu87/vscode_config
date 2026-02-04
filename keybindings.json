@@ -302,4 +302,9 @@
 		"command": "-deleteRight",
 		"when": "textInputFocus",
 	},
+	{
+		"key": "ctrl+[Backslash]",
+		"command": "workbench.action.terminal.toggleTerminal",
+		"when": "terminal.active",
+	},
 ]
