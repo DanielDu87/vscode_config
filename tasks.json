@@ -4,72 +4,36 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
-			"label": "echo",
-			"type": "shell",
-			"command": "echo Hello"
-		},
-		{
-			"label": "Docker: 在 Arc 中打开 (端口 3000)",
+			"label": "使用Arc打开(自定义端口)",
 			"type": "shell",
 			"command": "open",
-			"args": [
-				"-a",
-				"Arc",
-				"http://localhost:3000"
-			],
-			"problemMatcher": []
+			"args": ["-a", "Arc", "http://localhost:${input:port}"],
+			"problemMatcher": [],
 		},
 		{
-			"label": "Docker: 在 Arc 中打开 (端口 8000)",
+			"label": "生成tailwind.config.js",
 			"type": "shell",
-			"command": "open",
-			"args": [
-				"-a",
-				"Arc",
-				"http://localhost:8000"
-			],
-			"problemMatcher": []
+			"command": "[ -f tailwind.config.js ] || echo -e '/** @type {import(\"tailwindcss\").Config} */\\nmodule.exports = {\\n  content: [\"./**/*.{html,js,ts,jsx,tsx}\"],\\n  theme: {\\n    extend: {},\\n  },\\n  plugins: [],\\n}' > tailwind.config.js",
+			"windows": {
+				"command": "if not exist tailwind.config.js (echo./** @type {import(\"tailwindcss\").Config} */& echo.module.exports = {& echo.  content: [\"./**/*.{html,js,ts,jsx,tsx}\"],& echo.  theme: {\\n    extend: {},& echo.  },& echo.  plugins: [],& echo.}>tailwind.config.js)",
+			},
+			"problemMatcher": [],
+			"group": {
+				"kind": "build",
+				"isDefault": false,
+			},
+			"presentation": {
+				"reveal": "never",
+				"panel": "shared",
+			},
 		},
-		{
-			"label": "Docker: 在 Arc 中打开 (端口 5000)",
-			"type": "shell",
-			"command": "open",
-			"args": [
-				"-a",
-				"Arc",
-				"http://localhost:5000"
-			],
-			"problemMatcher": []
-		},
-		{
-			"label": "Docker: 在 Arc 中打开 (端口 8080)",
-			"type": "shell",
-			"command": "open",
-			"args": [
-				"-a",
-				"Arc",
-				"http://localhost:8080"
-			],
-			"problemMatcher": []
-		},
-		{
-			"label": "Docker: 在 Arc 中打开 (自定义端口)",
-			"type": "shell",
-			"command": "open",
-			"args": [
-				"-a",
-				"Arc",
-				"http://localhost:${input:port}"
-			],
-			"problemMatcher": []
-		}
 	],
 	"inputs": [
 		{
 			"id": "port",
 			"description": "请输入端口号",
-			"default": "3000",
-			"type": "promptString"
-		}
-	]
+			"default": "8080",
+			"type": "promptString",
+		},
+	],
 }

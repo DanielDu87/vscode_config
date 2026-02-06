@@ -392,6 +392,25 @@
 	},
 	"typescript.suggest.paths": false,
 	"javascript.suggest.paths": false,
+	"tailwindCSS.includeLanguages": {
+		"html": "html",
+		"javascript": "javascript",
+		"javascriptreact": "javascriptreact",
+		"typescript": "typescript",
+		"typescriptreact": "typescriptreact",
+		"vue": "vue",
+		"svelte": "svelte",
+		"php": "php",
+		"erb": "erb",
+		"twig": "twig",
+		"django-html": "django-html",
+	},
+	"tailwindCSS.experimental.classRegex": [
+		"class=\"([^\"]*)\"",
+		"class='([^']*)'",
+		"className=\"([^\"]*)\"",
+		"className='([^']*)'",
+	],
 	"auto-rename-tag.activationOnLanguage": ["*"],
 	"EnglishChineseDictionary.enableHover": true,
 	"tktbtranslation.youdao.appKey": "28b96dba99259615",
@@ -423,4 +442,8 @@
 	"templates.saveAfterInputVariableOnFileCreation": true,
 	"templates.author": "DanielDu",
 	"redhat.telemetry.enabled": true,
+	"markdownlint.run": "onSave",
+	"DockerRun.Containers": [
+		
+	],
 }
