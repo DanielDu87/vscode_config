@@ -350,6 +350,13 @@
 		"*.html": "html",
 		"*.htm": "html",
 		"*.xhtml": "html",
+		// 文件名包含 dk 或 docker 的文件视为 dockerfile（忽略大小写）
+		"*dk*": "dockerfile",
+		"*DK*": "dockerfile",
+		"*Dk*": "dockerfile",
+		"*docker*": "dockerfile",
+		"*Docker*": "dockerfile",
+		"*DOCKER*": "dockerfile",
 	},
 	"[dockerfile]": {
 		"editor.formatOnSave": true,
