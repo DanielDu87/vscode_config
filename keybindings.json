@@ -2,34 +2,15 @@
 	// ============================================================
 	// 窗口与视图管理 (Window & View Management)
 	// ============================================================
-	// 编辑器组焦点切换
-	{
-		"key": "cmd+1",
-		"command": "-workbench.action.focusFirstEditorGroup",
-	},
-	{
-		"key": "cmd+2",
-		"command": "-workbench.action.focusSecondEditorGroup",
-	},
-	{
-		"key": "cmd+3",
-		"command": "-workbench.action.focusThirdEditorGroup",
-	},
-	// 侧边栏/面板切换
 	{
 		"key": "alt+q",
 		"command": "workbench.action.toggleSidebarVisibility",
 	},
-	// 终端切换 (Ctrl+\)
 	{
 		"key": "ctrl+\\",
 		"command": "workbench.action.terminal.toggleTerminal",
 	},
-	// {
-	// 	"key": ", t",
-	// 	"command": "workbench.action.terminal.toggleTerminal",
-	// },
-	// 编辑器标签页切换
+	// 标签页切换 (Option+-)
 	{
 		"key": "alt+=",
 		"command": "workbench.action.nextEditor",
@@ -38,7 +19,6 @@
 		"key": "alt+-",
 		"command": "workbench.action.previousEditor",
 	},
-	// 新建/欢迎页
 	{
 		"key": "cmd+n",
 		"command": "welcome.showNewFileEntries",
@@ -46,7 +26,6 @@
 	// ============================================================
 	// 代码导航 (Code Navigation)
 	// ============================================================
-	// 定义/实现跳转
 	{
 		"key": "cmd+f12",
 		"command": "-editor.action.revealDefinition",
@@ -55,7 +34,7 @@
 	{
 		"key": "cmd+f12",
 		"command": "-editor.action.goToImplementation",
-		"when": "editorHasImplementationProvider && editorTextFocus",
+		"when": "editorHasDefinitionProvider && editorTextFocus",
 	},
 	{
 		"key": "cmd+f12",
@@ -79,7 +58,6 @@
 	// ============================================================
 	// 代码编辑 (Code Editing)
 	// ============================================================
-	// 格式化文档
 	{
 		"key": "cmd+2",
 		"command": "editor.action.formatDocument",
@@ -90,7 +68,6 @@
 		"command": "-editor.action.formatDocument",
 		"when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor",
 	},
-	// 查找与替换
 	{
 		"key": "cmd+r",
 		"command": "editor.action.startFindReplaceAction",
@@ -105,17 +82,13 @@
 		"key": "shift+cmd+h",
 		"command": "-workbench.action.replaceInFiles",
 	},
-	{
-		"key": "ctrl+d",
-		"command": "editor.action.addSelectionToNextFindMatch",
-		"when": "editorFocus",
-	},
-	// 行操作
+	// 行复制 (Cmd+D)
 	{
 		"key": "cmd+d",
 		"command": "editor.action.copyLinesDownAction",
 		"when": "editorTextFocus && !editorReadonly",
 	},
+	// 行移动 (Alt+J/K)
 	{
 		"key": "alt+j",
 		"command": "editor.action.moveLinesDownAction",
@@ -126,172 +99,146 @@
 		"command": "editor.action.moveLinesUpAction",
 		"when": "vim.mode != 'Insert' && editorTextFocus",
 	},
-	// 代码补全与建议
-	{
-		"key": "enter",
-		"command": "editor.action.inlineSuggest.commit",
-		"when": "inlineSuggestionVisible && !suggestWidgetVisible",
-	},
-	{
-		"key": "tab",
-		"command": "-editor.action.inlineSuggest.commit",
-		"when": "inlineSuggestionVisible && !suggestWidgetVisible",
-	},
-	{
-		"key": "tab",
-		"command": "acceptSelectedSuggestion",
-		"when": "suggestWidgetVisible",
-	},
-	{
-		"key": "ctrl+enter",
-		"command": "-github.copilot.generate",
-		"when": "editorTextFocus && github.copilot.activated && !commentEditorFocused && !inInteractiveInput && !interactiveEditorFocused",
-	},
 	// ============================================================
-	// Vim 集成与模拟 (Vim Integration)
+	// Vim 模拟 (基于 .ideavimrc)
 	// ============================================================
-	// Insert 模式：Option+d 删除当前行
+	// 空格 --> 冒号
 	{
-		"key": "alt+d",
+		"key": "space",
+		"command": "type",
+		"args": { "text": ":" },
+		"when": "vim.mode == 'Normal' && editorTextFocus && !editorHasMultipleSelections && !editorReadonly"
+	},
+	// 取消查找高亮
+	{
+		"key": "space h",
 		"command": "vim.remap",
-		"when": "vim.mode == 'Insert'",
-		"args": {
-			"after": ["<Esc>", "c", "c"],
-		},
+		"when": "vim.mode == 'Normal' && editorTextFocus",
+		"args": { "after": [":nohlsearch", "<CR>"] }
 	},
-	// Normal 模式：Option+z 居中显示
-	{
-		"key": "alt+z",
-		"command": "vim.remap",
-		"when": "vim.mode == 'Normal'",
-		"args": {
-			"after": ["G", "z", "z"],
-		},
-	},
-	// Visual Block 模式 (Option+V)
-	{
-		"key": "alt+v",
-		"command": "vim.remap",
-		"args": {
-			"after": ["<C-v>"],
-		},
-	},
-	{
-		"key": "alt+v",
-		"command": "-editor.action.clipboardPasteAction",
-	},
-	// 行首/行尾跳转 (Option+H/L)
+	// Option+H/L 行首行尾
 	{
 		"key": "alt+h",
 		"command": "vim.remap",
 		"when": "vim.mode == 'Normal'",
-		"args": {
-			"after": ["^"],
-		},
+		"args": { "after": ["^"] }
 	},
 	{
 		"key": "alt+l",
 		"command": "vim.remap",
 		"when": "vim.mode == 'Normal'",
-		"args": {
-			"after": ["$"],
-		},
+		"args": { "after": ["$"] }
 	},
-	// EasyMotion 快捷键
-	// {
-	// 	"key": ", s",
-	// 	"command": "vim.remap",
-	// 	"when": "vim.mode == 'Normal'",
-	// 	"args": {
-	// 		"after": [
-	// 			"<leader>",
-	// 			"<leader>",
-	// 			"s",
-	// 		],
-	// 	},
-	// },
-	// Ctrl+D 清除行并进入插入模式
+	// Ctrl+K/J 翻半屏
 	{
-		"key": "ctrl+d",
+		"key": "ctrl+k",
 		"command": "vim.remap",
 		"when": "vim.mode == 'Normal'",
-		"args": {
-			"after": ["c", "c"],
-		},
+		"args": { "after": ["<C-u>"] }
 	},
+	{
+		"key": "ctrl+j",
+		"command": "vim.remap",
+		"when": "vim.mode == 'Normal'",
+		"args": { "after": ["<C-d>"] }
+	},
+	// Insert 模式 Option+D 删除当前行
+	{
+		"key": "alt+d",
+		"command": "vim.remap",
+		"when": "vim.mode == 'Insert'",
+		"args": { "after": ["<Esc>", "c", "c"] }
+	},
+	// Normal 模式 Option+Z 居中
+	{
+		"key": "alt+z",
+		"command": "vim.remap",
+		"when": "vim.mode == 'Normal'",
+		"args": { "after": ["G", "z", "z"] }
+	},
+	// Option+V Visual Block
+	{
+		"key": "alt+v",
+		"command": "vim.remap",
+		"args": { "after": ["<C-v>"] }
+	},
+	{
+		"key": "alt+v",
+		"command": "-editor.action.clipboardPasteAction",
+	},
+	// Ctrl+D Normal 模式多光标
+	{
+		"key": "ctrl+d",
+		"command": "editor.action.addSelectionToNextFindMatch",
+		"when": "vim.mode == 'Normal' && editorTextFocus",
+	},
+	// Ctrl+D Insert 模式删除行
 	{
 		"key": "ctrl+d",
 		"command": "vim.remap",
 		"when": "vim.mode == 'Insert'",
+		"args": { "after": ["<Esc>", "c", "c"] }
+	},
+	// 自定义文本对象 (引号)
+	// ciq/cq - 修改引号内
+	{
+		"key": "q",
+		"command": "vim.remap",
+		"when": "vim.mode == 'Normal' && editorTextFocus",
 		"args": {
-			"after": ["<Esc>", "c", "c"],
-		},
+			"before": ["c", "i", "q"],
+			"after": ["c", "i", "\""]
+		}
 	},
-	// ============================================================
-	// 扩展插件 (Extensions)
-	// ============================================================
-	// Live Server
+	// v模式移动行首行尾
 	{
-		"key": "cmd+l cmd+o",
-		"command": "-extension.liveServer.goOnline",
-		"when": "editorTextFocus",
-	},
-	{
-		"key": "cmd+l cmd+c",
-		"command": "-extension.liveServer.goOffline",
-		"when": "editorTextFocus",
+		"key": "alt+h",
+		"command": "vim.remap",
+		"when": "vim.mode == 'Visual'",
+		"args": { "after": ["v", "^"] }
 	},
 	{
-		"key": "delete",
-		"command": "fiveServer.start",
+		"key": "alt+l",
+		"command": "vim.remap",
+		"when": "vim.mode == 'Visual'",
+		"args": { "after": ["v", "$"] }
 	},
 	// ============================================================
 	// 智能运行文件 (Smart File Runner - Cmd+3)
 	// ============================================================
-	// HTML: 启动 Live Server
 	{
 		"key": "cmd+3",
 		"command": "extension.liveServer.goOnline",
 		"when": "editorLangId == html && editorTextFocus",
 	},
-	// Python: 在终端运行
 	{
 		"key": "cmd+3",
-		"command": "python.execInTerminal",
+		"command": "code-runner.run",
 		"when": "editorLangId == python && editorTextFocus",
 	},
-	// JavaScript: 用 Node.js 运行
 	{
 		"key": "cmd+3",
 		"command": "code-runner.run",
 		"when": "editorLangId == javascript && editorTextFocus",
 	},
-	// TypeScript: 用 ts-node 运行
 	{
 		"key": "cmd+3",
 		"command": "code-runner.run",
 		"when": "editorLangId == typescript && editorTextFocus",
 	},
 	{
-		"key": "ctrl+shift+l",
-		"command": "codeLogPlus.insertLog",
-		"when": "editorTextFocus",
+		"key": "cmd+3",
+		"command": "code-runner.run",
+		"when": "editorLangId == c && editorTextFocus",
 	},
 	{
-		"key": "ctrl+alt+l",
-		"command": "-codeLogPlus.insertLog",
-		"when": "editorTextFocus",
+		"key": "cmd+3",
+		"command": "code-runner.run",
+		"when": "editorLangId == cpp && editorTextFocus",
 	},
-	{
-		"key": "shift+cmd+l",
-		"command": "turboConsoleLog.insertConsoleDebug",
-		"when": "editorTextFocus",
-	},
-	{
-		"key": "cmd+k cmd+b",
-		"command": "-turboConsoleLog.insertConsoleDebug",
-		"when": "editorTextFocus",
-	},
+	// ============================================================
+	// 其他
+	// ============================================================
 	{
 		"key": "delete",
 		"command": "deleteRight",
@@ -306,5 +253,5 @@
 		"key": "ctrl+[Backslash]",
 		"command": "workbench.action.terminal.toggleTerminal",
 		"when": "terminal.active",
-	},
+	}
 ]

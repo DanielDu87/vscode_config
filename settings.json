@@ -1,31 +1,36 @@
 {
+	// 语言设置
+	"locale": "zh-cn",
 	// ============================================================
 	// Vim 插件核心配置
 	// ============================================================
-	// 注意：部分按键映射已迁移到 ~/.vimrc 文件
-	// VSCode Vim 插件会自动读取该文件中的配置
 	"vim.vimrc.enable": true,
 	"vim.vimrc.path": "/Users/dyx/.vimrc",
-	// 显式设置 Leader 键为空格
 	"vim.leader": " ",
-	// 使用 Neovim 作为后端（关闭以保持原生稳定）	"vim.enableNeovim": false,
-
-	// 启用 EasyMotion 快速跳转插件
+	"vim.enableNeovim": false,
+	"vim.enableMsOfCodeMotionKeys": true,
+	"vim.searchIncludeMatchHistory": true,
+	"vim.useSystemClipboard": true,
+	"vim.useCtrlKeys": true,
+	"vim.overrideCopy": false,
+	"vim.startInInsertMode": false,
+	"vim.hlsearch": true,
+	"vim.incsearch": true,
+	"vim.ignorecase": true,
+	"vim.smartcase": true,
+	"vim.startInInsertMode": false,
+	"vim.ideaMotionBindings": true,
+	"vim.blockCursorIsInInsertMode": false,
+	"vim.autoSwitchInputMethod.enable": true,
+	"vim.autoSwitchInputMethod.defaultLanguage": "com.apple.keylayout.ABC",
 	"vim.easymotion": true,
-	// 启用 Sneak 快速跳转（s{char}{char}）
 	"vim.sneak": true,
 	"vim.sneakUseIgnorecaseAndSmartcase": true,
-	// 驼峰命名移动支持（ciW, caW 等）
 	"vim.camelCaseMotion.enable": true,
-	// 寄存器增强功能（替换时保留寄存器内容）
 	"vim.replaceWithRegister": true,
-	// 高亮复制的内容
 	"vim.highlightedyank.enable": true,
-	// 鼠标选择不自动进入可视模式
 	"vim.mouseSelectionGoesIntoVisualMode": false,
-	// 相对行号智能显示（Vim 模式必备）
 	"vim.smartRelativeLine": true,
-	// 光标样式配置（随模式变化）
 	"vim.cursorStylePerMode": {
 		"insert": "line",
 		"normal": "block",
@@ -34,7 +39,6 @@
 		"visualblock": "block",
 		"visualline": "block",
 	},
-	// 按键拦截控制（决定由 VSCode 还是 Vim 处理）
 	"vim.handleKeys": {
 		"<C-v>": true,
 		"<C-c>": false,
@@ -43,37 +47,54 @@
 		"<A-h>": false,
 		"<A-l>": false,
 	},
-	// 自定义文本对象映射
 	"vim.textobjKeybindings": [
 		{
-			"before": ["iq"],
-			"after": ["i", "\""],
+			"before": [
+				"iq"
+			],
+			"after": [
+				"i",
+				"\""
+			]
 		},
 		{
-			"before": ["ie"],
-			"after": ["i", "'"],
+			"before": [
+				"ie"
+			],
+			"after": [
+				"i",
+				"'"
+			]
 		},
 		{
-			"before": ["ib"],
-			"after": ["i", "("],
-		},
+			"before": [
+				"ib"
+			],
+			"after": [
+				"i",
+				"("
+			]
+		}
 	],
-	// Normal 模式快捷键映射
 	"vim.normalModeKeyBindingsNonRecursive": [
 		{
-			"before": ["s"],
-			"after": ["<leader>", "<leader>", "s"],
-		},
+			"before": [
+				"s"
+			],
+			"after": [
+				"<leader>",
+				"<leader>",
+				"s"
+			]
+		}
 	],
 	// ============================================================
-	// 编辑器基础配置 (Editor)
+	// 编辑器基础配置
 	// ============================================================
-	// 字体设置
 	"editor.fontFamily": "'JetBrains Mono', 'PingFang SC', 'Menlo', 'Monaco', 'Courier New', monospace",
-	"editor.fontSize": 13,
+	"editor.fontSize": 14,
 	"editor.fontWeight": "700",
-	"editor.fontLigatures": true,
-	// 缩进与格式化 (强制使用 Tab)
+	"editor.fontLigatures": false,
 	"editor.tabSize": 4,
 	"editor.insertSpaces": false,
 	"editor.detectIndentation": false,
@@ -82,86 +103,88 @@
 	"editor.formatOnSave": true,
 	"editor.formatOnSaveMode": "file",
 	"editor.formatOnType": true,
-	// 视觉显示
 	"editor.lineNumbers": "relative",
 	"editor.renderWhitespace": "all",
 	"editor.renderControlCharacters": true,
 	"editor.glyphMargin": true,
 	"editor.minimap.enabled": false,
-	"editor.rulers": [180],
+	"editor.rulers": [
+		180
+	],
 	"editor.wordWrap": "on",
 	"editor.foldingImportsByDefault": true,
 	"editor.selectionHighlightMultiline": true,
 	"editor.cursorSmoothCaretAnimation": "on",
 	"editor.cursorSurroundingLines": 10,
-	"editor.overtypeCursorStyle": "line",
 	"editor.inlayHints.maximumLength": 120,
 	"editor.tokenColorCustomizations": {
 		"textMateRules": [
 			{
 				"scope": "comment",
 				"settings": {
-					"fontStyle": "",
-				},
-			},
-		],
+					"fontStyle": ""
+				}
+			}
+		]
 	},
 	"editor.unicodeHighlight.includeComments": false,
 	"editor.unicodeHighlight.nonBasicASCII": false,
-	// 交互行为
 	"editor.codeActions.triggerOnFocusChange": true,
 	"editor.definitionLinkOpensInPeek": true,
 	"editor.stablePeek": true,
 	"editor.smoothScrolling": true,
-	"editor.inertialScroll": true,
 	"editor.accessibilitySupport": "off",
-	"editor.allowVariableFontsInAccessibilityMode": true,
-	// 性能与实验性功能
 	"editor.experimentalInlineEdit.enabled": true,
+	"editor.tabCompletion": "on",
+	"editor.suggest.insertMode": "replace",
+	"editor.overtypeCursorStyle": "line",
+	"editor.stickyTabStops": true,
+	"editor.trimWhitespaceOnDelete": true,
+	"editor.fastScrollSensitivity": 2,
+	"editor.scrollbar.ignoreHorizontalScrollbarInContentHeight": true,
+	"editor.scrollbar.scrollByPage": true,
+	"editor.guides.highlightActiveIndentation": "always",
+	"editor.allowVariableFonts": false,
 	// ============================================================
-	// 工作区与界面 (Workbench & Window)
+	// 工作区与界面
 	// ============================================================
-	// 主题
 	"workbench.colorTheme": "Atom One Dark",
-	"workbench.preferredDarkColorTheme": "Atom One Dark",
 	"workbench.iconTheme": "a-file-icon-vscode",
 	"workbench.colorCustomizations": {
-		"editorCursor.foreground": "#51d237",
+		"editorCursor.foreground": "#51d237"
 	},
 	"indentRainbow.indicatorStyle": "light",
 	"indentRainbow.lightIndicatorStyleLineWidth": 1,
-	"indentRainbow.colors": ["rgba(255,255,64,0.3)", "rgba(127,255,127,0.3)", "rgba(255,127,255,0.3)", "rgba(79,236,236,0.3)"],
-	// 标签页管理
+	"indentRainbow.colors": [
+		"rgba(255,255,64,0.3)",
+		"rgba(127,255,127,0.3)",
+		"rgba(255,127,255,0.3)",
+		"rgba(79,236,236,0.3)"
+	],
 	"workbench.editor.enablePreview": false,
 	"workbench.editor.wrapTabs": true,
 	"workbench.editor.sharedViewState": true,
 	"workbench.editor.highlightModifiedTabs": true,
 	"workbench.editor.alwaysShowEditorActions": true,
 	"workbench.editor.preferHistoryBasedLanguageDetection": true,
-	// 资源管理器
 	"explorer.compactFolders": false,
 	"explorer.decorations.colors": false,
-	// 声音
 	"workbench.enableSounds": false,
 	"workbench.sounds.volume": 0,
-	// 本地历史
 	"workbench.localHistory.mergeWindow": 1,
-	// 列表滚动
 	"workbench.list.smoothScrolling": true,
-	// 窗口行为
-	"window.newWindowProfile": "默认",
 	"window.autoDetectHighContrast": false,
 	// ============================================================
-	// 文件与搜索 (Files & Search)
+	// 文件与搜索
 	// ============================================================
 	"files.autoSave": "afterDelay",
 	"files.autoSaveDelay": 10,
 	"files.exclude": {
-		"**/.idea": true,
+		"**/.idea": true
 	},
 	"search.exclude": {
 		"**/.git": true,
-		"**/.idea": true,
+		"**/.idea": true
 	},
 	"search.actionsPosition": "auto",
 	"search.collapseResults": "auto",
@@ -170,20 +193,34 @@
 	"search.quickOpen.includeSymbols": true,
 	"search.experimental.closedNotebookRichContentResults": true,
 	// ============================================================
-	// 终端 (Terminal)
+	// 终端
 	// ============================================================
 	"terminal.integrated.fontFamily": "JetBrainsMonoNL Nerd Font Mono",
 	"terminal.integrated.fontSize": 14,
 	"terminal.integrated.fontWeight": "normal",
 	"terminal.integrated.smoothScrolling": true,
+	"terminal.integrated.profiles.osx": {
+		"zsh": {
+			"path": "/opt/homebrew/bin/zsh",
+			"args": [
+				"-l"
+			]
+		}
+	},
+	"terminal.integrated.defaultProfile.osx": "zsh",
+	"terminal.external.osxExec": "/Applications/Warp.app",
+	"terminal.integrated.accessibleViewFocusOnCommandExecution": true,
+	"terminal.integrated.allowInUntrustedWorkspace": true,
+	"terminal.integrated.cursorBlinking": true,
+	"terminal.integrated.copyOnSelection": true,
 	// ============================================================
-	// 版本控制 (Git)
+	// 版本控制
 	// ============================================================
 	"git.openRepositoryInParentFolders": "always",
 	"scm.alwaysShowRepositories": true,
 	"scm.autoReveal": false,
 	// ============================================================
-	// 调试 (Debug)
+	// 调试
 	// ============================================================
 	"debug.allowBreakpointsEverywhere": true,
 	"debug.autoExpandLazyVariables": "on",
@@ -191,254 +228,489 @@
 	"debug.confirmOnExit": "always",
 	"debug.console.acceptSuggestionOnEnter": "on",
 	"debug.console.closeOnEnd": true,
+	"debug.terminal.clearBeforeReusing": true,
 	// ============================================================
-	// 代码格式化与规范 (Formatter & Linting)
-	// ============================================================
-	// Prettier 通用配置 (强制使用 Tab)
-	"prettier.useTabs": true,
-	"prettier.tabWidth": 4,
-	"prettier.printWidth": 1000,
-	"prettier.htmlWhitespaceSensitivity": "ignore",
-	"prettier.singleAttributePerLine": false,
-	"prettier.bracketSameLine": true,
-	"prettier.endOfLine": "auto",
-	"prettier.requireConfig": false,
-	"prettier.proseWrap": "never",
-	"prettier.embeddedLanguageFormatting": "auto",
-	// ESLint
-	"eslint.debug": true,
-	"eslint.format.enable": false,
-	"eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"],
-	// Standard
-	"standard.autoFixOnSave": true,
-	"standard.enableGlobally": true,
-	// 保存时自动操作
-	"editor.codeActionsOnSave": {
-		"source.fixAll": "always",
-	},
-	// ============================================================
-	// 语言特定配置 (Language Specific)
+	// 语言特定配置
 	// ============================================================
 	"[css]": {
-		"editor.defaultFormatter": "vscode.css-language-features",
+		"editor.defaultFormatter": "vscode.css-language-features"
 	},
 	"[html]": {
-		"editor.quickSuggestions": {
-			"other": "on",
-			"comments": "on",
-			"strings": "on",
-		},
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.defaultFormatter": "vscode.html-language-features",
 		"editor.insertSpaces": false,
 		"editor.tabSize": 4,
-		"editor.formatOnSave": true,
-		"editor.formatOnPaste": true,
-		"editor.formatOnType": false,
-		"prettier.printWidth": 1000,
-		"prettier.htmlWhitespaceSensitivity": "css",
-		"prettier.singleAttributePerLine": false,
-		"prettier.bracketSameLine": true,
+		"editor.formatOnSave": true
 	},
 	"[django-html]": {
+		"editor.defaultFormatter": "vscode.html-language-features",
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4,
+		"editor.formatOnSave": true
+	},
+	"[javascript]": {
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4
+	},
+	"[typescript]": {
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4
+	},
+	"[javascriptreact]": {
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4
+	},
+	"[typescriptreact]": {
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4
+	},
+	"[json]": {
+		"editor.defaultFormatter": "vscode.json-language-features",
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4
+	},
+	"[jsonc]": {
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4
+	},
+	// ============================================================
+	// Python (Ruff + Pylance + uv + pytest)
+	// ============================================================
+	"[python]": {
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4,
+		"editor.defaultFormatter": "charliermarsh.ruff",
+		"editor.formatOnSave": true,
 		"editor.quickSuggestions": {
 			"other": "on",
 			"comments": "on",
-			"strings": "on",
+			"strings": "on"
 		},
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4,
-		"editor.formatOnSave": true,
-		"editor.formatOnPaste": true,
-		"editor.formatOnType": false,
-		"prettier.printWidth": 1000,
-		"prettier.htmlWhitespaceSensitivity": "css",
-		"prettier.singleAttributePerLine": false,
-		"prettier.bracketSameLine": true,
+		"editor.quickSuggestionsDelay": 0,
+		"editor.suggestOnTriggerCharacters": true,
+		"editor.acceptSuggestionOnEnter": "on",
+		"editor.parameterHints.enabled": true,
+		"editor.wordBasedSuggestions": "allDocuments"
 	},
-	"[javascript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4,
-	},
-	"[typescript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4,
-	},
-	"[javascriptreact]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4,
-	},
-	"[typescriptreact]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4,
-	},
-	"[python]": {
-		"editor.insertSpaces": true,
-		"editor.tabSize": 4,
-		"editor.defaultFormatter": "ms-python.autopep8",
-		"editor.formatOnSave": true,
-	},
-	"[json]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4,
-	},
-	"[jsonc]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4,
-	},
-	// Web 前端 (HTML/CSS/Emmet)
-	"html.format.enable": true,
-	"html.format.extraLiners": "",
-	"html.format.indentHandlebars": true,
-	"html.format.indentInnerHtml": true,
-	"html.format.templating": true,
-	"html.format.maxPreserveNewLines": 0,
-	"html.format.wrapLineLength": 10000,
-	"html.format.wrapAttributes": "auto",
-	"html.format.unformatted": "",
-	"html.format.contentUnformatted": "",
-	"html.format.preserveNewLines": true,
-	"html.format.unformattedContent": "script,style",
-	"css.autoValidation": "always",
-	"css.enabledLanguages": ["html"],
-	"css.styleSheets": ["src/**/*.css"],
-	"emmet.showSuggestionsAsSnippets": true,
-	"emmet.triggerExpansionOnTab": true,
-	"emmet.extensionsPath": ["/Users/dyx/Library/Application Support/Code/User/emmet"],
-	"emmet.includeLanguages": {
-		"django-html": "html",
-	},
-	"emmet.preferences": {
-		"style.sheet": "tab",
-	},
-	"html-css-class-completion.enableEmmetSupport": true,
-	"tailwindCSS.emmetCompletions": true,
-	// Live Server
-	"liveServer.settings.AdvanceCustomBrowserCmdLine": "/Applications/Arc.app",
-	"liveServer.settings.fullReload": true,
-	"liveServer.settings.CustomBrowser": "/Applications/Arc.app",
-	// Python
+	// Pylance 配置
 	"python.analysis.typeCheckingMode": "standard",
-	"python.defaultInterpreterPath": "/Users/dyx/Code/0.python-venv/work/bin/python3",
-	"python.venvPath": "/Users/dyx/Code/0.python-venv",
 	"python.languageServer": "Pylance",
+	// uv 配置
 	"python.terminal.activateEnvironment": false,
 	"python.terminal.activateEnvInCurrentTerminal": false,
-	// Django Commands 插件配置
+	// pytest 配置
+	"python.testing.pytestEnabled": true,
+	"python.testing.pytestArgs": [
+		"-v"
+	],
+	// Pylance 补全配置
+	"python.analysis.autoImportCompletions": true,
+	"python.analysis.completeFunctionParens": true,
+	"python.analysis.fixImportUndefined": true,
+	"python.analysis.importFormat": "absolute",
+	"python.analysis.indexing": true,
+	"python.analysis.autoSearchPaths": true,
+	"python.analysis.useLibraryCodeForTypes": true,
 	"djangoCommands.historyMaxLength": 50,
 	"djangoCommands.showTerminalOnCommand": true,
-	// Docker 配置
-	"docker.languageserver.formatter.ignoreMultilineInstructions": true,
-	"docker.linter.diagnosticsDelay": 500,
-	"docker.images.templating.enabled": true,
-	"docker.compose.automaticComposeUp": false,
-	"files.associations": {
-		"Dockerfile*": "dockerfile",
-		"docker-compose*.*": "yaml",
-		"*.dockerfile": "dockerfile",
-		"*.html": "html",
-		"*.htm": "html",
-		"*.xhtml": "html",
-		// 文件名包含 dk 或 docker 的文件视为 dockerfile（忽略大小写）
-		"*dk*": "dockerfile",
-		"*DK*": "dockerfile",
-		"*Dk*": "dockerfile",
-		"*docker*": "dockerfile",
-		"*Docker*": "dockerfile",
-		"*DOCKER*": "dockerfile",
+	// ============================================================
+	// AI 补全
+	// ============================================================
+	// Supermaven AI 自动补全（回车接受）
+	"supermaven.enable": true,
+	"supermaven.acceptSuggestionOnEnter": true,
+	// 关闭 Copilot 行内补全
+	"github.copilot.inlineSuggest.enable": false,
+	"claudeCode.preferredLocation": "panel",
+	// 词典翻译
+	"EnglishChineseDictionary.enableHover": true,
+	"tktbtranslation.youdao.appKey": "28b96dba99259615",
+	"tktbtranslation.youdao.key": "5qAYyj5qxzsHe9oWxPo0cW2yRLCwCA0u",
+	// Smart Input Pro - 智能输入法切换
+	"smartInputPro.enable": true,
+	"smartInputPro.CursorColor": {
+		"en": "#51d237",
+		"zh": "#ff0000"
 	},
-	"[dockerfile]": {
-		"editor.formatOnSave": true,
-		"editor.defaultFormatter": "ms-azuretools.vscode-containers",
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4,
+	"smartInputPro.enableAutoDefaultIM": true,
+	"smartInputPro.enableModeIMConfig": false,
+	"smartInputPro.enableSmartSpaceInChinese": false,
+	"smartInputPro.config": {
+		"enableAutoSwitch": true,
+		"enableStatusBar": true,
+		"cursorColorChinese": "#c31818",
+		"cursorColorEnglish": "#51d237",
+		"enableCursorDecorations": true,
+		"enableCursorColor": true,
+		"inputMethodForWindows": "",
+		"inputMethodForLinux": "",
+		"inputMethodSwitchShortcutForWindows": "Shift",
+		"englishInputMethodForMac": "ABC",
+		"motherTongueInputMethodForMac": "搜狗拼音",
+		"inputMethodSwitchShortcutForMac": "Shift",
+		"defaultContextLanguage": [
+			{
+				"name": "代码文件默认规则",
+				"fileTypes": [
+					".lua",
+					".asm",
+					".proto",
+					".less",
+					".sass",
+					".scss",
+					".css",
+					".dart",
+					".ts",
+					".js",
+					".tsx",
+					".jsx",
+					".vue",
+					".ets",
+					".java",
+					".kt",
+					".groovy",
+					".php",
+					".cpp",
+					".c",
+					".cc",
+					".h",
+					".hpp",
+					".hxx",
+					".cxx",
+					".m",
+					".mm",
+					".swift",
+					".rb",
+					".go",
+					".cs",
+					".fs",
+					".rs",
+					".py",
+					".gd",
+					".sql",
+					".sh",
+					".bash",
+					".zsh",
+					".fish",
+					".csh",
+					".tcsh",
+					".zshrc",
+					".ipynb",
+					".v",
+					".vh",
+					".html",
+					".htm",
+					".xhtml",
+					".xml",
+					".xaml",
+					".svg"
+				],
+				"stringLanguage": "ENGLISH",
+				"singleLineCommentLanguage": "MOTHER_TONGUE",
+				"multiLineCommentLanguage": "MOTHER_TONGUE",
+				"docCommentLanguage": "MOTHER_TONGUE",
+				"defaultLanguage": "ENGLISH"
+			},
+			{
+				"name": "文档文件默认规则",
+				"fileTypes": [
+					".md",
+					".txt"
+				],
+				"stringLanguage": "MOTHER_TONGUE",
+				"singleLineCommentLanguage": "MOTHER_TONGUE",
+				"multiLineCommentLanguage": "MOTHER_TONGUE",
+				"docCommentLanguage": "MOTHER_TONGUE",
+				"defaultLanguage": "MOTHER_TONGUE"
+			}
+		],
+		"chineseSymbolReplaceRules": [
+			{
+				"name": "常用中文替换",
+				"fileTypes": [
+					".md"
+				],
+				"symbols": [
+					"《",
+					"》",
+					"「",
+					"」",
+					"『",
+					"』",
+					"【",
+					"】",
+					"（",
+					"）",
+					"“",
+					"”",
+					"‘",
+					"’",
+					"？",
+					"：",
+					"；",
+					"、",
+					"！",
+					"—",
+					"·",
+					"￥"
+				]
+			}
+		],
+		"regexMatchRules": [
+			{
+				"name": "中文之间",
+				"fileTypes": [
+					".dart",
+					".md",
+					".txt",
+					".ts",
+					".js",
+					".tsx",
+					".jsx",
+					".vue",
+					".ets",
+					".java",
+					".kt",
+					".groovy",
+					".php",
+					".cpp",
+					".c",
+					".cc",
+					".h",
+					".hpp",
+					".hxx",
+					".cxx",
+					".m",
+					".mm",
+					".swift",
+					".rb",
+					".go",
+					".cs",
+					".fs",
+					".rs",
+					".py",
+					".gd",
+					".sql",
+					".sh",
+					".bash",
+					".zsh",
+					".fish",
+					".csh",
+					".tcsh",
+					".zshrc",
+					".ipynb",
+					".v",
+					".vh",
+					".html",
+					".htm",
+					".xhtml",
+					".xml",
+					".svg"
+				],
+				"leftPattern": ".*[\\u4e00-\\u9fa5\\u3000-\\u303F\\uff00-\\uffef]$",
+				"rightPattern": "^[\\u4e00-\\u9fa5\\u3000-\\u303F\\uff00-\\uffef].*",
+				"matchCondition": "ANY",
+				"language": "MOTHER_TONGUE"
+			}
+		]
 	},
-	"[yaml]": {
-		"editor.formatOnSave": true,
-		"editor.defaultFormatter": "redhat.vscode-yaml",
-		"editor.insertSpaces": false,
-		"editor.tabSize": 2,
-	},
-	// Notebook / Interactive
-	"notebook.output.wordWrap": true,
-	"interactiveWindow.executeWithShiftEnter": true,
 	// ============================================================
-	// 安全与网络 (Security & Network)
-	// ============================================================
-	"security.promptForLocalFileProtocolHandling": false,
-	"security.workspace.trust.untrustedFiles": "open",
-	"http.proxy": "http://127.0.0.1:7890",
-	// ============================================================
-	// AI 与智能输入 (AI & Input)
-	// ============================================================
-	"editor.aiStats.enabled": true,
-	"editor.experimental.asyncTokenizationLogging": true,
-	"editor.bracketPairColorization.independentColorPoolPerBracketType": true,
-	"markdown-preview-enhanced.HTML5EmbedUseImageSyntax": false,
-
-	"markdown-preview-enhanced.liveUpdate": true,
 	"code-runner.clearPreviousOutput": true,
 	"code-runner.ignoreSelection": true,
 	"code-runner.saveAllFilesBeforeRun": true,
 	"code-runner.runInTerminal": true,
 	"code-runner.saveFileBeforeRun": true,
+	"code-runner.showExecutionMessage": false,
 	"code-runner.executorMap": {
 		"javascript": "/opt/homebrew/bin/node",
 		"typescript": "/opt/homebrew/bin/node",
+		"python": "/Users/dyx/.local/bin/python-run"
 	},
-	"typescript.suggest.paths": false,
-	"javascript.suggest.paths": false,
-	"tailwindCSS.includeLanguages": {
-		"html": "html",
-		"javascript": "javascript",
-		"javascriptreact": "javascriptreact",
-		"typescript": "typescript",
-		"typescriptreact": "typescriptreact",
-		"vue": "vue",
-		"svelte": "svelte",
-		"php": "php",
-		"erb": "erb",
-		"twig": "twig",
-		"django-html": "django-html",
-	},
-	"tailwindCSS.experimental.classRegex": ["class=\"([^\"]*)\"", "class='([^']*)'", "className=\"([^\"]*)\"", "className='([^']*)'"],
-	"auto-rename-tag.activationOnLanguage": ["*"],
-	"EnglishChineseDictionary.enableHover": true,
-	"tktbtranslation.youdao.appKey": "28b96dba99259615",
-	"tktbtranslation.youdao.key": "5qAYyj5qxzsHe9oWxPo0cW2yRLCwCA0u",
-	"codeLogPlus.addEmptyLineAfterLog": true,
-	"codeLogPlus.addEmptyLineBeforeLogMessage": true,
-	"codeLogPlus.isLogMessageWrapped": true,
-	"gitlens.ai.model": "vscode",
-	"gitlens.ai.vscode.model": "copilot:gpt-4.1",
-	"explorer.fileNesting.patterns": {
-		"*.ts": "${capture}.js",
-		"*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
-		"*.jsx": "${capture}.js",
-		"*.tsx": "${capture}.ts",
-		"tsconfig.json": "tsconfig.*.json",
-		"package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock",
-		"*.sqlite": "${capture}.${extname}-*",
-		"*.db": "${capture}.${extname}-*",
-		"*.sqlite3": "${capture}.${extname}-*",
-		"*.db3": "${capture}.${extname}-*",
-		"*.sdb": "${capture}.${extname}-*",
-		"*.s3db": "${capture}.${extname}-*",
-	},
-	"npm-intellisense.scanDevDependencies": true,
-	"npm-intellisense.packageSubfoldersIntellisense": true,
-	"npm-intellisense.showBuildInLibs": true,
-	"containers.containerClient": "com.microsoft.visualstudio.containers.docker",
-	"containers.orchestratorClient": "com.microsoft.visualstudio.orchestrators.dockercompose",
-	"templates.saveAfterInputVariableOnFileCreation": true,
-	"templates.author": "DanielDu",
-	"redhat.telemetry.enabled": true,
-	"markdownlint.run": "onSave",
-	"DockerRun.Containers": [],
+	// ============================================================
+	// 安全与网络
+	// ============================================================
+	"security.promptForLocalFileProtocolHandling": false,
+	"security.workspace.trust.untrustedFiles": "open",
+	"http.proxy": "socks5h://127.0.0.1:7890",
+	"workbench.productIconTheme": "a-file-icon-vscode-product-icon-theme",
+	"workbench.experimental.modernUI": true,
+	"supermaven.allowGitignore": true,
+	"smartInputPro.config": {
+		"enableAutoSwitch": true,
+		"enableStatusBar": true,
+		"cursorColorChinese": "#c31818",
+		"cursorColorEnglish": "#51d237",
+		"enableCursorDecorations": true,
+		"enableCursorColor": true,
+		"inputMethodForWindows": "",
+		"inputMethodForLinux": "",
+		"inputMethodSwitchShortcutForWindows": "Shift",
+		"englishInputMethodForMac": "ABC",
+		"motherTongueInputMethodForMac": "搜狗拼音",
+		"inputMethodSwitchShortcutForMac": "Shift",
+		"defaultContextLanguage": [
+			{
+				"name": "代码文件默认规则",
+				"fileTypes": [
+					".lua",
+					".asm",
+					".proto",
+					".less",
+					".sass",
+					".scss",
+					".css",
+					".dart",
+					".ts",
+					".js",
+					".tsx",
+					".jsx",
+					".vue",
+					".ets",
+					".java",
+					".kt",
+					".groovy",
+					".php",
+					".cpp",
+					".c",
+					".cc",
+					".h",
+					".hpp",
+					".hxx",
+					".cxx",
+					".m",
+					".mm",
+					".swift",
+					".rb",
+					".go",
+					".cs",
+					".fs",
+					".rs",
+					".py",
+					".gd",
+					".sql",
+					".sh",
+					".bash",
+					".zsh",
+					".fish",
+					".csh",
+					".tcsh",
+					".zshrc",
+					".ipynb",
+					".v",
+					".vh",
+					".html",
+					".htm",
+					".xhtml",
+					".xml",
+					".xaml",
+					".svg"
+				],
+				"stringLanguage": "ENGLISH",
+				"singleLineCommentLanguage": "MOTHER_TONGUE",
+				"multiLineCommentLanguage": "MOTHER_TONGUE",
+				"docCommentLanguage": "MOTHER_TONGUE",
+				"defaultLanguage": "ENGLISH"
+			},
+			{
+				"name": "文档文件默认规则",
+				"fileTypes": [
+					".md",
+					".txt"
+				],
+				"stringLanguage": "MOTHER_TONGUE",
+				"singleLineCommentLanguage": "MOTHER_TONGUE",
+				"multiLineCommentLanguage": "MOTHER_TONGUE",
+				"docCommentLanguage": "MOTHER_TONGUE",
+				"defaultLanguage": "MOTHER_TONGUE"
+			}
+		],
+		"chineseSymbolReplaceRules": [
+			{
+				"name": "常用中文替换",
+				"fileTypes": [
+					".md"
+				],
+				"symbols": [
+					"《",
+					"》",
+					"「",
+					"」",
+					"『",
+					"』",
+					"【",
+					"】",
+					"（",
+					"）",
+					"“",
+					"”",
+					"‘",
+					"’",
+					"？",
+					"：",
+					"；",
+					"、",
+					"！",
+					"—",
+					"·",
+					"￥"
+				]
+			}
+		],
+		"regexMatchRules": [
+			{
+				"name": "中文之间",
+				"fileTypes": [
+					".dart",
+					".md",
+					".txt",
+					".ts",
+					".js",
+					".tsx",
+					".jsx",
+					".vue",
+					".ets",
+					".java",
+					".kt",
+					".groovy",
+					".php",
+					".cpp",
+					".c",
+					".cc",
+					".h",
+					".hpp",
+					".hxx",
+					".cxx",
+					".m",
+					".mm",
+					".swift",
+					".rb",
+					".go",
+					".cs",
+					".fs",
+					".rs",
+					".py",
+					".gd",
+					".sql",
+					".sh",
+					".bash",
+					".zsh",
+					".fish",
+					".csh",
+					".tcsh",
+					".zshrc",
+					".ipynb",
+					".v",
+					".vh",
+					".html",
+					".htm",
+					".xhtml",
+					".xml",
+					".svg"
+				],
+				"leftPattern": ".*[\\u4e00-\\u9fa5\\u3000-\\u303F\\uff00-\\uffef]$",
+				"rightPattern": "^[\\u4e00-\\u9fa5\\u3000-\\u303F\\uff00-\\uffef].*",
+				"matchCondition": "ANY",
+				"language": "MOTHER_TONGUE"
+			}
+		]
+	}
 }
