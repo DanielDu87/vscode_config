@@ -1,9 +1,6 @@
+// Global VSCode Settings
 {
-	// 语言设置
 	"locale": "zh-cn",
-	// ============================================================
-	// Vim 插件核心配置
-	// ============================================================
 	"vim.vimrc.enable": true,
 	"vim.vimrc.path": "/Users/dyx/.vimrc",
 	"vim.leader": " ",
@@ -18,7 +15,6 @@
 	"vim.incsearch": true,
 	"vim.ignorecase": true,
 	"vim.smartcase": true,
-	"vim.startInInsertMode": false,
 	"vim.ideaMotionBindings": true,
 	"vim.blockCursorIsInInsertMode": false,
 	"vim.autoSwitchInputMethod.enable": true,
@@ -37,7 +33,7 @@
 		"replace": "underline",
 		"visual": "block",
 		"visualblock": "block",
-		"visualline": "block",
+		"visualline": "block"
 	},
 	"vim.handleKeys": {
 		"<C-v>": true,
@@ -45,7 +41,7 @@
 		"<C-f>": false,
 		"<A-v>": false,
 		"<A-h>": false,
-		"<A-l>": false,
+		"<A-l>": false
 	},
 	"vim.textobjKeybindings": [
 		{
@@ -88,12 +84,9 @@
 			]
 		}
 	],
-	// ============================================================
-	// 编辑器基础配置
-	// ============================================================
-	"editor.fontFamily": "'JetBrains Mono', 'PingFang SC', 'Menlo', 'Monaco', 'Courier New', monospace",
+	"editor.fontFamily": "'CodeNewRoman Nerd Font Mono', 'PingFang SC', 'Menlo', 'Monaco', monospace",
 	"editor.fontSize": 14,
-	"editor.fontWeight": "700",
+	"editor.fontWeight": "400",
 	"editor.fontLigatures": false,
 	"editor.tabSize": 4,
 	"editor.insertSpaces": false,
@@ -112,7 +105,6 @@
 		180
 	],
 	"editor.wordWrap": "on",
-	"editor.foldingImportsByDefault": true,
 	"editor.selectionHighlightMultiline": true,
 	"editor.cursorSmoothCaretAnimation": "on",
 	"editor.cursorSurroundingLines": 10,
@@ -145,10 +137,6 @@
 	"editor.scrollbar.scrollByPage": true,
 	"editor.guides.highlightActiveIndentation": "always",
 	"editor.allowVariableFonts": false,
-	// ============================================================
-	// 工作区与界面
-	// ============================================================
-	"workbench.colorTheme": "Atom One Dark",
 	"workbench.iconTheme": "a-file-icon-vscode",
 	"workbench.colorCustomizations": {
 		"editorCursor.foreground": "#51d237"
@@ -161,7 +149,6 @@
 		"rgba(255,127,255,0.3)",
 		"rgba(79,236,236,0.3)"
 	],
-	"workbench.editor.enablePreview": false,
 	"workbench.editor.wrapTabs": true,
 	"workbench.editor.sharedViewState": true,
 	"workbench.editor.highlightModifiedTabs": true,
@@ -174,9 +161,6 @@
 	"workbench.localHistory.mergeWindow": 1,
 	"workbench.list.smoothScrolling": true,
 	"window.autoDetectHighContrast": false,
-	// ============================================================
-	// 文件与搜索
-	// ============================================================
 	"files.autoSave": "afterDelay",
 	"files.autoSaveDelay": 10,
 	"files.exclude": {
@@ -192,10 +176,7 @@
 	"search.globalFindClipboard": true,
 	"search.quickOpen.includeSymbols": true,
 	"search.experimental.closedNotebookRichContentResults": true,
-	// ============================================================
-	// 终端
-	// ============================================================
-	"terminal.integrated.fontFamily": "JetBrainsMonoNL Nerd Font Mono",
+	"terminal.integrated.fontFamily": "CodeNewRoman Nerd Font Mono",
 	"terminal.integrated.fontSize": 14,
 	"terminal.integrated.fontWeight": "normal",
 	"terminal.integrated.smoothScrolling": true,
@@ -203,25 +184,20 @@
 		"zsh": {
 			"path": "/opt/homebrew/bin/zsh",
 			"args": [
-				"-l"
+				"-c",
+				"for venv in .venv venv .venv37 .venv312; do if [ -d \"$venv/bin\" ]; then source \"$venv/bin/activate\" && break; fi; done; exec zsh -l"
 			]
 		}
 	},
 	"terminal.integrated.defaultProfile.osx": "zsh",
 	"terminal.external.osxExec": "/Applications/Warp.app",
-	"terminal.integrated.accessibleViewFocusOnCommandExecution": true,
+	"terminal.integrated.accessibleViewFocusOnCommandExecution": false,
 	"terminal.integrated.allowInUntrustedWorkspace": true,
 	"terminal.integrated.cursorBlinking": true,
 	"terminal.integrated.copyOnSelection": true,
-	// ============================================================
-	// 版本控制
-	// ============================================================
 	"git.openRepositoryInParentFolders": "always",
 	"scm.alwaysShowRepositories": true,
 	"scm.autoReveal": false,
-	// ============================================================
-	// 调试
-	// ============================================================
 	"debug.allowBreakpointsEverywhere": true,
 	"debug.autoExpandLazyVariables": "on",
 	"debug.closeReadonlyTabsOnEnd": true,
@@ -229,9 +205,6 @@
 	"debug.console.acceptSuggestionOnEnter": "on",
 	"debug.console.closeOnEnd": true,
 	"debug.terminal.clearBeforeReusing": true,
-	// ============================================================
-	// 语言特定配置
-	// ============================================================
 	"[css]": {
 		"editor.defaultFormatter": "vscode.css-language-features"
 	},
@@ -272,14 +245,15 @@
 		"editor.insertSpaces": false,
 		"editor.tabSize": 4
 	},
-	// ============================================================
-	// Python (Ruff + Pylance + uv + pytest)
-	// ============================================================
 	"[python]": {
 		"editor.insertSpaces": false,
 		"editor.tabSize": 4,
 		"editor.defaultFormatter": "charliermarsh.ruff",
 		"editor.formatOnSave": true,
+		"editor.codeActionsOnSave": {
+			"source.fixAll.ruff": "explicit",
+			"source.organizeImports.ruff": "explicit"
+		},
 		"editor.quickSuggestions": {
 			"other": "on",
 			"comments": "on",
@@ -291,18 +265,15 @@
 		"editor.parameterHints.enabled": true,
 		"editor.wordBasedSuggestions": "allDocuments"
 	},
-	// Pylance 配置
 	"python.analysis.typeCheckingMode": "standard",
 	"python.languageServer": "Pylance",
-	// uv 配置
 	"python.terminal.activateEnvironment": false,
 	"python.terminal.activateEnvInCurrentTerminal": false,
-	// pytest 配置
+	"python.terminal.useEnvFile": false,
 	"python.testing.pytestEnabled": true,
 	"python.testing.pytestArgs": [
 		"-v"
 	],
-	// Pylance 补全配置
 	"python.analysis.autoImportCompletions": true,
 	"python.analysis.completeFunctionParens": true,
 	"python.analysis.fixImportUndefined": true,
@@ -312,20 +283,13 @@
 	"python.analysis.useLibraryCodeForTypes": true,
 	"djangoCommands.historyMaxLength": 50,
 	"djangoCommands.showTerminalOnCommand": true,
-	// ============================================================
-	// AI 补全
-	// ============================================================
-	// Supermaven AI 自动补全（回车接受）
 	"supermaven.enable": true,
 	"supermaven.acceptSuggestionOnEnter": true,
-	// 关闭 Copilot 行内补全
 	"github.copilot.inlineSuggest.enable": false,
 	"claudeCode.preferredLocation": "panel",
-	// 词典翻译
 	"EnglishChineseDictionary.enableHover": true,
 	"tktbtranslation.youdao.appKey": "28b96dba99259615",
 	"tktbtranslation.youdao.key": "5qAYyj5qxzsHe9oWxPo0cW2yRLCwCA0u",
-	// Smart Input Pro - 智能输入法切换
 	"smartInputPro.enable": true,
 	"smartInputPro.CursorColor": {
 		"en": "#51d237",
@@ -513,7 +477,6 @@
 			}
 		]
 	},
-	// ============================================================
 	"code-runner.clearPreviousOutput": true,
 	"code-runner.ignoreSelection": true,
 	"code-runner.saveAllFilesBeforeRun": true,
@@ -525,192 +488,29 @@
 		"typescript": "/opt/homebrew/bin/node",
 		"python": "/Users/dyx/.local/bin/python-run"
 	},
-	// ============================================================
-	// 安全与网络
-	// ============================================================
 	"security.promptForLocalFileProtocolHandling": false,
 	"security.workspace.trust.untrustedFiles": "open",
-	"http.proxy": "socks5h://127.0.0.1:7890",
-	"workbench.productIconTheme": "a-file-icon-vscode-product-icon-theme",
 	"workbench.experimental.modernUI": true,
 	"supermaven.allowGitignore": true,
-	"smartInputPro.config": {
-		"enableAutoSwitch": true,
-		"enableStatusBar": true,
-		"cursorColorChinese": "#c31818",
-		"cursorColorEnglish": "#51d237",
-		"enableCursorDecorations": true,
-		"enableCursorColor": true,
-		"inputMethodForWindows": "",
-		"inputMethodForLinux": "",
-		"inputMethodSwitchShortcutForWindows": "Shift",
-		"englishInputMethodForMac": "ABC",
-		"motherTongueInputMethodForMac": "搜狗拼音",
-		"inputMethodSwitchShortcutForMac": "Shift",
-		"defaultContextLanguage": [
-			{
-				"name": "代码文件默认规则",
-				"fileTypes": [
-					".lua",
-					".asm",
-					".proto",
-					".less",
-					".sass",
-					".scss",
-					".css",
-					".dart",
-					".ts",
-					".js",
-					".tsx",
-					".jsx",
-					".vue",
-					".ets",
-					".java",
-					".kt",
-					".groovy",
-					".php",
-					".cpp",
-					".c",
-					".cc",
-					".h",
-					".hpp",
-					".hxx",
-					".cxx",
-					".m",
-					".mm",
-					".swift",
-					".rb",
-					".go",
-					".cs",
-					".fs",
-					".rs",
-					".py",
-					".gd",
-					".sql",
-					".sh",
-					".bash",
-					".zsh",
-					".fish",
-					".csh",
-					".tcsh",
-					".zshrc",
-					".ipynb",
-					".v",
-					".vh",
-					".html",
-					".htm",
-					".xhtml",
-					".xml",
-					".xaml",
-					".svg"
-				],
-				"stringLanguage": "ENGLISH",
-				"singleLineCommentLanguage": "MOTHER_TONGUE",
-				"multiLineCommentLanguage": "MOTHER_TONGUE",
-				"docCommentLanguage": "MOTHER_TONGUE",
-				"defaultLanguage": "ENGLISH"
-			},
-			{
-				"name": "文档文件默认规则",
-				"fileTypes": [
-					".md",
-					".txt"
-				],
-				"stringLanguage": "MOTHER_TONGUE",
-				"singleLineCommentLanguage": "MOTHER_TONGUE",
-				"multiLineCommentLanguage": "MOTHER_TONGUE",
-				"docCommentLanguage": "MOTHER_TONGUE",
-				"defaultLanguage": "MOTHER_TONGUE"
-			}
-		],
-		"chineseSymbolReplaceRules": [
-			{
-				"name": "常用中文替换",
-				"fileTypes": [
-					".md"
-				],
-				"symbols": [
-					"《",
-					"》",
-					"「",
-					"」",
-					"『",
-					"』",
-					"【",
-					"】",
-					"（",
-					"）",
-					"“",
-					"”",
-					"‘",
-					"’",
-					"？",
-					"：",
-					"；",
-					"、",
-					"！",
-					"—",
-					"·",
-					"￥"
-				]
-			}
-		],
-		"regexMatchRules": [
-			{
-				"name": "中文之间",
-				"fileTypes": [
-					".dart",
-					".md",
-					".txt",
-					".ts",
-					".js",
-					".tsx",
-					".jsx",
-					".vue",
-					".ets",
-					".java",
-					".kt",
-					".groovy",
-					".php",
-					".cpp",
-					".c",
-					".cc",
-					".h",
-					".hpp",
-					".hxx",
-					".cxx",
-					".m",
-					".mm",
-					".swift",
-					".rb",
-					".go",
-					".cs",
-					".fs",
-					".rs",
-					".py",
-					".gd",
-					".sql",
-					".sh",
-					".bash",
-					".zsh",
-					".fish",
-					".csh",
-					".tcsh",
-					".zshrc",
-					".ipynb",
-					".v",
-					".vh",
-					".html",
-					".htm",
-					".xhtml",
-					".xml",
-					".svg"
-				],
-				"leftPattern": ".*[\\u4e00-\\u9fa5\\u3000-\\u303F\\uff00-\\uffef]$",
-				"rightPattern": "^[\\u4e00-\\u9fa5\\u3000-\\u303F\\uff00-\\uffef].*",
-				"matchCondition": "ANY",
-				"language": "MOTHER_TONGUE"
-			}
-		]
-	}
+	"window.zoomLevel": 1.2,
+	"workbench.editor.enablePreview": false,
+	"explorer.confirmDelete": false,
+	"editor.unicodeHighlight.includeStrings": false,
+	"workbench.colorTheme": "Atom One Dark",
+	"[markdown]": {
+		"editor.defaultFormatter": "yzhang.markdown-all-in-one"
+	},
+	"supermaven.enableFixWithSupermaven": true,
+	"chatgpt.followUpQueueMode": "steer",
+	"github.copilot.enable": {
+		"*": false,
+		"plaintext": false,
+		"markdown": false,
+		"scminput": false,
+		"python": false
+	},
+	"terminal.integrated.autohide": "onFocusChange",
+	"terminal.integrated.hideOnFocusLost": true,
+	"terminal.integrated.tabs.enabled": true,
+	"workbench.panel.defaultLocation": "bottom"
 }
