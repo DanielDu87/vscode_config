@@ -116,6 +116,12 @@
 				"settings": {
 					"fontStyle": ""
 				}
+			},
+			{
+				"scope": "string.quoted.docstring.multi.python",
+				"settings": {
+					"foreground": "#D4C978"
+				}
 			}
 		]
 	},
@@ -139,7 +145,7 @@
 	"editor.allowVariableFonts": false,
 	"workbench.iconTheme": "a-file-icon-vscode",
 	"workbench.colorCustomizations": {
-		"editorCursor.foreground": "#51d237"
+		"editorCursor.foreground": "#c31818"
 	},
 	"indentRainbow.indicatorStyle": "light",
 	"indentRainbow.lightIndicatorStyleLineWidth": 1,
