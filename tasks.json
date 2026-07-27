@@ -1,0 +1,19 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Remove Extra Blank Lines",
+			"type": "process",
+			"command": "/opt/homebrew/bin/python3",
+			"args": [
+				"/Users/dyx/Library/Application Support/Code/User/.vscode/remove_blank_lines.py",
+				"${file}"
+			],
+			"problemMatcher": [],
+			"presentation": {
+				"reveal": "never",
+				"close": true
+			}
+		}
+	]
+}

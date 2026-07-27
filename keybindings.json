@@ -59,6 +59,11 @@
 	// 代码编辑 (Code Editing)
 	// ============================================================
 	{
+		"key": "cmd+alt+r",
+		"command": "workbench.action.files.revert",
+		"when": "editorTextFocus"
+	},
+	{
 		"key": "cmd+2",
 		"command": "editor.action.formatDocument",
 		"when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor",
@@ -253,5 +258,21 @@
 		"key": "ctrl+[Backslash]",
 		"command": "workbench.action.terminal.toggleTerminal",
 		"when": "terminal.active",
+	},
+	// ============================================================
+	// 补全接受分离 (Completion Accept Split)
+	// Supermaven 灰字补全 -> 回车接受；VS Code 原生补全弹窗 -> Tab 接受
+	// ============================================================
+	// 1. 回车接受 Supermaven 灰字补全（仅当没有弹出 IntelliSense 建议框时）
+	{
+		"key": "enter",
+		"command": "editor.action.inlineSuggest.commit",
+		"when": "inlineSuggestionVisible && !suggestWidgetVisible && !editorReadonly",
+	},
+	// 2. 解绑 Tab 对 Supermaven 灰字补全的接受，Tab 只留给原生补全弹窗
+	{
+		"key": "tab",
+		"command": "-editor.action.inlineSuggest.commit",
+		"when": "inlineSuggestionVisible && !editorTabMovesFocus && !suggestWidgetVisible",
 	}
 ]

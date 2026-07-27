@@ -1,5 +1,21 @@
 // Global VSCode Settings
 {
+	// --- 代理配置（VS Code 自身走 7890 端口）---
+	// VS Code 不是从登录 shell 启动的，所以不读 ~/.zshenv，必须在 settings.json 里单独配。
+	// 集成终端里的 zsh 会自己读 ~/.zshenv，那部分不用重复配。
+	// proxySupport=override：强制所有内部请求都走代理（Copilot / Settings Sync / 扩展市场 / telemetry）
+	// 默认 fallback 只对扩展市场生效，会导致 Copilot 等连不上。
+	"http.proxy": "http://127.0.0.1:7890",
+	"http.proxySupport": "override",
+	"http.noProxy": [
+		"localhost",
+		"127.0.0.1",
+		"::1",
+		".local",
+		"192.168.0.0/16",
+		"10.0.0.0/8",
+		"172.16.0.0/12"
+	],
 	"locale": "zh-cn",
 	"vim.vimrc.enable": true,
 	"vim.vimrc.path": "/Users/dyx/.vimrc",
@@ -122,18 +138,36 @@
 				"settings": {
 					"foreground": "#D4C978"
 				}
+			},
+			{
+				"scope": "meta.fstring.python",
+				"settings": {
+					"foreground": "#98C379"
+				}
 			}
 		]
+	},
+	"editor.semanticTokenColorCustomizations": {
+		"[Atom One Dark]": {
+			"enabled": true,
+			"rules": {
+				"*.fstring": "#98C379"
+			}
+		}
 	},
 	"editor.unicodeHighlight.includeComments": false,
 	"editor.unicodeHighlight.nonBasicASCII": false,
 	"editor.codeActions.triggerOnFocusChange": true,
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": "explicit"
+	},
 	"editor.definitionLinkOpensInPeek": true,
 	"editor.stablePeek": true,
 	"editor.smoothScrolling": true,
 	"editor.accessibilitySupport": "off",
 	"editor.experimentalInlineEdit.enabled": true,
 	"editor.tabCompletion": "on",
+	"editor.acceptSuggestionOnEnter": "off",
 	"editor.suggest.insertMode": "replace",
 	"editor.overtypeCursorStyle": "line",
 	"editor.stickyTabStops": true,
@@ -145,7 +179,7 @@
 	"editor.allowVariableFonts": false,
 	"workbench.iconTheme": "a-file-icon-vscode",
 	"workbench.colorCustomizations": {
-		"editorCursor.foreground": "#c31818"
+		"editorCursor.foreground": "#51d237"
 	},
 	"indentRainbow.indicatorStyle": "light",
 	"indentRainbow.lightIndicatorStyleLineWidth": 1,
@@ -167,7 +201,7 @@
 	"workbench.localHistory.mergeWindow": 1,
 	"workbench.list.smoothScrolling": true,
 	"window.autoDetectHighContrast": false,
-	"files.autoSave": "afterDelay",
+	"files.autoSave": "onFocusChange",
 	"files.autoSaveDelay": 10,
 	"files.exclude": {
 		"**/.idea": true
@@ -182,7 +216,7 @@
 	"search.globalFindClipboard": true,
 	"search.quickOpen.includeSymbols": true,
 	"search.experimental.closedNotebookRichContentResults": true,
-	"terminal.integrated.fontFamily": "CodeNewRoman Nerd Font Mono",
+	"terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono', 'PingFang SC', 'Menlo', monospace",
 	"terminal.integrated.fontSize": 14,
 	"terminal.integrated.fontWeight": "normal",
 	"terminal.integrated.smoothScrolling": true,
@@ -196,8 +230,9 @@
 		}
 	},
 	"terminal.integrated.defaultProfile.osx": "zsh",
+	"terminal.integrated.shellIntegration.enabled": true,
 	"terminal.external.osxExec": "/Applications/Warp.app",
-	"terminal.integrated.accessibleViewFocusOnCommandExecution": false,
+	"terminal.integrated.accessibleViewFocusOnCommandExecution": true,
 	"terminal.integrated.allowInUntrustedWorkspace": true,
 	"terminal.integrated.cursorBlinking": true,
 	"terminal.integrated.copyOnSelection": true,
@@ -257,8 +292,8 @@
 		"editor.defaultFormatter": "charliermarsh.ruff",
 		"editor.formatOnSave": true,
 		"editor.codeActionsOnSave": {
-			"source.fixAll.ruff": "explicit",
-			"source.organizeImports.ruff": "explicit"
+			"source.fixAll.ruff": "always",
+			"source.organizeImports.ruff": "always"
 		},
 		"editor.quickSuggestions": {
 			"other": "on",
@@ -267,15 +302,16 @@
 		},
 		"editor.quickSuggestionsDelay": 0,
 		"editor.suggestOnTriggerCharacters": true,
-		"editor.acceptSuggestionOnEnter": "on",
+		"editor.acceptSuggestionOnEnter": "off",
 		"editor.parameterHints.enabled": true,
 		"editor.wordBasedSuggestions": "allDocuments"
 	},
 	"python.analysis.typeCheckingMode": "standard",
 	"python.languageServer": "Pylance",
-	"python.terminal.activateEnvironment": false,
+	"python.terminal.activateEnvironment": true,
 	"python.terminal.activateEnvInCurrentTerminal": false,
-	"python.terminal.useEnvFile": false,
+	"python.terminal.useEnvFile": true,
+	"python-envs.terminal.autoActivationType": "command",
 	"python.testing.pytestEnabled": true,
 	"python.testing.pytestArgs": [
 		"-v"
@@ -290,7 +326,6 @@
 	"djangoCommands.historyMaxLength": 50,
 	"djangoCommands.showTerminalOnCommand": true,
 	"supermaven.enable": true,
-	"supermaven.acceptSuggestionOnEnter": true,
 	"github.copilot.inlineSuggest.enable": false,
 	"claudeCode.preferredLocation": "panel",
 	"EnglishChineseDictionary.enableHover": true,
@@ -375,9 +410,9 @@
 					".svg"
 				],
 				"stringLanguage": "ENGLISH",
-				"singleLineCommentLanguage": "MOTHER_TONGUE",
-				"multiLineCommentLanguage": "MOTHER_TONGUE",
-				"docCommentLanguage": "MOTHER_TONGUE",
+				"singleLineCommentLanguage": "NO_CHANGE",
+				"multiLineCommentLanguage": "NO_CHANGE",
+				"docCommentLanguage": "NO_CHANGE",
 				"defaultLanguage": "ENGLISH"
 			},
 			{
@@ -386,11 +421,11 @@
 					".md",
 					".txt"
 				],
-				"stringLanguage": "MOTHER_TONGUE",
-				"singleLineCommentLanguage": "MOTHER_TONGUE",
-				"multiLineCommentLanguage": "MOTHER_TONGUE",
-				"docCommentLanguage": "MOTHER_TONGUE",
-				"defaultLanguage": "MOTHER_TONGUE"
+				"stringLanguage": "ENGLISH",
+				"singleLineCommentLanguage": "ENGLISH",
+				"multiLineCommentLanguage": "ENGLISH",
+				"docCommentLanguage": "ENGLISH",
+				"defaultLanguage": "ENGLISH"
 			}
 		],
 		"chineseSymbolReplaceRules": [
@@ -479,7 +514,7 @@
 				"leftPattern": ".*[\\u4e00-\\u9fa5\\u3000-\\u303F\\uff00-\\uffef]$",
 				"rightPattern": "^[\\u4e00-\\u9fa5\\u3000-\\u303F\\uff00-\\uffef].*",
 				"matchCondition": "ANY",
-				"language": "MOTHER_TONGUE"
+				"language": "NO_CHANGE"
 			}
 		]
 	},
@@ -504,7 +539,7 @@
 	"editor.unicodeHighlight.includeStrings": false,
 	"workbench.colorTheme": "Atom One Dark",
 	"[markdown]": {
-		"editor.defaultFormatter": "yzhang.markdown-all-in-one"
+		"editor.defaultFormatter": "charliermarsh.ruff"
 	},
 	"supermaven.enableFixWithSupermaven": true,
 	"chatgpt.followUpQueueMode": "steer",
@@ -518,5 +553,8 @@
 	"terminal.integrated.autohide": "onFocusChange",
 	"terminal.integrated.hideOnFocusLost": true,
 	"terminal.integrated.tabs.enabled": true,
-	"workbench.panel.defaultLocation": "bottom"
+	"workbench.panel.defaultLocation": "bottom",
+	"chat.mcp.gallery.enabled": true,
+	"files.autoSaveWhenNoErrors": true,
+	"workbench.startupEditor": "welcomePageInEmptyWorkbench"
 }
