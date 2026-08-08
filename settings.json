@@ -1,130 +1,142 @@
-// Global VSCode Settings
 {
-	// --- 代理配置（VS Code 自身走 7890 端口）---
-	// VS Code 不是从登录 shell 启动的，所以不读 ~/.zshenv，必须在 settings.json 里单独配。
-	// 集成终端里的 zsh 会自己读 ~/.zshenv，那部分不用重复配。
-	// proxySupport=override：强制所有内部请求都走代理（Copilot / Settings Sync / 扩展市场 / telemetry）
-	// 默认 fallback 只对扩展市场生效，会导致 Copilot 等连不上。
-	"http.proxy": "http://127.0.0.1:7890",
-	"http.proxySupport": "override",
-	"http.noProxy": [
-		"localhost",
-		"127.0.0.1",
-		"::1",
-		".local",
-		"192.168.0.0/16",
-		"10.0.0.0/8",
-		"172.16.0.0/12"
-	],
-	"locale": "zh-cn",
-	"vim.vimrc.enable": true,
-	"vim.vimrc.path": "/Users/dyx/.vimrc",
-	"vim.leader": " ",
-	"vim.enableNeovim": false,
-	"vim.enableMsOfCodeMotionKeys": true,
-	"vim.searchIncludeMatchHistory": true,
-	"vim.useSystemClipboard": true,
-	"vim.useCtrlKeys": true,
-	"vim.overrideCopy": false,
-	"vim.startInInsertMode": false,
-	"vim.hlsearch": true,
-	"vim.incsearch": true,
-	"vim.ignorecase": true,
-	"vim.smartcase": true,
-	"vim.ideaMotionBindings": true,
-	"vim.blockCursorIsInInsertMode": false,
-	"vim.autoSwitchInputMethod.enable": true,
-	"vim.autoSwitchInputMethod.defaultLanguage": "com.apple.keylayout.ABC",
-	"vim.easymotion": true,
-	"vim.sneak": true,
-	"vim.sneakUseIgnorecaseAndSmartcase": true,
-	"vim.camelCaseMotion.enable": true,
-	"vim.replaceWithRegister": true,
-	"vim.highlightedyank.enable": true,
-	"vim.mouseSelectionGoesIntoVisualMode": false,
-	"vim.smartRelativeLine": true,
-	"vim.cursorStylePerMode": {
-		"insert": "line",
-		"normal": "block",
-		"replace": "underline",
-		"visual": "block",
-		"visualblock": "block",
-		"visualline": "block"
+	"[css]": {
+		"editor.defaultFormatter": "vscode.css-language-features"
 	},
-	"vim.handleKeys": {
-		"<C-v>": true,
-		"<C-c>": false,
-		"<C-f>": false,
-		"<A-v>": false,
-		"<A-h>": false,
-		"<A-l>": false
+	"[django-html]": {
+		"editor.defaultFormatter": "vscode.html-language-features",
+		"editor.formatOnSave": true,
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4
 	},
-	"vim.textobjKeybindings": [
-		{
-			"before": [
-				"iq"
-			],
-			"after": [
-				"i",
-				"\""
-			]
+	"[html]": {
+		"editor.defaultFormatter": "vscode.html-language-features",
+		"editor.formatOnSave": true,
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4
+	},
+	"[javascript]": {
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4
+	},
+	"[javascriptreact]": {
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4
+	},
+	"[json]": {
+		"editor.defaultFormatter": "vscode.json-language-features",
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4
+	},
+	"[jsonc]": {
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4
+	},
+	"[markdown]": {
+		"editor.defaultFormatter": "charliermarsh.ruff",
+		"markdown.preview.useMarkdownExtension": true
+	},
+	"[python]": {
+		"editor.acceptSuggestionOnEnter": "off",
+		"editor.codeActionsOnSave": {
+			"source.fixAll.ruff": "always",
+			"source.organizeImports.ruff": "always"
 		},
-		{
-			"before": [
-				"ie"
-			],
-			"after": [
-				"i",
-				"'"
-			]
+		"editor.defaultFormatter": "charliermarsh.ruff",
+		"editor.formatOnSave": true,
+		"editor.insertSpaces": false,
+		"editor.parameterHints.enabled": true,
+		"editor.quickSuggestions": {
+			"comments": "on",
+			"other": "on",
+			"strings": "on"
 		},
-		{
-			"before": [
-				"ib"
-			],
-			"after": [
-				"i",
-				"("
-			]
-		}
-	],
-	"vim.normalModeKeyBindingsNonRecursive": [
-		{
-			"before": [
-				"s"
-			],
-			"after": [
-				"<leader>",
-				"<leader>",
-				"s"
-			]
-		}
-	],
+		"editor.quickSuggestionsDelay": 0,
+		"editor.suggestOnTriggerCharacters": true,
+		"editor.tabSize": 4,
+		"editor.wordBasedSuggestions": "allDocuments"
+	},
+	"[typescript]": {
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4
+	},
+	"[typescriptreact]": {
+		"editor.insertSpaces": false,
+		"editor.tabSize": 4
+	},
+	"chat.mcp.gallery.enabled": true,
+	"chatgpt.followUpQueueMode": "steer",
+	"claudeCode.preferredLocation": "sidebar",
+	"code-runner.clearPreviousOutput": true,
+	"code-runner.executorMap": {
+		"javascript": "\/opt\/homebrew\/bin\/node",
+		"python": "\/Users\/dyx\/.local\/bin\/python-run",
+		"typescript": "\/opt\/homebrew\/bin\/node"
+	},
+	"code-runner.ignoreSelection": true,
+	"code-runner.runInTerminal": true,
+	"code-runner.saveAllFilesBeforeRun": true,
+	"code-runner.saveFileBeforeRun": true,
+	"code-runner.showExecutionMessage": false,
+	"debug.allowBreakpointsEverywhere": true,
+	"debug.autoExpandLazyVariables": "on",
+	"debug.closeReadonlyTabsOnEnd": true,
+	"debug.confirmOnExit": "always",
+	"debug.console.acceptSuggestionOnEnter": "on",
+	"debug.console.closeOnEnd": true,
+	"debug.terminal.clearBeforeReusing": true,
+	"djangoCommands.historyMaxLength": 50,
+	"djangoCommands.showTerminalOnCommand": true,
+	"editor.acceptSuggestionOnEnter": "off",
+	"editor.accessibilitySupport": "off",
+	"editor.allowVariableFonts": false,
+	"editor.autoIndentOnPaste": true,
+	"editor.codeActions.triggerOnFocusChange": true,
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": "explicit"
+	},
+	"editor.cursorSmoothCaretAnimation": "on",
+	"editor.cursorSurroundingLines": 10,
+	"editor.definitionLinkOpensInPeek": true,
+	"editor.detectIndentation": false,
+	"editor.experimentalInlineEdit.enabled": true,
+	"editor.fastScrollSensitivity": 2,
 	"editor.fontFamily": "'CodeNewRoman Nerd Font Mono', 'PingFang SC', 'Menlo', 'Monaco', monospace",
+	"editor.fontLigatures": false,
 	"editor.fontSize": 14,
 	"editor.fontWeight": "400",
-	"editor.fontLigatures": false,
-	"editor.tabSize": 4,
-	"editor.insertSpaces": false,
-	"editor.detectIndentation": false,
-	"editor.autoIndentOnPaste": true,
 	"editor.formatOnPaste": true,
 	"editor.formatOnSave": true,
 	"editor.formatOnSaveMode": "file",
 	"editor.formatOnType": true,
-	"editor.lineNumbers": "relative",
-	"editor.renderWhitespace": "all",
-	"editor.renderControlCharacters": true,
 	"editor.glyphMargin": true,
+	"editor.guides.highlightActiveIndentation": "always",
+	"editor.inlayHints.maximumLength": 120,
+	"editor.insertSpaces": false,
+	"editor.lineNumbers": "relative",
 	"editor.minimap.enabled": false,
+	"editor.overtypeCursorStyle": "line",
+	"editor.renderControlCharacters": true,
+	"editor.renderWhitespace": "all",
 	"editor.rulers": [
 		180
 	],
-	"editor.wordWrap": "on",
+	"editor.scrollbar.ignoreHorizontalScrollbarInContentHeight": true,
+	"editor.scrollbar.scrollByPage": true,
 	"editor.selectionHighlightMultiline": true,
-	"editor.cursorSmoothCaretAnimation": "on",
-	"editor.cursorSurroundingLines": 10,
-	"editor.inlayHints.maximumLength": 120,
+	"editor.semanticTokenColorCustomizations": {
+		"[Atom One Dark]": {
+			"enabled": true,
+			"rules": {
+				"*.fstring": "#98C379"
+			}
+		}
+	},
+	"editor.smoothScrolling": true,
+	"editor.stablePeek": true,
+	"editor.stickyTabStops": true,
+	"editor.suggest.insertMode": "replace",
+	"editor.tabCompletion": "on",
+	"editor.tabSize": 4,
 	"editor.tokenColorCustomizations": {
 		"textMateRules": [
 			{
@@ -147,214 +159,151 @@
 			}
 		]
 	},
-	"editor.semanticTokenColorCustomizations": {
-		"[Atom One Dark]": {
-			"enabled": true,
-			"rules": {
-				"*.fstring": "#98C379"
-			}
-		}
-	},
-	"editor.unicodeHighlight.includeComments": false,
-	"editor.unicodeHighlight.nonBasicASCII": false,
-	"editor.codeActions.triggerOnFocusChange": true,
-	"editor.codeActionsOnSave": {
-		"source.organizeImports": "explicit"
-	},
-	"editor.definitionLinkOpensInPeek": true,
-	"editor.stablePeek": true,
-	"editor.smoothScrolling": true,
-	"editor.accessibilitySupport": "off",
-	"editor.experimentalInlineEdit.enabled": true,
-	"editor.tabCompletion": "on",
-	"editor.acceptSuggestionOnEnter": "off",
-	"editor.suggest.insertMode": "replace",
-	"editor.overtypeCursorStyle": "line",
-	"editor.stickyTabStops": true,
 	"editor.trimWhitespaceOnDelete": true,
-	"editor.fastScrollSensitivity": 2,
-	"editor.scrollbar.ignoreHorizontalScrollbarInContentHeight": true,
-	"editor.scrollbar.scrollByPage": true,
-	"editor.guides.highlightActiveIndentation": "always",
-	"editor.allowVariableFonts": false,
-	"workbench.iconTheme": "a-file-icon-vscode",
-	"workbench.colorCustomizations": {
-		"editorCursor.foreground": "#51d237"
+	"editor.unicodeHighlight.includeComments": false,
+	"editor.unicodeHighlight.includeStrings": false,
+	"editor.unicodeHighlight.nonBasicASCII": false,
+	"editor.wordWrap": "on",
+	"EnglishChineseDictionary.enableHover": true,
+	"explorer.compactFolders": false,
+	"explorer.confirmDelete": false,
+	"explorer.decorations.colors": false,
+	"files.autoSave": "onFocusChange",
+	"files.autoSaveDelay": 10,
+	"files.autoSaveWhenNoErrors": true,
+	"files.exclude": {
+		"**\/.idea": true
 	},
-	"indentRainbow.indicatorStyle": "light",
-	"indentRainbow.lightIndicatorStyleLineWidth": 1,
+	"git.openRepositoryInParentFolders": "always",
+	"github.copilot.enable": {
+		"*": false,
+		"markdown": false,
+		"plaintext": false,
+		"python": false,
+		"scminput": false
+	},
+	"github.copilot.inlineSuggest.enable": false,
+	"http.noProxy": [
+		"localhost",
+		"127.0.0.1",
+		"::1",
+		".local",
+		"192.168.0.0\/16",
+		"10.0.0.0\/8",
+		"172.16.0.0\/12"
+	],
+	"http.proxy": "http:\/\/127.0.0.1:7890",
+	"http.proxySupport": "override",
 	"indentRainbow.colors": [
 		"rgba(255,255,64,0.3)",
 		"rgba(127,255,127,0.3)",
 		"rgba(255,127,255,0.3)",
 		"rgba(79,236,236,0.3)"
 	],
-	"workbench.editor.wrapTabs": true,
-	"workbench.editor.sharedViewState": true,
-	"workbench.editor.highlightModifiedTabs": true,
-	"workbench.editor.alwaysShowEditorActions": true,
-	"workbench.editor.preferHistoryBasedLanguageDetection": true,
-	"explorer.compactFolders": false,
-	"explorer.decorations.colors": false,
-	"workbench.enableSounds": false,
-	"workbench.sounds.volume": 0,
-	"workbench.localHistory.mergeWindow": 1,
-	"workbench.list.smoothScrolling": true,
-	"window.autoDetectHighContrast": false,
-	"files.autoSave": "onFocusChange",
-	"files.autoSaveDelay": 10,
-	"files.exclude": {
-		"**/.idea": true
-	},
-	"search.exclude": {
-		"**/.git": true,
-		"**/.idea": true
-	},
-	"search.actionsPosition": "auto",
-	"search.collapseResults": "auto",
-	"search.defaultViewMode": "tree",
-	"search.globalFindClipboard": true,
-	"search.quickOpen.includeSymbols": true,
-	"search.experimental.closedNotebookRichContentResults": true,
-	"terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono', 'PingFang SC', 'Menlo', monospace",
-	"terminal.integrated.fontSize": 14,
-	"terminal.integrated.fontWeight": "normal",
-	"terminal.integrated.smoothScrolling": true,
-	"terminal.integrated.profiles.osx": {
-		"zsh": {
-			"path": "/opt/homebrew/bin/zsh",
-			"args": [
-				"-c",
-				"for venv in .venv venv .venv37 .venv312; do if [ -d \"$venv/bin\" ]; then source \"$venv/bin/activate\" && break; fi; done; exec zsh -l"
-			]
+	"indentRainbow.indicatorStyle": "light",
+	"indentRainbow.lightIndicatorStyleLineWidth": 1,
+	"locale": "zh-cn",
+	"markdown.extension.completion.enabled": true,
+	"pgsql.connections": [
+		{
+			"applicationName": "vscode-pgsql",
+			"authenticationType": "SqlLogin",
+			"clientEncoding": "utf8",
+			"connectionString": "postgresql:\/\/file_reader:local-development-only@127.0.0.1:5432\/file_reader",
+			"connectTimeout": 15,
+			"database": "file_reader",
+			"expiresOn": 0,
+			"groupId": "3B85E5C8-C34B-4D86-A064-721C02E834E1",
+			"id": "8055B9DC-D928-45D6-AE72-C740E4C54A11",
+			"password": "",
+			"port": "5432",
+			"profileName": "127.0.0.1, file_reader (file_reader)",
+			"savePassword": true,
+			"server": "127.0.0.1",
+			"sshPassword": "",
+			"sshSavePassword": true,
+			"sslmode": "prefer",
+			"sslRootCertMode": "none",
+			"user": "file_reader"
 		}
-	},
-	"terminal.integrated.defaultProfile.osx": "zsh",
-	"terminal.integrated.shellIntegration.enabled": true,
-	"terminal.external.osxExec": "/Applications/Warp.app",
-	"terminal.integrated.accessibleViewFocusOnCommandExecution": true,
-	"terminal.integrated.allowInUntrustedWorkspace": true,
-	"terminal.integrated.cursorBlinking": true,
-	"terminal.integrated.copyOnSelection": true,
-	"git.openRepositoryInParentFolders": "always",
-	"scm.alwaysShowRepositories": true,
-	"scm.autoReveal": false,
-	"debug.allowBreakpointsEverywhere": true,
-	"debug.autoExpandLazyVariables": "on",
-	"debug.closeReadonlyTabsOnEnd": true,
-	"debug.confirmOnExit": "always",
-	"debug.console.acceptSuggestionOnEnter": "on",
-	"debug.console.closeOnEnd": true,
-	"debug.terminal.clearBeforeReusing": true,
-	"[css]": {
-		"editor.defaultFormatter": "vscode.css-language-features"
-	},
-	"[html]": {
-		"editor.defaultFormatter": "vscode.html-language-features",
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4,
-		"editor.formatOnSave": true
-	},
-	"[django-html]": {
-		"editor.defaultFormatter": "vscode.html-language-features",
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4,
-		"editor.formatOnSave": true
-	},
-	"[javascript]": {
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4
-	},
-	"[typescript]": {
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4
-	},
-	"[javascriptreact]": {
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4
-	},
-	"[typescriptreact]": {
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4
-	},
-	"[json]": {
-		"editor.defaultFormatter": "vscode.json-language-features",
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4
-	},
-	"[jsonc]": {
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4
-	},
-	"[python]": {
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4,
-		"editor.defaultFormatter": "charliermarsh.ruff",
-		"editor.formatOnSave": true,
-		"editor.codeActionsOnSave": {
-			"source.fixAll.ruff": "always",
-			"source.organizeImports.ruff": "always"
-		},
-		"editor.quickSuggestions": {
-			"other": "on",
-			"comments": "on",
-			"strings": "on"
-		},
-		"editor.quickSuggestionsDelay": 0,
-		"editor.suggestOnTriggerCharacters": true,
-		"editor.acceptSuggestionOnEnter": "off",
-		"editor.parameterHints.enabled": true,
-		"editor.wordBasedSuggestions": "allDocuments"
-	},
-	"python.analysis.typeCheckingMode": "standard",
-	"python.languageServer": "Pylance",
-	"python.terminal.activateEnvironment": true,
-	"python.terminal.activateEnvInCurrentTerminal": false,
-	"python.terminal.useEnvFile": true,
-	"python-envs.terminal.autoActivationType": "command",
-	"python.testing.pytestEnabled": true,
-	"python.testing.pytestArgs": [
-		"-v"
 	],
+	"pgsql.serverGroups": [
+		{
+			"id": "3B85E5C8-C34B-4D86-A064-721C02E834E1",
+			"isDefault": true,
+			"name": "服务器"
+		}
+	],
+	"python-envs.terminal.autoActivationType": "command",
 	"python.analysis.autoImportCompletions": true,
+	"python.analysis.autoSearchPaths": true,
 	"python.analysis.completeFunctionParens": true,
 	"python.analysis.fixImportUndefined": true,
 	"python.analysis.importFormat": "absolute",
 	"python.analysis.indexing": true,
-	"python.analysis.autoSearchPaths": true,
+	"python.analysis.typeCheckingMode": "standard",
 	"python.analysis.useLibraryCodeForTypes": true,
-	"djangoCommands.historyMaxLength": 50,
-	"djangoCommands.showTerminalOnCommand": true,
-	"supermaven.enable": true,
-	"github.copilot.inlineSuggest.enable": false,
-	"claudeCode.preferredLocation": "panel",
-	"EnglishChineseDictionary.enableHover": true,
-	"tktbtranslation.youdao.appKey": "28b96dba99259615",
-	"tktbtranslation.youdao.key": "5qAYyj5qxzsHe9oWxPo0cW2yRLCwCA0u",
-	"smartInputPro.enable": true,
-	"smartInputPro.CursorColor": {
-		"en": "#51d237",
-		"zh": "#ff0000"
+	"python.languageServer": "Pylance",
+	"python.terminal.activateEnvInCurrentTerminal": false,
+	"python.terminal.activateEnvironment": true,
+	"python.terminal.useEnvFile": true,
+	"python.testing.pytestArgs": [
+		"-v"
+	],
+	"python.testing.pytestEnabled": true,
+	"scm.alwaysShowRepositories": true,
+	"scm.autoReveal": false,
+	"search.actionsPosition": "auto",
+	"search.collapseResults": "auto",
+	"search.defaultViewMode": "tree",
+	"search.exclude": {
+		"**\/.git": true,
+		"**\/.idea": true
 	},
-	"smartInputPro.enableAutoDefaultIM": true,
-	"smartInputPro.enableModeIMConfig": false,
-	"smartInputPro.enableSmartSpaceInChinese": false,
+	"search.experimental.closedNotebookRichContentResults": true,
+	"search.globalFindClipboard": true,
+	"search.quickOpen.includeSymbols": true,
+	"security.promptForLocalFileProtocolHandling": false,
+	"security.workspace.trust.untrustedFiles": "open",
 	"smartInputPro.config": {
-		"enableAutoSwitch": true,
-		"enableStatusBar": true,
+		"chineseSymbolReplaceRules": [
+			{
+				"fileTypes": [
+					".md"
+				],
+				"name": "常用中文替换",
+				"symbols": [
+					"《",
+					"》",
+					"「",
+					"」",
+					"『",
+					"』",
+					"【",
+					"】",
+					"（",
+					"）",
+					"“",
+					"”",
+					"‘",
+					"’",
+					"？",
+					"：",
+					"；",
+					"、",
+					"！",
+					"—",
+					"·",
+					"￥"
+				]
+			}
+		],
 		"cursorColorChinese": "#c31818",
 		"cursorColorEnglish": "#51d237",
-		"enableCursorDecorations": true,
-		"enableCursorColor": true,
-		"inputMethodForWindows": "",
-		"inputMethodForLinux": "",
-		"inputMethodSwitchShortcutForWindows": "Shift",
-		"englishInputMethodForMac": "ABC",
-		"motherTongueInputMethodForMac": "搜狗拼音",
-		"inputMethodSwitchShortcutForMac": "Shift",
 		"defaultContextLanguage": [
 			{
-				"name": "代码文件默认规则",
+				"defaultLanguage": "ENGLISH",
+				"docCommentLanguage": "NO_CHANGE",
 				"fileTypes": [
 					".lua",
 					".asm",
@@ -409,60 +358,36 @@
 					".xaml",
 					".svg"
 				],
-				"stringLanguage": "ENGLISH",
-				"singleLineCommentLanguage": "NO_CHANGE",
 				"multiLineCommentLanguage": "NO_CHANGE",
-				"docCommentLanguage": "NO_CHANGE",
-				"defaultLanguage": "ENGLISH"
+				"name": "代码文件默认规则",
+				"singleLineCommentLanguage": "NO_CHANGE",
+				"stringLanguage": "ENGLISH"
 			},
 			{
-				"name": "文档文件默认规则",
+				"defaultLanguage": "ENGLISH",
+				"docCommentLanguage": "ENGLISH",
 				"fileTypes": [
 					".md",
 					".txt"
 				],
-				"stringLanguage": "ENGLISH",
-				"singleLineCommentLanguage": "ENGLISH",
 				"multiLineCommentLanguage": "ENGLISH",
-				"docCommentLanguage": "ENGLISH",
-				"defaultLanguage": "ENGLISH"
+				"name": "文档文件默认规则",
+				"singleLineCommentLanguage": "ENGLISH",
+				"stringLanguage": "ENGLISH"
 			}
 		],
-		"chineseSymbolReplaceRules": [
-			{
-				"name": "常用中文替换",
-				"fileTypes": [
-					".md"
-				],
-				"symbols": [
-					"《",
-					"》",
-					"「",
-					"」",
-					"『",
-					"』",
-					"【",
-					"】",
-					"（",
-					"）",
-					"“",
-					"”",
-					"‘",
-					"’",
-					"？",
-					"：",
-					"；",
-					"、",
-					"！",
-					"—",
-					"·",
-					"￥"
-				]
-			}
-		],
+		"enableAutoSwitch": true,
+		"enableCursorColor": true,
+		"enableCursorDecorations": true,
+		"enableStatusBar": true,
+		"englishInputMethodForMac": "ABC",
+		"inputMethodForLinux": "",
+		"inputMethodForWindows": "",
+		"inputMethodSwitchShortcutForMac": "Shift",
+		"inputMethodSwitchShortcutForWindows": "Shift",
+		"motherTongueInputMethodForMac": "搜狗拼音",
 		"regexMatchRules": [
 			{
-				"name": "中文之间",
 				"fileTypes": [
 					".dart",
 					".md",
@@ -511,50 +436,161 @@
 					".xml",
 					".svg"
 				],
+				"language": "NO_CHANGE",
 				"leftPattern": ".*[\\u4e00-\\u9fa5\\u3000-\\u303F\\uff00-\\uffef]$",
-				"rightPattern": "^[\\u4e00-\\u9fa5\\u3000-\\u303F\\uff00-\\uffef].*",
 				"matchCondition": "ANY",
-				"language": "NO_CHANGE"
+				"name": "中文之间",
+				"rightPattern": "^[\\u4e00-\\u9fa5\\u3000-\\u303F\\uff00-\\uffef].*"
 			}
 		]
 	},
-	"code-runner.clearPreviousOutput": true,
-	"code-runner.ignoreSelection": true,
-	"code-runner.saveAllFilesBeforeRun": true,
-	"code-runner.runInTerminal": true,
-	"code-runner.saveFileBeforeRun": true,
-	"code-runner.showExecutionMessage": false,
-	"code-runner.executorMap": {
-		"javascript": "/opt/homebrew/bin/node",
-		"typescript": "/opt/homebrew/bin/node",
-		"python": "/Users/dyx/.local/bin/python-run"
+	"smartInputPro.CursorColor": {
+		"en": "#51d237",
+		"zh": "#ff0000"
 	},
-	"security.promptForLocalFileProtocolHandling": false,
-	"security.workspace.trust.untrustedFiles": "open",
-	"workbench.experimental.modernUI": true,
+	"smartInputPro.enable": true,
+	"smartInputPro.enableAutoDefaultIM": true,
+	"smartInputPro.enableModeIMConfig": false,
+	"smartInputPro.enableSmartSpaceInChinese": false,
 	"supermaven.allowGitignore": true,
-	"window.zoomLevel": 1.2,
-	"workbench.editor.enablePreview": false,
-	"explorer.confirmDelete": false,
-	"editor.unicodeHighlight.includeStrings": false,
-	"workbench.colorTheme": "Atom One Dark",
-	"[markdown]": {
-		"editor.defaultFormatter": "charliermarsh.ruff"
-	},
+	"supermaven.enable": true,
 	"supermaven.enableFixWithSupermaven": true,
-	"chatgpt.followUpQueueMode": "steer",
-	"github.copilot.enable": {
-		"*": false,
-		"plaintext": false,
-		"markdown": false,
-		"scminput": false,
-		"python": false
-	},
+	"terminal.external.osxExec": "Otty.app",
+	"terminal.integrated.accessibleViewFocusOnCommandExecution": true,
+	"terminal.integrated.allowInUntrustedWorkspace": true,
 	"terminal.integrated.autohide": "onFocusChange",
+	"terminal.integrated.copyOnSelection": true,
+	"terminal.integrated.cursorBlinking": true,
+	"terminal.integrated.defaultProfile.osx": "zsh",
+	"terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono', 'PingFang SC', 'Menlo', monospace",
+	"terminal.integrated.fontSize": 14,
+	"terminal.integrated.fontWeight": "normal",
 	"terminal.integrated.hideOnFocusLost": true,
+	"terminal.integrated.profiles.osx": {
+		"zsh": {
+			"args": [
+				"-c",
+				"for venv in .venv venv .venv37 .venv312; do if [ -d \"$venv\/bin\" ]; then source \"$venv\/bin\/activate\" && break; fi; done; exec zsh -l"
+			],
+			"path": "\/opt\/homebrew\/bin\/zsh"
+		}
+	},
+	"terminal.integrated.shellIntegration.enabled": true,
+	"terminal.integrated.smoothScrolling": true,
 	"terminal.integrated.tabs.enabled": true,
+	"vim.autoSwitchInputMethod.defaultLanguage": "com.apple.keylayout.ABC",
+	"vim.autoSwitchInputMethod.enable": true,
+	"vim.blockCursorIsInInsertMode": false,
+	"vim.camelCaseMotion.enable": true,
+	"vim.cursorStylePerMode": {
+		"insert": "line",
+		"normal": "block",
+		"replace": "underline",
+		"visual": "block",
+		"visualblock": "block",
+		"visualline": "block"
+	},
+	"vim.easymotion": true,
+	"vim.enableMsOfCodeMotionKeys": true,
+	"vim.enableNeovim": false,
+	"vim.handleKeys": {
+		"<A-h>": false,
+		"<A-l>": false,
+		"<A-v>": false,
+		"<C-c>": false,
+		"<C-f>": false,
+		"<C-v>": true
+	},
+	"vim.highlightedyank.enable": true,
+	"vim.hlsearch": true,
+	"vim.ideaMotionBindings": true,
+	"vim.ignorecase": true,
+	"vim.incsearch": true,
+	"vim.leader": " ",
+	"vim.mouseSelectionGoesIntoVisualMode": false,
+	"vim.normalModeKeyBindingsNonRecursive": [
+		{
+			"after": [
+				"<leader>",
+				"<leader>",
+				"s"
+			],
+			"before": [
+				"s"
+			]
+		}
+	],
+	"vim.overrideCopy": false,
+	"vim.replaceWithRegister": true,
+	"vim.searchIncludeMatchHistory": true,
+	"vim.smartcase": true,
+	"vim.smartRelativeLine": true,
+	"vim.sneak": true,
+	"vim.sneakUseIgnorecaseAndSmartcase": true,
+	"vim.startInInsertMode": false,
+	"vim.textobjKeybindings": [
+		{
+			"after": [
+				"i",
+				"\""
+			],
+			"before": [
+				"iq"
+			]
+		},
+		{
+			"after": [
+				"i",
+				"'"
+			],
+			"before": [
+				"ie"
+			]
+		},
+		{
+			"after": [
+				"i",
+				"("
+			],
+			"before": [
+				"ib"
+			]
+		}
+	],
+	"vim.useCtrlKeys": true,
+	"vim.useSystemClipboard": true,
+	"vim.vimrc.enable": true,
+	"vim.vimrc.path": "\/Users\/dyx\/.vimrc",
+	"vscode-office.editMode": "ir",
+	"window.autoDetectHighContrast": false,
+	"window.zoomLevel": 1.2,
+	"workbench.colorCustomizations": {
+		"editorCursor.foreground": "#51d237"
+	},
+	"workbench.colorTheme": "One Dark Modern Classic",
+	"workbench.editor.alwaysShowEditorActions": true,
+	"workbench.editor.enablePreview": false,
+	"workbench.editor.highlightModifiedTabs": true,
+	"workbench.editor.preferHistoryBasedLanguageDetection": true,
+	"workbench.editor.sharedViewState": true,
+	"workbench.editor.wrapTabs": true,
+	"workbench.editorAssociations": {
+		"*.copilotmd": "vscode.markdown.preview.editor",
+		"*.dat": "datViewer.tabularView",
+		"*.docx": "quickdoc.docxEditor",
+		"*.md": "vscode.markdown.preview.editor"
+	},
+	"workbench.enableSounds": false,
+	"workbench.experimental.modernUI": true,
+	"workbench.iconTheme": "office-material-icon-theme",
+	"workbench.list.smoothScrolling": true,
+	"workbench.localHistory.mergeWindow": 1,
 	"workbench.panel.defaultLocation": "bottom",
-	"chat.mcp.gallery.enabled": true,
-	"files.autoSaveWhenNoErrors": true,
-	"workbench.startupEditor": "welcomePageInEmptyWorkbench"
+	"workbench.sounds.volume": 0,
+	"editor.unicodeHighlight.ambiguousCharacters": false,
+	"editor.largeFileOptimizations": false,
+	"continue.enableConsole": true,
+	"claudeCode.allowDangerouslySkipPermissions": true,
+	"claudeCode.disableLoginPrompt": true,
+	"deepseek-copilot.experimental.stabilizeToolList": true
 }
