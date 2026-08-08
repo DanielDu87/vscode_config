@@ -17,8 +17,8 @@
 			"\t<body>",
 			"\t\td$0",
 			"\t</body>",
-			"</html>"
+			"</html>",
 		],
-		"description": "HTML5 基础模板"
+		"description": "HTML5 基础模板",
 	}
 }

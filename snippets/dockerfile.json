@@ -14,7 +14,7 @@
 			"",
 			"COPY . .",
 			"",
-			'CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]',
+			"CMD [\"python\", \"manage.py\", \"runserver\", \"0.0.0.0:8000\"]",
 			"$0"
 		],
 		"description": "Python Django/Flask 基础 Dockerfile 模板"
@@ -32,7 +32,7 @@
 			"COPY . .",
 			"",
 			"EXPOSE 3000",
-			'CMD ["npm", "start"]',
+			"CMD [\"npm\", \"start\"]",
 			"$0"
 		],
 		"description": "Node.js 基础 Dockerfile 模板"
@@ -46,7 +46,7 @@
 			"COPY static /usr/share/nginx/html",
 			"",
 			"EXPOSE 80",
-			'CMD ["nginx", "-g", "daemon off;"]',
+			"CMD [\"nginx\", \"-g\", \"daemon off;\"]",
 			"$0"
 		],
 		"description": "Nginx 反向代理 Dockerfile 模板"
@@ -66,7 +66,7 @@
 			"FROM nginx:alpine",
 			"COPY --from=builder /app/dist /usr/share/nginx/html",
 			"EXPOSE 80",
-			'$0'
+			"$0"
 		],
 		"description": "多阶段构建 Dockerfile 模板"
 	},
@@ -123,7 +123,7 @@
 	"CMD - 启动命令": {
 		"prefix": "cmd",
 		"body": [
-			'CMD ["${1:python}", "${2:manage.py}", "${3:runserver}"]',
+			"CMD [\"${1:python}\", \"${2:manage.py}\", \"${3:runserver}\"]",
 			"$0"
 		],
 		"description": "CMD 启动命令指令"
@@ -131,8 +131,8 @@
 	"ENTRYPOINT - 入口点": {
 		"prefix": "entry",
 		"body": [
-			'ENTRYPOINT ["${1:python}"]',
-			'$0'
+			"ENTRYPOINT [\"${1:python}\"]",
+			"$0"
 		],
 		"description": "ENTRYPOINT 入口点指令"
 	},

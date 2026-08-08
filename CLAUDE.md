@@ -26,22 +26,22 @@ This repository uses a **hybrid Vim configuration approach** across multiple fil
 
 - Plugin toggles (EasyMotion, Sneak, Neovim backend disabled)
 - `vim.handleKeys` - Controls which keys VSCode intercepts vs passes to Vim
-- `vim.textobjKeybindings` - Custom text objects (JSON format overrides .vimrc)
+- `vim.operatorPendingModeKeyBindingsNonRecursive` - Custom operator-pending text objects (for example, `ciq` inside double quotes and `cie` inside single quotes)
 - Smart Input Pro configuration (Chinese/English auto-switch based on context)
 - Code Runner executorMap (Node.js path: `/opt/homebrew/bin/node`)
 
-**Tier 2: `~/.vimrc`** - Standard Vim mappings
+**Tier 2: `~/.vimrc`** - Shared terminal Vim baseline
 
-- Leader key: Comma (`,`)
-- System-level mappings (Ctrl+J/K for half-page scrolling)
-- Text objects: `iq`→`i"`, `ie`→`i'`
-- Note: Limited .vimrc support in VSCode Vim (no Ex commands like `:m .+1`)
+- Leader key: Space
+- Basic search and clipboard behavior
+- Note: VSCodeVim loads this file with limited support; VS Code-specific mappings remain in `settings.json` and `keybindings.json`
+
 
 **Tier 3: `keybindings.json`** - VSCode-native shortcuts
 
 - Option key mappings require BOTH `keybindings.json` entry AND `vim.handleKeys` entry
 - Uses `vim.remap` command for Vim sequences
-- Smart file runner (Cmd+3): HTML→Live Server, Python→execInTerminal, JS/TS→Code Runner
+- Smart file runner (Cmd+3): HTML→Live Server; Python, JS/TS, C/C++→Code Runner
 
 ### 2. Critical Configuration Pattern
 
@@ -83,8 +83,7 @@ Key language rules:
 
 - **Relative line numbers** (Vim mode optimal)
 - **Tab characters** (not spaces) for indentation
-- **Format on save** enabled with Prettier
-- **Python interpreter** at `/Users/dyx/Code/0.python-venv/mySite-django5.0-py3.12/bin/python3`
+- **Format on save** enabled globally; Python uses Ruff for formatting, fixes, and import organization
 - **Python language server**: Pylance
 - **Network proxy** at `http://127.0.0.1:7890`
 
@@ -100,13 +99,8 @@ Key language rules:
 | `Option+D` | Delete line | Insert |
 | `Option+Z` | Center cursor | Normal |
 | `Ctrl+D` | Clear line + Insert mode | Normal/Insert |
-| `Cmd+1` | Next error/warning | All |
-| `Cmd+2` | Format document | All |
-| `Cmd+3` | Smart file run | Editor focus |
-| `Cmd+I` | AceJump | All |
-| `Cmd+R` | Find/replace | Editor focus |
-| `S` | EasyMotion | Normal |
-| `Alt+-/=` | Prev/next tab | All |
+| `Ctrl+Shift+D` | Copy line down | Editor focus |
+| `Cmd+D` | Add next match selection | Editor focus |
 
 ## File Locations
 
@@ -129,21 +123,20 @@ Key language rules:
 
 Key extensions installed:
 - **Vim**: `vscodevim.vim`
-- **Python**: `ms-python.python`, `ms-python.vscode-pylance`
-- **Docker**: `ms-vscode-remote.remote-ssh`, `ms-azuretools.vscode-docker`
-- **Web**: `ritwickdey.liveserver`, `esbenp.prettier-vscode`
-- **Tailwind**: `bradlc.vscode-tailwindcss`
+- **Python**: `ms-python.python`, `ms-python.vscode-pylance`, `ms-python.debugpy`, `ms-python.vscode-python-envs`, `charliermarsh.ruff`
 - **Input**: `xiaolvpuzi.smart-input-pro-vscode`
 - **Runner**: `formulahendry.code-runner`
+- **AI**: `anthropic.claude-code`, `openai.chatgpt`, `supermaven.supermaven`
+- **Theme**: `akamud.vscode-theme-onedark`, `atommaterial.a-file-icon-vscode`
 
 ## Important Notes
 
 - `.vimrc` has limited support in VSCode Vim (no Ex commands, complex scripts)
-- For custom text objects, prefer `vim.textobjKeybindings` in settings.json over .vimrc
+- For custom text objects, use `vim.operatorPendingModeKeyBindingsNonRecursive` in settings.json rather than .vimrc
 - Always test Option key mappings - they may not work if `vim.handleKeys` is not configured
 - The `s` key is remapped to EasyMotion (via settings.json), overriding default Vim behavior
 - Ctrl+D is remapped to clear line (not default Vim half-page down)
-- Leader key in `.vimrc` is comma `,`, but settings.json may override to space
+- Leader is space in both `.vimrc` and VSCodeVim settings
 
 ---
 

@@ -6,6 +6,56 @@
 
 ============================================================
 
+## 6. 【2026-08-08 13:26】- 统一 VS Code、Vim 与扩展配置
+
+### 修改内容
+
+- 更新 `settings.json` 与 `keybindings.json`：`Ctrl+Shift+D` 负责复制当前行，`Cmd+D` 负责逐次添加相同单词选择，`Ctrl+D` 在 Normal/Insert 模式都清空当前行并进入插入态；`ciq` / `cie` 通过 VSCodeVim 支持的 operator-pending 映射处理双引号 / 单引号文本对象。
+- 移除本机残留的 `wenfangdu.jump` 扩展目录，消除 `Esc` 触发 `setDecorations` 异常的来源。
+
+### 实现方式
+
+- 全局 `editor.formatOnSave`、`editor.insertSpaces`、`editor.tabSize` 和 `editor.acceptSuggestionOnEnter` 作为唯一通用设置；Python 保留 Ruff 专属格式化、修复和导入排序。
+- `.vimrc` 仅保留终端 Vim 的基础搜索、剪贴板和 `K` 映射，VS Code 专属映射统一在 `settings.json` 与 `keybindings.json`；移除不受当前 VSCodeVim 支持的 `vim.textobjKeybindings` 与劫持普通 `q` 的错误键位，避免 `ciq` 多余输入和 `cie` 误操作整份文档。
+- BTT 的 `Option+1/3` 不在本仓库修改；`Cmd+1` 和 `Cmd+3` 继续由 VS Code 使用，互不抢占。
+
+### 验证
+
+- Node.js JSONC 解析通过 `settings.json`、快捷键、任务、模型、扩展和全部片段文件。
+- `vim -Nu /Users/dyx/.vimrc -n -es +'qa!'` 通过。
+- `extensions-template.json` 保留 15 个核心推荐扩展；`.vscode/extensions.json` 在提交前同步为当前实际安装的 30 个扩展。
+- 失效 YAPF、Autopep8、Prettier、Copilot、Jump Extension 和旧 Leader 引用检索为空；`git diff --check` 通过。
+
+### 潜在或遗留问题
+
+- BetterTouchTool 中仍保留 `Option+1/3` 专属和全局规则；按用户要求未修改 BTT，若其全局条件与 Code 专属规则同时命中，需在 BTT 图形界面单独确认。
+- VS Code 需要重新加载窗口后才会应用更新后的用户配置。
+
+============================================================
+
+## 5. 【2026-08-08 11:27】- 修复 Vim 模式 Esc 触发 Jump 扩展异常并配置 EasyMotion 快捷键
+
+### 修改内容
+
+- 将 `Cmd+I` 配置为仅在 VSCodeVim Normal 模式下直接触发 EasyMotion 全屏字符跳转。
+
+### 实现方式
+
+- VS Code 扩展主机日志定位到 `wenfangdu.jump` v0.8.0 的 `Jump.setDecorations` 对未定义编辑器调用；该扩展而非 VSCodeVim 在 `Esc` 退出跳转模式时抛出异常。
+- `Cmd+I` 使用模式限定的 `vim.remap` 映射为 `<leader><leader>s`；按下后输入目标字符即可跳转。
+
+### 验证
+
+- 使用 Node.js 按 JSONC 规则解析 `keybindings.json`，通过。
+- `git diff --check` 通过。
+- 未在 VS Code 图形界面中重新加载窗口，因此未执行端到端按键验证。
+
+### 潜在或遗留问题
+
+- VS Code 需要重新加载窗口后才会应用新的 `Cmd+I` 键位。
+
+============================================================
+
 ## 4. 【2026-08-08 11:15】- 同步 VS Code 新增配置并清理无效凭据
 
 ### 修改内容

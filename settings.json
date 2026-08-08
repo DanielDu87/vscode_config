@@ -3,47 +3,24 @@
 		"editor.defaultFormatter": "vscode.css-language-features"
 	},
 	"[django-html]": {
-		"editor.defaultFormatter": "vscode.html-language-features",
-		"editor.formatOnSave": true,
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4
+		"editor.defaultFormatter": "vscode.html-language-features"
 	},
 	"[html]": {
-		"editor.defaultFormatter": "vscode.html-language-features",
-		"editor.formatOnSave": true,
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4
-	},
-	"[javascript]": {
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4
-	},
-	"[javascriptreact]": {
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4
+		"editor.defaultFormatter": "vscode.html-language-features"
 	},
 	"[json]": {
-		"editor.defaultFormatter": "vscode.json-language-features",
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4
-	},
-	"[jsonc]": {
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4
+		"editor.defaultFormatter": "vscode.json-language-features"
 	},
 	"[markdown]": {
 		"editor.defaultFormatter": "charliermarsh.ruff",
 		"markdown.preview.useMarkdownExtension": true
 	},
 	"[python]": {
-		"editor.acceptSuggestionOnEnter": "off",
 		"editor.codeActionsOnSave": {
 			"source.fixAll.ruff": "always",
 			"source.organizeImports.ruff": "always"
 		},
 		"editor.defaultFormatter": "charliermarsh.ruff",
-		"editor.formatOnSave": true,
-		"editor.insertSpaces": false,
 		"editor.parameterHints.enabled": true,
 		"editor.quickSuggestions": {
 			"comments": "on",
@@ -52,16 +29,7 @@
 		},
 		"editor.quickSuggestionsDelay": 0,
 		"editor.suggestOnTriggerCharacters": true,
-		"editor.tabSize": 4,
 		"editor.wordBasedSuggestions": "allDocuments"
-	},
-	"[typescript]": {
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4
-	},
-	"[typescriptreact]": {
-		"editor.insertSpaces": false,
-		"editor.tabSize": 4
 	},
 	"chat.mcp.gallery.enabled": true,
 	"chatgpt.followUpQueueMode": "steer",
@@ -75,7 +43,6 @@
 	"code-runner.ignoreSelection": true,
 	"code-runner.runInTerminal": true,
 	"code-runner.saveAllFilesBeforeRun": true,
-	"code-runner.saveFileBeforeRun": true,
 	"code-runner.showExecutionMessage": false,
 	"debug.allowBreakpointsEverywhere": true,
 	"debug.autoExpandLazyVariables": "on",
@@ -175,14 +142,6 @@
 		"**\/.idea": true
 	},
 	"git.openRepositoryInParentFolders": "always",
-	"github.copilot.enable": {
-		"*": false,
-		"markdown": false,
-		"plaintext": false,
-		"python": false,
-		"scminput": false
-	},
-	"github.copilot.inlineSuggest.enable": false,
 	"http.noProxy": [
 		"localhost",
 		"127.0.0.1",
@@ -444,10 +403,6 @@
 			}
 		]
 	},
-	"smartInputPro.CursorColor": {
-		"en": "#51d237",
-		"zh": "#ff0000"
-	},
 	"smartInputPro.enable": true,
 	"smartInputPro.enableAutoDefaultIM": true,
 	"smartInputPro.enableModeIMConfig": false,
@@ -528,14 +483,15 @@
 	"vim.sneak": true,
 	"vim.sneakUseIgnorecaseAndSmartcase": true,
 	"vim.startInInsertMode": false,
-	"vim.textobjKeybindings": [
+	"vim.operatorPendingModeKeyBindingsNonRecursive": [
 		{
 			"after": [
 				"i",
 				"\""
 			],
 			"before": [
-				"iq"
+				"i",
+				"q"
 			]
 		},
 		{
@@ -544,16 +500,8 @@
 				"'"
 			],
 			"before": [
-				"ie"
-			]
-		},
-		{
-			"after": [
 				"i",
-				"("
-			],
-			"before": [
-				"ib"
+				"e"
 			]
 		}
 	],
@@ -567,7 +515,7 @@
 	"workbench.colorCustomizations": {
 		"editorCursor.foreground": "#51d237"
 	},
-	"workbench.colorTheme": "One Dark Modern Classic",
+	"workbench.colorTheme": "GitHub Dark",
 	"workbench.editor.alwaysShowEditorActions": true,
 	"workbench.editor.enablePreview": false,
 	"workbench.editor.highlightModifiedTabs": true,

@@ -40,15 +40,6 @@
 		"key": "cmd+f12",
 		"command": "workbench.profiles.actions.exportProfile",
 	},
-	// AceJump / FindThenJump 快速跳转
-	{
-		"key": "cmd+i",
-		"command": "extension.aceJump",
-	},
-	{
-		"key": "cmd+i",
-		"command": "findThenJump.initiate",
-	},
 	// 错误/警告跳转
 	{
 		"key": "cmd+1",
@@ -87,12 +78,18 @@
 		"key": "shift+cmd+h",
 		"command": "-workbench.action.replaceInFiles",
 	},
-	// 行复制 (Cmd+D)
-	{
-		"key": "cmd+d",
-		"command": "editor.action.copyLinesDownAction",
-		"when": "editorTextFocus && !editorReadonly",
-	},
+		// 行复制 (Ctrl+Shift+D)
+		{
+			"key": "ctrl+shift+d",
+			"command": "editor.action.copyLinesDownAction",
+			"when": "editorTextFocus && !editorReadonly",
+		},
+		// 逐次添加相同单词选择 (Cmd+D)
+		{
+			"key": "cmd+d",
+			"command": "editor.action.addSelectionToNextFindMatch",
+			"when": "editorTextFocus && !editorReadonly",
+		},
 	// 行移动 (Alt+J/K)
 	{
 		"key": "alt+j",
@@ -111,7 +108,9 @@
 	{
 		"key": "space",
 		"command": "type",
-		"args": { "text": ":" },
+		"args": {
+			"text": ":"
+		},
 		"when": "vim.mode == 'Normal' && editorTextFocus && !editorHasMultipleSelections && !editorReadonly"
 	},
 	// 取消查找高亮
@@ -119,80 +118,119 @@
 		"key": "space h",
 		"command": "vim.remap",
 		"when": "vim.mode == 'Normal' && editorTextFocus",
-		"args": { "after": [":nohlsearch", "<CR>"] }
+		"args": {
+			"after": [
+				":nohlsearch",
+				"<CR>"
+			]
+		}
 	},
 	// Option+H/L 行首行尾
 	{
 		"key": "alt+h",
 		"command": "vim.remap",
 		"when": "vim.mode == 'Normal'",
-		"args": { "after": ["^"] }
+		"args": {
+			"after": [
+				"^"
+			]
+		}
 	},
 	{
 		"key": "alt+l",
 		"command": "vim.remap",
 		"when": "vim.mode == 'Normal'",
-		"args": { "after": ["$"] }
+		"args": {
+			"after": [
+				"$"
+			]
+		}
 	},
 	// Ctrl+K/J 翻半屏
 	{
 		"key": "ctrl+k",
 		"command": "vim.remap",
 		"when": "vim.mode == 'Normal'",
-		"args": { "after": ["<C-u>"] }
+		"args": {
+			"after": [
+				"<C-u>"
+			]
+		}
 	},
 	{
 		"key": "ctrl+j",
 		"command": "vim.remap",
 		"when": "vim.mode == 'Normal'",
-		"args": { "after": ["<C-d>"] }
+		"args": {
+			"after": [
+				"<C-d>"
+			]
+		}
 	},
 	// Insert 模式 Option+D 删除当前行
 	{
 		"key": "alt+d",
 		"command": "vim.remap",
 		"when": "vim.mode == 'Insert'",
-		"args": { "after": ["<Esc>", "c", "c"] }
+		"args": {
+			"after": [
+				"<Esc>",
+				"c",
+				"c"
+			]
+		}
 	},
 	// Normal 模式 Option+Z 居中
 	{
 		"key": "alt+z",
 		"command": "vim.remap",
 		"when": "vim.mode == 'Normal'",
-		"args": { "after": ["G", "z", "z"] }
+		"args": {
+			"after": [
+				"G",
+				"z",
+				"z"
+			]
+		}
 	},
 	// Option+V Visual Block
 	{
 		"key": "alt+v",
 		"command": "vim.remap",
-		"args": { "after": ["<C-v>"] }
+		"args": {
+			"after": [
+				"<C-v>"
+			]
+		}
 	},
 	{
 		"key": "alt+v",
 		"command": "-editor.action.clipboardPasteAction",
 	},
-	// Ctrl+D Normal 模式多光标
+	// Ctrl+D Normal 模式清空当前行
 	{
 		"key": "ctrl+d",
-		"command": "editor.action.addSelectionToNextFindMatch",
+		"command": "vim.remap",
 		"when": "vim.mode == 'Normal' && editorTextFocus",
+		"args": {
+			"after": [
+				"<Esc>",
+				"c",
+				"c"
+			]
+		}
 	},
 	// Ctrl+D Insert 模式删除行
 	{
 		"key": "ctrl+d",
 		"command": "vim.remap",
 		"when": "vim.mode == 'Insert'",
-		"args": { "after": ["<Esc>", "c", "c"] }
-	},
-	// 自定义文本对象 (引号)
-	// ciq/cq - 修改引号内
-	{
-		"key": "q",
-		"command": "vim.remap",
-		"when": "vim.mode == 'Normal' && editorTextFocus",
 		"args": {
-			"before": ["c", "i", "q"],
-			"after": ["c", "i", "\""]
+			"after": [
+				"<Esc>",
+				"c",
+				"c"
+			]
 		}
 	},
 	// v模式移动行首行尾
@@ -200,13 +238,23 @@
 		"key": "alt+h",
 		"command": "vim.remap",
 		"when": "vim.mode == 'Visual'",
-		"args": { "after": ["v", "^"] }
+		"args": {
+			"after": [
+				"v",
+				"^"
+			]
+		}
 	},
 	{
 		"key": "alt+l",
 		"command": "vim.remap",
 		"when": "vim.mode == 'Visual'",
-		"args": { "after": ["v", "$"] }
+		"args": {
+			"after": [
+				"v",
+				"$"
+			]
+		}
 	},
 	// ============================================================
 	// 智能运行文件 (Smart File Runner - Cmd+3)
@@ -219,27 +267,7 @@
 	{
 		"key": "cmd+3",
 		"command": "code-runner.run",
-		"when": "editorLangId == python && editorTextFocus",
-	},
-	{
-		"key": "cmd+3",
-		"command": "code-runner.run",
-		"when": "editorLangId == javascript && editorTextFocus",
-	},
-	{
-		"key": "cmd+3",
-		"command": "code-runner.run",
-		"when": "editorLangId == typescript && editorTextFocus",
-	},
-	{
-		"key": "cmd+3",
-		"command": "code-runner.run",
-		"when": "editorLangId == c && editorTextFocus",
-	},
-	{
-		"key": "cmd+3",
-		"command": "code-runner.run",
-		"when": "editorLangId == cpp && editorTextFocus",
+		"when": "editorLangId =~ /^(python|javascript|typescript|c|cpp)$/ && editorTextFocus",
 	},
 	// ============================================================
 	// 其他
@@ -274,5 +302,22 @@
 		"key": "tab",
 		"command": "-editor.action.inlineSuggest.commit",
 		"when": "inlineSuggestionVisible && !editorTabMovesFocus && !suggestWidgetVisible",
+	},
+	{
+		"key": "cmd+2",
+		"command": "-workbench.action.focusSecondEditorGroup"
+	},
+	// Vim Normal 模式 Cmd+I 直接触发 EasyMotion 全屏字符跳转
+	{
+		"key": "cmd+i",
+		"command": "vim.remap",
+		"when": "vim.mode == 'Normal' && editorTextFocus",
+		"args": {
+			"after": [
+				"<leader>",
+				"<leader>",
+				"s"
+			]
+		}
 	}
 ]
