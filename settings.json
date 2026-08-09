@@ -89,7 +89,9 @@
 	],
 	"editor.scrollbar.ignoreHorizontalScrollbarInContentHeight": true,
 	"editor.scrollbar.scrollByPage": true,
-	"editor.selectionHighlightMultiline": true,
+	"editor.occurrencesHighlight": "off",
+	"editor.selectionHighlight": false,
+	"editor.selectionHighlightMultiline": false,
 	"editor.semanticTokenColorCustomizations": {
 		"[Atom One Dark]": {
 			"enabled": true,
@@ -225,44 +227,21 @@
 	"security.promptForLocalFileProtocolHandling": false,
 	"security.workspace.trust.untrustedFiles": "open",
 	"smartInputPro.config": {
-		"chineseSymbolReplaceRules": [
-			{
-				"fileTypes": [
-					".md"
-				],
-				"name": "常用中文替换",
-				"symbols": [
-					"《",
-					"》",
-					"「",
-					"」",
-					"『",
-					"』",
-					"【",
-					"】",
-					"（",
-					"）",
-					"“",
-					"”",
-					"‘",
-					"’",
-					"？",
-					"：",
-					"；",
-					"、",
-					"！",
-					"—",
-					"·",
-					"￥"
-				]
-			}
-		],
+		"enableAutoSwitch": true,
+		"enableStatusBar": true,
 		"cursorColorChinese": "#c31818",
 		"cursorColorEnglish": "#51d237",
+		"enableCursorDecorations": false,
+		"enableCursorColor": true,
+		"inputMethodForWindows": "",
+		"inputMethodForLinux": "",
+		"inputMethodSwitchShortcutForWindows": "Shift",
+		"englishInputMethodForMac": "ABC",
+		"motherTongueInputMethodForMac": "搜狗拼音",
+		"inputMethodSwitchShortcutForMac": "Shift",
 		"defaultContextLanguage": [
 			{
-				"defaultLanguage": "ENGLISH",
-				"docCommentLanguage": "NO_CHANGE",
+				"name": "代码文件默认规则",
 				"fileTypes": [
 					".lua",
 					".asm",
@@ -317,36 +296,60 @@
 					".xaml",
 					".svg"
 				],
-				"multiLineCommentLanguage": "NO_CHANGE",
-				"name": "代码文件默认规则",
+				"stringLanguage": "ENGLISH",
 				"singleLineCommentLanguage": "NO_CHANGE",
-				"stringLanguage": "ENGLISH"
+				"multiLineCommentLanguage": "NO_CHANGE",
+				"docCommentLanguage": "NO_CHANGE",
+				"defaultLanguage": "ENGLISH"
 			},
 			{
-				"defaultLanguage": "ENGLISH",
-				"docCommentLanguage": "ENGLISH",
+				"name": "文档文件默认规则",
 				"fileTypes": [
 					".md",
 					".txt"
 				],
-				"multiLineCommentLanguage": "ENGLISH",
-				"name": "文档文件默认规则",
+				"stringLanguage": "ENGLISH",
 				"singleLineCommentLanguage": "ENGLISH",
-				"stringLanguage": "ENGLISH"
+				"multiLineCommentLanguage": "ENGLISH",
+				"docCommentLanguage": "ENGLISH",
+				"defaultLanguage": "ENGLISH"
 			}
 		],
-		"enableAutoSwitch": true,
-		"enableCursorColor": true,
-		"enableCursorDecorations": true,
-		"enableStatusBar": true,
-		"englishInputMethodForMac": "ABC",
-		"inputMethodForLinux": "",
-		"inputMethodForWindows": "",
-		"inputMethodSwitchShortcutForMac": "Shift",
-		"inputMethodSwitchShortcutForWindows": "Shift",
-		"motherTongueInputMethodForMac": "搜狗拼音",
+		"chineseSymbolReplaceRules": [
+			{
+				"name": "常用中文替换",
+				"fileTypes": [
+					".md"
+				],
+				"symbols": [
+					"《",
+					"》",
+					"「",
+					"」",
+					"『",
+					"』",
+					"【",
+					"】",
+					"（",
+					"）",
+					"“",
+					"”",
+					"‘",
+					"’",
+					"？",
+					"：",
+					"；",
+					"、",
+					"！",
+					"—",
+					"·",
+					"￥"
+				]
+			}
+		],
 		"regexMatchRules": [
 			{
+				"name": "中文之间",
 				"fileTypes": [
 					".dart",
 					".md",
@@ -395,11 +398,10 @@
 					".xml",
 					".svg"
 				],
-				"language": "NO_CHANGE",
 				"leftPattern": ".*[\\u4e00-\\u9fa5\\u3000-\\u303F\\uff00-\\uffef]$",
+				"rightPattern": "^[\\u4e00-\\u9fa5\\u3000-\\u303F\\uff00-\\uffef].*",
 				"matchCondition": "ANY",
-				"name": "中文之间",
-				"rightPattern": "^[\\u4e00-\\u9fa5\\u3000-\\u303F\\uff00-\\uffef].*"
+				"language": "NO_CHANGE"
 			}
 		]
 	},
@@ -437,14 +439,14 @@
 	"vim.autoSwitchInputMethod.enable": true,
 	"vim.blockCursorIsInInsertMode": false,
 	"vim.camelCaseMotion.enable": true,
-	"vim.cursorStylePerMode": {
-		"insert": "line",
-		"normal": "block",
-		"replace": "underline",
-		"visual": "block",
-		"visualblock": "block",
-		"visualline": "block"
-	},
+"vim.cursorStylePerMode": {
+			"insert": "line",
+			"normal": "block",
+			"replace": "underline",
+			"visual": "block",
+			"visualblock": "block",
+			"visualline": "block"
+		},
 	"vim.easymotion": true,
 	"vim.enableMsOfCodeMotionKeys": true,
 	"vim.enableNeovim": false,
@@ -579,5 +581,5 @@
 	"window.newWindowProfile": "默认",
 	"terminal.integrated.defaultLocation": "view",
 	"terminal.integrated.enableImages": true,
-	"terminal.integrated.fontLigatures.enabled": true
+	"terminal.integrated.fontLigatures.enabled": true,
 }

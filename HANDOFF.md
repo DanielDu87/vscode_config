@@ -6,6 +6,51 @@
 
 ============================================================
 
+## 19. 【2026-08-09 23:34】- 关闭相同单词绿色高亮框
+
+### 修改内容
+
+- 关闭 VS Code 光标落在文字上时，对相同单词 / 选中文本的绿色高亮框。
+- 恢复 Vim 普通模式块状光标，撤销本次误改。
+
+### 实现方式
+
+- 新增 `editor.occurrencesHighlight: "off"`，关闭同词出现高亮。
+- 设置 `editor.selectionHighlight: false`、`editor.selectionHighlightMultiline: false`，关闭选中文本匹配高亮。
+- 将 `vim.cursorStylePerMode.normal` 恢复为 `block`。
+
+### 验证
+
+- 以 JSONC 宽松解析校验 `settings.json` 通过。
+- 确认 `occurrencesHighlight=off`、`selectionHighlight=false`、`selectionHighlightMultiline=false`、`vim.cursorStylePerMode.normal=block`。
+- 未做图形界面端到端验证；VS Code 通常会立即应用这些编辑器设置。
+
+### 潜在或遗留问题
+
+- 若仍看到绿色高亮，可能来自查找匹配、语义高亮或主题色；可再关 `editor.find` 相关高亮或检查主题。
+
+============================================================
+
+## 18. 【2026-08-09 23:10】- 关闭中文输入法光标绿色方框
+
+### 修改内容
+
+- 在 `settings.json` 的 `smartInputPro.config` 中关闭光标装饰框，去掉文字上方的绿色方框显示。
+
+### 实现方式
+
+- 仅将 `smartInputPro.config.enableCursorDecorations` 从 `true` 改为 `false`，保留输入法自动切换、光标颜色和状态栏显示等其它设置不变。
+
+### 验证
+
+- 已完成配置修改，目标项为单一布尔开关。
+
+### 潜在或遗留问题
+
+- 如果绿色方框来自其他扩展或 VS Code 原生装饰，可能还需要再关对应的光标高亮项。
+
+============================================================
+
 ## 17. 【2026-08-09 23:03】- 启用 Copilot Chat 全部代理入口
 
 ### 修改内容
@@ -182,48 +227,3 @@
 ### 潜在或遗留问题
 
 - 已打开的集成终端不会继承新环境变量；需关闭并新建终端，或重载 VS Code 窗口。
-
-============================================================
-
-## 9. 【2026-08-09 15:46】- 隐藏底部终端的实例标签栏
-
-### 修改内容
-
-- 将 `terminal.integrated.tabs.enabled` 设为 `false`，隐藏底部集成终端右侧的终端实例标签和切换栏。
-
-### 实现方式
-
-- 保留终端面板默认位置为底部，以及多终端创建和切换功能；仅隐藏终端标签栏的界面。
-
-### 验证
-
-- Node.js JSONC 解析通过，且确认 `terminal.integrated.tabs.enabled` 为 `false`。
-- `git diff --check` 通过。
-- VS Code 需要重新加载窗口后才会刷新终端标签栏显示，未执行图形界面验证。
-
-### 潜在或遗留问题
-
-- 隐藏标签栏后，需要通过终端面板右上角的下拉菜单或命令面板切换多个终端实例。
-
-============================================================
-
-## 8. 【2026-08-09 15:44】- Command+3 运行 Python 前清空终端
-
-### 修改内容
-
-- Python 文件的 `Cmd+3` 改为依次聚焦、清空当前集成终端，再调用 `python.execInTerminal` 运行当前文件。
-
-### 实现方式
-
-- 使用 VS Code 内置 `runCommands` 和 `workbench.action.terminal.clear`，保留 Python 扩展的官方运行命令、所选解释器和环境激活流程。
-- 不使用 Code Runner 的 `clearPreviousOutput`，因此清屏行为与官方 Python 运行路径兼容。
-
-### 验证
-
-- Node.js JSONC 解析通过，并确认 Python `Cmd+3` 的命令序列为终端聚焦、清屏、`python.execInTerminal`。
-- `git diff --check` 通过。
-- VS Code 需要重新加载窗口后才会应用新的用户级快捷键，未执行图形界面端到端按键验证。
-
-### 潜在或遗留问题
-
-- 每次 Python `Cmd+3` 会清空当前活动集成终端的全部可见滚动历史，而非仅清除上一次 Python 命令输出。
