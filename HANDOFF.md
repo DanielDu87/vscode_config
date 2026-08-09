@@ -6,6 +6,121 @@
 
 ============================================================
 
+## 11. 【2026-08-09 19:25】- 启用 Notebook 输出自动换行
+
+### 修改内容
+
+- 在 `settings.json` 中将 `notebook.output.wordWrap` 设为 `true`，使 `.ipynb` 单元格输出按可视区域换行。
+
+### 实现方式
+
+- 使用 VS Code Notebook 内置输出配置，仅影响 Notebook 输出显示，不改写笔记本内容或代码单元。
+
+### 验证
+
+- Node.js 已确认 `settings.json` 可解析，`notebook.output.wordWrap` 为 `true`。
+- `HANDOFF.md` 已确认保留 10 条记录，最新记录为第 11 条。
+- `git diff --check -- settings.json HANDOFF.md` 通过。
+
+### 潜在或遗留问题
+
+- 已打开的 Notebook 可能需要重新加载窗口或重新打开后才刷新显示。
+
+============================================================
+
+## 10. 【2026-08-09 15:50】- 为集成终端启用 Python 原生彩色错误
+
+### 修改内容
+
+- 在 `terminal.integrated.env.osx` 中设置 `PYTHON_COLORS: "1"`，使 Python 3.13 及以上版本的 traceback 输出 ANSI 颜色。
+
+### 实现方式
+
+- 通过 VS Code 集成终端环境变量生效，不改变 `python.execInTerminal` 官方运行路径或项目源码。
+- Agent 项目已同步升级到 Python 3.14.6，可直接使用 CPython 原生彩色 traceback。
+
+### 验证
+
+- Node.js JSONC 解析通过，确认 `PYTHON_COLORS` 为 `"1"`。
+- Python 3.14.6 的强制 traceback 已检测到 ANSI 颜色转义码。
+- `git diff --check` 通过。
+
+### 潜在或遗留问题
+
+- 已打开的集成终端不会继承新环境变量；需关闭并新建终端，或重载 VS Code 窗口。
+
+============================================================
+
+## 9. 【2026-08-09 15:46】- 隐藏底部终端的实例标签栏
+
+### 修改内容
+
+- 将 `terminal.integrated.tabs.enabled` 设为 `false`，隐藏底部集成终端右侧的终端实例标签和切换栏。
+
+### 实现方式
+
+- 保留终端面板默认位置为底部，以及多终端创建和切换功能；仅隐藏终端标签栏的界面。
+
+### 验证
+
+- Node.js JSONC 解析通过，且确认 `terminal.integrated.tabs.enabled` 为 `false`。
+- `git diff --check` 通过。
+- VS Code 需要重新加载窗口后才会刷新终端标签栏显示，未执行图形界面验证。
+
+### 潜在或遗留问题
+
+- 隐藏标签栏后，需要通过终端面板右上角的下拉菜单或命令面板切换多个终端实例。
+
+============================================================
+
+## 8. 【2026-08-09 15:44】- Command+3 运行 Python 前清空终端
+
+### 修改内容
+
+- Python 文件的 `Cmd+3` 改为依次聚焦、清空当前集成终端，再调用 `python.execInTerminal` 运行当前文件。
+
+### 实现方式
+
+- 使用 VS Code 内置 `runCommands` 和 `workbench.action.terminal.clear`，保留 Python 扩展的官方运行命令、所选解释器和环境激活流程。
+- 不使用 Code Runner 的 `clearPreviousOutput`，因此清屏行为与官方 Python 运行路径兼容。
+
+### 验证
+
+- Node.js JSONC 解析通过，并确认 Python `Cmd+3` 的命令序列为终端聚焦、清屏、`python.execInTerminal`。
+- `git diff --check` 通过。
+- VS Code 需要重新加载窗口后才会应用新的用户级快捷键，未执行图形界面端到端按键验证。
+
+### 潜在或遗留问题
+
+- 每次 Python `Cmd+3` 会清空当前活动集成终端的全部可见滚动历史，而非仅清除上一次 Python 命令输出。
+
+============================================================
+
+## 7. 【2026-08-09 15:02】- Command+3 改用官方 Python 运行命令
+
+### 修改内容
+
+- 将 Python 文件中 `Cmd+3` 的命令从 `code-runner.run` 改为 Python 扩展的 `python.execInTerminal`。
+- 保留 JavaScript、TypeScript、C 和 C++ 的 `Cmd+3` Code Runner 映射，以及 HTML 的 Live Server 映射。
+
+### 实现方式
+
+- Python 扩展会以 `Python: Select Interpreter` 选中的项目解释器在集成终端运行当前文件，与 Pylance、调试器和环境激活行为一致。
+- Python 快捷键不再经过 Code Runner 与自定义 `python-run` wrapper；wrapper 继续保留给已有的兼容场景。
+
+### 验证
+
+- 安装的 `ms-python.python` 扩展已声明 `python.execInTerminal`，显示名称为 `Run Python File in Terminal`。
+- Node.js JSONC 解析通过，且确认 `Cmd+3` 在 Python 文件中映射至 `python.execInTerminal`。
+- `git diff --check` 通过。
+- VS Code 需要重新加载窗口后才会应用新的用户级快捷键，未执行图形界面端到端按键验证。
+
+### 潜在或遗留问题
+
+- Python 项目需通过状态栏或 `Python: Select Interpreter` 选择正确的项目虚拟环境；本次 Agent 项目已配置为 `.venv/bin/python`。
+
+============================================================
+
 ## 6. 【2026-08-08 13:26】- 统一 VS Code、Vim 与扩展配置
 
 ### 修改内容
@@ -135,33 +250,3 @@
 - 内置 Copilot 需登录 GitHub 账户并有有效订阅才能真正给出建议；如果账号未登录，仅 Pylance 自身补全生效。
 - `editor.wordBasedSuggestions: "allDocuments"` 会在所有已打开文档中搜索单词作为补全，可能在大型项目中带来轻微性能开销；如不需要可改回 `"matchingDocuments"`。
 - 当前 `python.analysis.extraPaths` 与 `packageIndexDepths` 显式置空数组，依赖默认搜索路径；如果项目使用了非标准 `src/` 布局，需要在每项目 `.vscode/settings.json` 中覆盖。
-
-============================================================
-
-## 1. 【2026-07-22 11:22】- 将 Python 格式化器切换为 YAPF（Tab 缩进、宽度 4、等号左右带空格）
-
-### 修改内容
-
-- 在 `settings.json` 中将 `[python]` 块的 `editor.defaultFormatter` 从 `ms-python.autopep8` 改为 `eeyore.yapf`，并设置 `editor.insertSpaces = false`、`editor.tabSize = 4`、`editor.formatOnSave = true`。
-- 在全局添加 `yapf.args`，传入样式：`{based_on_style: pep8, use_tabs: true, indent_width: 4, continuation_align_style: fixed, spaces_around_default_or_named_assign: true}`，以保证缩进为 Tab、宽度 4，且 `=` 左右带空格。
-- 通过 `code --install-extension eeyore.yapf --force` 安装 YAPF 扩展（v2026.1.108140646），用于提供 LSP 格式化服务。
-
-### 实现方式
-
-- `eeyore.yapf` 扩展在 LSP `initialize` 时读取 VS Code 全局 `yapf.args`，并把它透传给 `yapf` 的 `--style` 参数，从而在保存时让 YAPF 用 Tab 输出并加空格。
-- VS Code 的 `[python]` 块只声明 Tab 编辑与格式化器选择；YAPF 的样式细节必须放在全局，因此 `yapf.args` 放在文件根作用域。
-
-### 验证
-
-- 直接调用扩展捆绑的 YAPF（`/Users/dyx/.vscode/extensions/eeyore.yapf-2026.1.108140646/bundled/libs` + `tool-libs` 作为 `PYTHONPATH`）用同一 `--style` 格式化测试文件，输出字节流确认：
-  - 缩进为单字节 Tab（0x09），每级一个。
-  - `value = 1`、`other = value + 2`、`def f(x = 1)` 等位置 `=` 左右各有 1 个空格。
-- `git diff --check -- settings.json` 通过。
-- 未在 VS Code 进程内触发端到端“保存文件 → YAPF 改写”操作；上述单元级验证已覆盖关键样式参数。
-
-### 潜在或遗留问题
-
-- 如果 `eeyore.yapf` 扩展未激活（例如 LSP 启动失败或 Python 解释器不兼容），保存时可能退回到其它格式化器；当前扩展未额外设置 `yapf.interpreter`，依赖默认行为。
-- YAPF 的 `spaces_around_default_or_named_assign: true` 作用于函数默认实参和具名赋值；如果不想要对具名赋值加空格，需要拆分为 `spaces_around_default_or_named_assigns` 之外的更细粒度控制。
-
-============================================================

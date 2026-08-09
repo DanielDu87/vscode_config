@@ -36,9 +36,9 @@
 	"claudeCode.preferredLocation": "sidebar",
 	"code-runner.clearPreviousOutput": true,
 	"code-runner.executorMap": {
-		"javascript": "\/opt\/homebrew\/bin\/node",
-		"python": "\/Users\/dyx\/.local\/bin\/python-run",
-		"typescript": "\/opt\/homebrew\/bin\/node"
+		"javascript": "/opt/homebrew/bin/node",
+		"python": "/Users/dyx/.local/bin/python-run",
+		"typescript": "/opt/homebrew/bin/node"
 	},
 	"code-runner.ignoreSelection": true,
 	"code-runner.runInTerminal": true,
@@ -139,7 +139,7 @@
 	"files.autoSaveDelay": 10,
 	"files.autoSaveWhenNoErrors": true,
 	"files.exclude": {
-		"**\/.idea": true
+		"**/.idea": true
 	},
 	"git.openRepositoryInParentFolders": "always",
 	"http.noProxy": [
@@ -147,11 +147,11 @@
 		"127.0.0.1",
 		"::1",
 		".local",
-		"192.168.0.0\/16",
-		"10.0.0.0\/8",
-		"172.16.0.0\/12"
+		"192.168.0.0/16",
+		"10.0.0.0/8",
+		"172.16.0.0/12"
 	],
-	"http.proxy": "http:\/\/127.0.0.1:7890",
+	"http.proxy": "http://127.0.0.1:7890",
 	"http.proxySupport": "override",
 	"indentRainbow.colors": [
 		"rgba(255,255,64,0.3)",
@@ -168,7 +168,7 @@
 			"applicationName": "vscode-pgsql",
 			"authenticationType": "SqlLogin",
 			"clientEncoding": "utf8",
-			"connectionString": "postgresql:\/\/file_reader:local-development-only@127.0.0.1:5432\/file_reader",
+			"connectionString": "postgresql://file_reader:local-development-only@127.0.0.1:5432/file_reader",
 			"connectTimeout": 15,
 			"database": "file_reader",
 			"expiresOn": 0,
@@ -216,8 +216,8 @@
 	"search.collapseResults": "auto",
 	"search.defaultViewMode": "tree",
 	"search.exclude": {
-		"**\/.git": true,
-		"**\/.idea": true
+		"**/.git": true,
+		"**/.idea": true
 	},
 	"search.experimental.closedNotebookRichContentResults": true,
 	"search.globalFindClipboard": true,
@@ -410,13 +410,16 @@
 	"supermaven.allowGitignore": true,
 	"supermaven.enable": true,
 	"supermaven.enableFixWithSupermaven": true,
-	"terminal.external.osxExec": "Otty.app",
+	"terminal.external.osxExec": "Warp.app",
 	"terminal.integrated.accessibleViewFocusOnCommandExecution": true,
 	"terminal.integrated.allowInUntrustedWorkspace": true,
 	"terminal.integrated.autohide": "onFocusChange",
 	"terminal.integrated.copyOnSelection": true,
 	"terminal.integrated.cursorBlinking": true,
 	"terminal.integrated.defaultProfile.osx": "zsh",
+	"terminal.integrated.env.osx": {
+		"PYTHON_COLORS": "1"
+	},
 	"terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono', 'PingFang SC', 'Menlo', monospace",
 	"terminal.integrated.fontSize": 14,
 	"terminal.integrated.fontWeight": "normal",
@@ -425,14 +428,14 @@
 		"zsh": {
 			"args": [
 				"-c",
-				"for venv in .venv venv .venv37 .venv312; do if [ -d \"$venv\/bin\" ]; then source \"$venv\/bin\/activate\" && break; fi; done; exec zsh -l"
+				"for venv in .venv venv .venv37 .venv312; do if [ -d \"$venv/bin\" ]; then source \"$venv/bin/activate\" && break; fi; done; exec zsh -l"
 			],
-			"path": "\/opt\/homebrew\/bin\/zsh"
+			"path": "/opt/homebrew/bin/zsh"
 		}
 	},
 	"terminal.integrated.shellIntegration.enabled": true,
 	"terminal.integrated.smoothScrolling": true,
-	"terminal.integrated.tabs.enabled": true,
+	"terminal.integrated.tabs.enabled": false,
 	"vim.autoSwitchInputMethod.defaultLanguage": "com.apple.keylayout.ABC",
 	"vim.autoSwitchInputMethod.enable": true,
 	"vim.blockCursorIsInInsertMode": false,
@@ -508,7 +511,7 @@
 	"vim.useCtrlKeys": true,
 	"vim.useSystemClipboard": true,
 	"vim.vimrc.enable": true,
-	"vim.vimrc.path": "\/Users\/dyx\/.vimrc",
+	"vim.vimrc.path": "/Users/dyx/.vimrc",
 	"vscode-office.editMode": "ir",
 	"window.autoDetectHighContrast": false,
 	"window.zoomLevel": 1.2,
@@ -530,7 +533,7 @@
 	},
 	"workbench.enableSounds": false,
 	"workbench.experimental.modernUI": true,
-	"workbench.iconTheme": "office-material-icon-theme",
+	"workbench.iconTheme": "a-file-icon-vscode",
 	"workbench.list.smoothScrolling": true,
 	"workbench.localHistory.mergeWindow": 1,
 	"workbench.panel.defaultLocation": "bottom",
@@ -540,5 +543,17 @@
 	"continue.enableConsole": true,
 	"claudeCode.allowDangerouslySkipPermissions": true,
 	"claudeCode.disableLoginPrompt": true,
-	"deepseek-copilot.experimental.stabilizeToolList": true
+	"deepseek-copilot.experimental.stabilizeToolList": true,
+	"gitlens.ai.model": "vscode",
+	"gitlens.ai.vscode.model": "copilot:gpt-4o-mini",
+	"notebook.consolidatedRunButton": true,
+	"notebook.formatOnSave.enabled": true,
+	"notebook.lineNumbers": "on",
+	"notebook.compactView": false,
+	"notebook.editorOptionsCustomizations": {},
+	"notebook.globalToolbarShowLabel": "dynamic",
+	"notebook.insertFinalNewline": true,
+	"notebook.markup.fontSize": 14,
+	"notebook.output.fontSize": 14,
+	"notebook.output.wordWrap": true
 }
