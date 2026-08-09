@@ -78,18 +78,18 @@
 		"key": "shift+cmd+h",
 		"command": "-workbench.action.replaceInFiles",
 	},
-		// 行复制 (Ctrl+Shift+D)
-		{
-			"key": "ctrl+shift+d",
-			"command": "editor.action.copyLinesDownAction",
-			"when": "editorTextFocus && !editorReadonly",
-		},
-		// 逐次添加相同单词选择 (Cmd+D)
-		{
-			"key": "cmd+d",
-			"command": "editor.action.addSelectionToNextFindMatch",
-			"when": "editorTextFocus && !editorReadonly",
-		},
+	// 行复制 (Ctrl+Shift+D)
+	{
+		"key": "ctrl+shift+d",
+		"command": "editor.action.copyLinesDownAction",
+		"when": "editorTextFocus && !editorReadonly",
+	},
+	// 逐次添加相同单词选择 (Cmd+D)
+	{
+		"key": "cmd+d",
+		"command": "editor.action.addSelectionToNextFindMatch",
+		"when": "editorTextFocus && !editorReadonly",
+	},
 	// 行移动 (Alt+J/K)
 	{
 		"key": "alt+j",
@@ -264,11 +264,23 @@
 		"command": "extension.liveServer.goOnline",
 		"when": "editorLangId == html && editorTextFocus",
 	},
-	{
-		"key": "cmd+3",
-		"command": "code-runner.run",
-		"when": "editorLangId =~ /^(python|javascript|typescript|c|cpp)$/ && editorTextFocus",
-	},
+		{
+			"key": "cmd+3",
+			"command": "runCommands",
+			"args": {
+				"commands": [
+					"workbench.action.terminal.focus",
+					"workbench.action.terminal.clear",
+					"python.execInTerminal"
+				]
+			},
+			"when": "editorLangId == python && editorTextFocus",
+		},
+		{
+			"key": "cmd+3",
+			"command": "code-runner.run",
+			"when": "editorLangId =~ /^(javascript|typescript|c|cpp)$/ && editorTextFocus",
+		},
 	// ============================================================
 	// 其他
 	// ============================================================
@@ -319,5 +331,10 @@
 				"s"
 			]
 		}
+	},
+	{
+		"key": "cmd+a",
+		"command": "-extension.vim_cmd+a",
+		"when": "editorTextFocus && vim.active && vim.use<D-a> && !inDebugRepl && vim.mode != 'Insert'"
 	}
 ]

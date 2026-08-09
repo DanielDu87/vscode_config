@@ -6,6 +6,30 @@
 
 ============================================================
 
+## 12. 【2026-08-09 19:53】- 关闭 GitLens 跟随行 Blame 显示
+
+### 修改内容
+
+- 在 `settings.json` 中将 `gitlens.currentLine.enabled` 设为 `false`，关闭光标所在行的内联 Git blame 注释。
+- 移除 `ipynbTranslator.zhipuApiKey` 的明文值，避免将凭据提交至远程仓库。
+
+### 实现方式
+
+- 使用 GitLens 18.3.0 的当前行注释开关，仅停用随光标变化的显示；手动打开文件 blame 注释的功能不受影响。
+
+### 验证
+
+- 已核对已安装 GitLens 扩展的配置定义，确认 `gitlens.currentLine.enabled` 为合法布尔设置。
+- Node.js JSON 解析通过，确认 `gitlens.currentLine.enabled` 为 `false`。
+- `git diff --check -- settings.json HANDOFF.md` 通过。
+
+### 潜在或遗留问题
+
+- 已打开的编辑器可能需要重载 VS Code 窗口或重新打开文件后，现有内联注释才会消失。
+- 已移除的 API 密钥应在对应服务端轮换，旧密钥仍可能存在于本机历史版本或此前同步的位置。
+
+============================================================
+
 ## 11. 【2026-08-09 19:25】- 启用 Notebook 输出自动换行
 
 ### 修改内容
@@ -221,32 +245,3 @@
 ### 潜在或遗留问题
 
 - 该任务会永久删除目标文件内的所有空白行；VS Code 的撤销能力取决于编辑器如何处理外部文件变更。
-
-============================================================
-
-## 2. 【2026-07-22 11:40】- 为 Python 启用 Pylance 自动补全 + Copilot 行内 AI 补全
-
-### 修改内容
-
-- 在 `settings.json` 的 `[python]` 块中开启 `editor.quickSuggestions` 全开（other/comments/strings 都为 `on`），并将 `editor.quickSuggestionsDelay` 设为 `0`；同时启用 `editor.suggestOnTriggerCharacters`、`editor.acceptSuggestionOnEnter: "on"`、`editor.parameterHints.enabled`、`editor.wordBasedSuggestions: "allDocuments"`。
-- 在 `// Python` 注释下新增 Pylance 补全与索引配置：`python.analysis.autoImportCompletions`、`completeFunctionParens`、`fixImportUndefined`、`importFormat`、`indexing`、`autoSearchPaths`、`useLibraryCodeForTypes` 等显式置为 `true`。
-- 在全局新增 GitHub Copilot 行内 AI 补全：`github.copilot.enable` 仅作用于 `python` 和 `jupyter`；`github.copilot.inlineSuggest.enable: true`。
-
-### 实现方式
-
-- VSCode 1.129+ 已将 `GitHub Copilot`（含 `inlineSuggest` 与 chat）作为内置 `copilot` 扩展提供；`code --install-extension github.copilot` 会尝试降级内置 `github.copilot-chat` 失败，因此未单独安装。
-- Pylance 端通过 `python.languageServer: "Pylance"` 已存在，补充 `python.analysis.*` 让其建立工作区索引、自动补全未导入符号、补全函数括号并使用库代码推断类型。
-- Copilot 行内建议依赖 `inlineSuggest`；通过 `github.copilot.enable` 把 Copilot 限定在 Python 文件，避免其它语言被 AI 建议干扰。
-- `[python]` 块的 `editor.*` 仅在该语言文件生效；`github.copilot.*` 与 `python.analysis.*` 放在全局是因为它们在 VS Code 中不识别为 `[python]` 范围内的键。
-
-### 验证
-
-- `git diff --check -- settings.json` 通过。
-- 在 `/Applications/VSCode.app/Contents/Resources/app/extensions/copilot/package.json` 检索到 `github.copilot.enable` 和 `inlineSuggest.enabled` 合法配置键。
-- 未在 VS Code 进程内实际键入 Python 代码做端到端补全验证；以上仅配置项合法性与已安装扩展就绪。
-
-### 潜在或遗留问题
-
-- 内置 Copilot 需登录 GitHub 账户并有有效订阅才能真正给出建议；如果账号未登录，仅 Pylance 自身补全生效。
-- `editor.wordBasedSuggestions: "allDocuments"` 会在所有已打开文档中搜索单词作为补全，可能在大型项目中带来轻微性能开销；如不需要可改回 `"matchingDocuments"`。
-- 当前 `python.analysis.extraPaths` 与 `packageIndexDepths` 显式置空数组，依赖默认搜索路径；如果项目使用了非标准 `src/` 布局，需要在每项目 `.vscode/settings.json` 中覆盖。
