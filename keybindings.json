@@ -299,17 +299,12 @@
 		"command": "workbench.action.terminal.toggleTerminal",
 		"when": "terminal.active",
 	},
-	// ============================================================
-	// 补全接受分离 (Completion Accept Split)
-	// Supermaven 灰字补全 -> 回车接受；VS Code 原生补全弹窗 -> Tab 接受
-	// ============================================================
-	// 1. 回车接受 Supermaven 灰字补全（仅当没有弹出 IntelliSense 建议框时）
+	// Continue 灰字补全用回车接受；Tab 保留给 VS Code 原生补全弹窗。
 	{
 		"key": "enter",
 		"command": "editor.action.inlineSuggest.commit",
 		"when": "inlineSuggestionVisible && !suggestWidgetVisible && !editorReadonly",
 	},
-	// 2. 解绑 Tab 对 Supermaven 灰字补全的接受，Tab 只留给原生补全弹窗
 	{
 		"key": "tab",
 		"command": "-editor.action.inlineSuggest.commit",

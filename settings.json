@@ -407,13 +407,10 @@
 	"smartInputPro.enableAutoDefaultIM": true,
 	"smartInputPro.enableModeIMConfig": false,
 	"smartInputPro.enableSmartSpaceInChinese": false,
-	"supermaven.allowGitignore": true,
-	"supermaven.enable": true,
-	"supermaven.enableFixWithSupermaven": true,
 	"terminal.external.osxExec": "Warp.app",
 	"terminal.integrated.accessibleViewFocusOnCommandExecution": true,
 	"terminal.integrated.allowInUntrustedWorkspace": true,
-	"terminal.integrated.autohide": "onFocusChange",
+	"terminal.integrated.autohide": "never",
 	"terminal.integrated.copyOnSelection": true,
 	"terminal.integrated.cursorBlinking": true,
 	"terminal.integrated.defaultProfile.osx": "zsh",
@@ -423,7 +420,7 @@
 	"terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono', 'PingFang SC', 'Menlo', monospace",
 	"terminal.integrated.fontSize": 14,
 	"terminal.integrated.fontWeight": "normal",
-	"terminal.integrated.hideOnFocusLost": true,
+	"terminal.integrated.hideOnFocusLost": false,
 	"terminal.integrated.profiles.osx": {
 		"zsh": {
 			"args": [
@@ -557,5 +554,30 @@
 	"notebook.markup.fontSize": 14,
 	"notebook.output.fontSize": 14,
 	"notebook.output.wordWrap": true,
-	"continue.showInlineTip": false
+	"continue.enableQuickActions": true,
+	"editor.defaultFormatter": "ms-python.python",
+	"github.copilot.chat.claudeAgent.allowAutoPermissions": true,
+	"github.copilot.chat.claudeAgent.useSdkExtension": true,
+	"github.copilot.chat.codesearch.enabled": true,
+	"github.copilot.chat.alternateGeminiModelFPrompt.enabled": true,
+	"github.copilot.chat.alternateGptPrompt.enabled": true,
+	"github.copilot.chat.agentMode.enabled": true,
+	"github.copilot.chat.editingSession.enabled": true,
+	"github.copilot.chat.exploreAgent.enabled": true,
+	"github.copilot.enable": {
+		"*": true,
+		"plaintext": true,
+		"markdown": true,
+		"scminput": true,
+		"python": true
+	},
+	"chat.disableAIFeatures": false,
+	"continue.enableTabAutocomplete": false,
+	"continue.enableNextEdit": true,
+	"editor.inlineSuggest.enabled": true,
+	"github.copilot.nextEditSuggestions.enabled": true,
+	"window.newWindowProfile": "默认",
+	"terminal.integrated.defaultLocation": "view",
+	"terminal.integrated.enableImages": true,
+	"terminal.integrated.fontLigatures.enabled": true
 }

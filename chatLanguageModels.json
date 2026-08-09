@@ -7,5 +7,22 @@
 				"reasoningEffort": "high"
 			}
 		}
+	},
+	{
+		"name": "ToAPI",
+		"vendor": "customendpoint",
+		"apiKey": "${input:chat.lm.secret.644c7a4e}",
+		"apiType": "chat-completions",
+		"models": [
+			{
+				"id": "deepseek-v4-flash",
+				"name": "deepseek-v4-flash",
+				"url": "https://toapis.com/v1",
+				"toolCalling": true,
+				"vision": true,
+				"maxInputTokens": 128000,
+				"maxOutputTokens": 16000
+			}
+		]
 	}
 ]
