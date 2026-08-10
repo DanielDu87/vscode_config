@@ -327,6 +327,12 @@
 			]
 		}
 	},
+	// Vim Insert 模式 Cmd+I 打开 Copilot 内联聊天，用于生成或编辑当前代码。
+	{
+		"key": "cmd+i",
+		"command": "inlineChat.start",
+		"when": "vim.mode == 'Insert' && editorTextFocus"
+	},
 	{
 		"key": "cmd+a",
 		"command": "-extension.vim_cmd+a",

@@ -6,6 +6,32 @@
 
 ============================================================
 
+## 20. 【2026-08-10 14:41】- 区分 Vim 模式的 Cmd+I
+
+### 修改内容
+
+- 保留 Vim Normal 模式下 `Cmd+I` 触发 EasyMotion 全屏字符跳转。
+- 新增 Vim Insert 模式下 `Cmd+I` 打开 Copilot 内联聊天，用于生成或编辑当前代码。
+- 将 `deepseek-v4-flash` 推理强度设为 `low`，将 `glm-4.6v-flash` 设为 `none`。
+- 禁止恢复终端持久化进程，并关闭 Qwen Copilot 推理模式。
+
+### 实现方式
+
+- 在 `keybindings.json` 中为同一快捷键配置互斥的 `vim.mode` 条件；Insert 模式调用 VS Code 内置命令 `inlineChat.start`。
+- 通过 `chatLanguageModels.json` 的模型配置降低对应模型的推理开销；在 `settings.json` 中使用 VS Code 和 Qwen Copilot 的现有配置项。
+
+### 验证
+
+- Node.js JSONC 宽松解析 `keybindings.json` 通过。
+- `git diff --check -- keybindings.json` 通过。
+- 未做图形界面端到端验证；需在 VS Code 中分别进入 Vim Normal 与 Insert 模式试按 `Cmd+I`。
+
+### 潜在或遗留问题
+
+- Copilot Chat 实际可用性仍取决于 VS Code 登录的 GitHub 账户具备 Copilot 权限。
+
+============================================================
+
 ## 19. 【2026-08-09 23:34】- 关闭相同单词绿色高亮框
 
 ### 修改内容
@@ -204,26 +230,3 @@
 ### 潜在或遗留问题
 
 - 已打开的 Notebook 可能需要重新加载窗口或重新打开后才刷新显示。
-
-============================================================
-
-## 10. 【2026-08-09 15:50】- 为集成终端启用 Python 原生彩色错误
-
-### 修改内容
-
-- 在 `terminal.integrated.env.osx` 中设置 `PYTHON_COLORS: "1"`，使 Python 3.13 及以上版本的 traceback 输出 ANSI 颜色。
-
-### 实现方式
-
-- 通过 VS Code 集成终端环境变量生效，不改变 `python.execInTerminal` 官方运行路径或项目源码。
-- Agent 项目已同步升级到 Python 3.14.6，可直接使用 CPython 原生彩色 traceback。
-
-### 验证
-
-- Node.js JSONC 解析通过，确认 `PYTHON_COLORS` 为 `"1"`。
-- Python 3.14.6 的强制 traceback 已检测到 ANSI 颜色转义码。
-- `git diff --check` 通过。
-
-### 潜在或遗留问题
-
-- 已打开的集成终端不会继承新环境变量；需关闭并新建终端，或重载 VS Code 窗口。

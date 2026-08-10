@@ -590,4 +590,6 @@
 	"glm-copilot.mcp.zread.enabled": true,
 	"glm-copilot.mcp.imageCleanupMode": "ttl-7d",
 	"glm-copilot.experimental.stabilizeToolList": true,
+	"terminal.integrated.persistentSessionReviveProcess": "never",
+	"qwenCopilot.reasoning.mode": "off",
 }
