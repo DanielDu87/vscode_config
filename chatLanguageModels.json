@@ -22,6 +22,24 @@
 				"vision": true,
 				"maxInputTokens": 128000,
 				"maxOutputTokens": 16000
+			},
+			{
+				"id": "kimi-k2.6",
+				"name": "kimi-k2.6",
+				"url": "https://toapis.com/v1",
+				"toolCalling": true,
+				"vision": true,
+				"maxInputTokens": 128000,
+				"maxOutputTokens": 16000
+			},
+			{
+				"id": "gpt-5.6-terra",
+				"name": "gpt-5.6-terra",
+				"url": "https://toapis.com/v1",
+				"toolCalling": true,
+				"vision": true,
+				"maxInputTokens": 128000,
+				"maxOutputTokens": 16000
 			}
 		]
 	},
@@ -36,5 +54,83 @@
 				"reasoningEffort": "none"
 			}
 		}
+	},
+	{
+		"name": "YutoAPI",
+		"vendor": "customendpoint",
+		"apiKey": "${input:chat.lm.secret.22c1aca5}",
+		"apiType": "chat-completions",
+		"models": [
+			{
+				"id": "gemini-3.6-flash",
+				"name": "gemini-3.6-flash",
+				"url": "https://gptapi.asia",
+				"toolCalling": true,
+				"vision": true,
+				"maxInputTokens": 128000,
+				"maxOutputTokens": 16000
+			}
+		]
+	},
+	{
+		"name": "OpenRouter",
+		"vendor": "openrouter",
+		"apiKey": "${input:chat.lm.secret.-34e97683}",
+		"settings": {
+			"deepseek/deepseek-v3.2": {
+				"reasoningEffort": "low"
+			}
+		}
+	},
+	{
+		"name": "晴辰云",
+		"vendor": "customendpoint",
+		"apiKey": "${input:chat.lm.secret.-430b728d}",
+		"apiType": "chat-completions",
+		"models": [
+			{
+				"id": "Auto",
+				"name": "Auto",
+				"url": "https://gpt.qt.cool/v1",
+				"toolCalling": true,
+				"vision": true,
+				"maxInputTokens": 128000,
+				"maxOutputTokens": 16000
+			}
+		]
+	},
+	{
+		"name": "Aihubmix",
+		"vendor": "customendpoint",
+		"apiKey": "${input:chat.lm.secret.-ab915ce}",
+		"apiType": "chat-completions",
+		"models": [
+			{
+				"id": "auto",
+				"name": "auto",
+				"url": "https://aihubmix.com/v1",
+				"toolCalling": true,
+				"vision": true,
+				"maxInputTokens": 128000,
+				"maxOutputTokens": 16000
+			}
+		]
+	},
+	{
+		"name": "Ocoolai",
+		"vendor": "customendpoint",
+		"apiKey": "${input:chat.lm.secret.2f551e06}",
+		"apiType": "chat-completions",
+		"models": [
+			{
+				"id": "gpt-5.6-luna",
+				"name": "gpt-5.6-luna",
+				"url": "https://one.ocoolai.com/v1",
+				"toolCalling": true,
+				"vision": true,
+				"maxInputTokens": 128000,
+				"maxOutputTokens": 16000
+			}
+		]
 	}
 ]

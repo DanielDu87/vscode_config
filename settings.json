@@ -592,4 +592,8 @@
 	"glm-copilot.experimental.stabilizeToolList": true,
 	"terminal.integrated.persistentSessionReviveProcess": "never",
 	"qwenCopilot.reasoning.mode": "off",
+	"qwen-code.provider": "api-key",
+	"chat.agent.collapseCompletedResponses": true,
+	"workbench.secondarySideBar.defaultVisibility": "visible",
+	"workbench.secondarySideBar.showLabels": false,
 }
