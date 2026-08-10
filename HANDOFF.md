@@ -6,6 +6,33 @@
 
 ============================================================
 
+## 21. 【2026-08-10 21:49】- 调整 Copilot 与 EasyMotion 快捷键
+
+### 修改内容
+
+- 在 Vim Normal 与 Insert 模式中，将 `Cmd+I` 统一改为启动 Copilot 内联聊天生成代码。
+- 在 Vim Normal 与 Insert 模式中，将 `Cmd+L` 统一改为依据辅助侧边栏状态打开或隐藏 VS Code 侧边 AI 聊天；在聊天输入框内再次按下也会隐藏面板。
+- 显式解除 Continue 默认的 `Cmd+I` 和 `Cmd+L` 绑定，防止 Copilot 打开后快捷键被 Continue 面板接管。
+- 将原本绑定到 Normal 模式 `Cmd+I` 的 EasyMotion 全屏字符跳转改为 `Cmd+K`。
+
+### 实现方式
+
+- `Cmd+I` 使用 VS Code 内置 `inlineChat.start` 命令；`Cmd+L` 以 `auxiliaryBarVisible` 分流，隐藏时执行 `workbench.action.chat.open`，显示时执行 `workbench.action.toggleAuxiliaryBar`。
+- 通过 `-continue.focusEdit` 和 `-continue.focusContinueInput` 注销 Continue 提供的无条件默认键位。
+- 保留既有 `vim.remap` 的 `<leader><leader>s` 序列，仅替换其原生触发键位为 `Cmd+K`。
+
+### 验证
+
+- 已通过 Node.js JSONC 宽松解析校验 `keybindings.json`。
+- `git diff --check -- keybindings.json HANDOFF.md` 通过。
+- 未做图形界面端到端验证；需在 VS Code 的 Vim Normal 与 Insert 模式分别试按 `Cmd+I`、`Cmd+L`，再在 Normal 模式试按 `Cmd+K`。
+
+### 潜在或遗留问题
+
+- Copilot Chat 实际可用性仍取决于 VS Code 登录的 GitHub 账户具备 Copilot 权限。
+
+============================================================
+
 ## 20. 【2026-08-10 14:41】- 区分 Vim 模式的 Cmd+I
 
 ### 修改内容
@@ -210,23 +237,3 @@
 - 已移除的 API 密钥应在对应服务端轮换，旧密钥仍可能存在于本机历史版本或此前同步的位置。
 
 ============================================================
-
-## 11. 【2026-08-09 19:25】- 启用 Notebook 输出自动换行
-
-### 修改内容
-
-- 在 `settings.json` 中将 `notebook.output.wordWrap` 设为 `true`，使 `.ipynb` 单元格输出按可视区域换行。
-
-### 实现方式
-
-- 使用 VS Code Notebook 内置输出配置，仅影响 Notebook 输出显示，不改写笔记本内容或代码单元。
-
-### 验证
-
-- Node.js 已确认 `settings.json` 可解析，`notebook.output.wordWrap` 为 `true`。
-- `HANDOFF.md` 已确认保留 10 条记录，最新记录为第 11 条。
-- `git diff --check -- settings.json HANDOFF.md` 通过。
-
-### 潜在或遗留问题
-
-- 已打开的 Notebook 可能需要重新加载窗口或重新打开后才刷新显示。
