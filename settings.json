@@ -582,4 +582,12 @@
 	"terminal.integrated.defaultLocation": "view",
 	"terminal.integrated.enableImages": true,
 	"terminal.integrated.fontLigatures.enabled": true,
+	"opencodego.debugReasoning": true,
+	"opencodego.showAgentModelsInManagePanel": true,
+	"glm-copilot.mcp.web-reader.enabled": true,
+	"glm-copilot.mcp.web-search-prime.enabled": true,
+	"glm-copilot.mcp.zai-mcp-server.enabled": true,
+	"glm-copilot.mcp.zread.enabled": true,
+	"glm-copilot.mcp.imageCleanupMode": "ttl-7d",
+	"glm-copilot.experimental.stabilizeToolList": true,
 }

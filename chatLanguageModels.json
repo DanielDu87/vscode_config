@@ -24,5 +24,17 @@
 				"maxOutputTokens": 16000
 			}
 		]
+	},
+	{
+		"name": "GLM",
+		"vendor": "glm",
+		"settings": {
+			"glm-4.6v-flash": {
+				"reasoningEffort": "high"
+			},
+			"glm-5.2": {
+				"reasoningEffort": "none"
+			}
+		}
 	}
 ]
