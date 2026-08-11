@@ -89,8 +89,8 @@
 		"apiType": "chat-completions",
 		"models": [
 			{
-				"id": "Auto",
-				"name": "Auto",
+				"id": "kimi-k2.5",
+				"name": "kimi-k2.5",
 				"url": "https://gpt.qt.cool/v1",
 				"toolCalling": true,
 				"vision": true,

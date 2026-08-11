@@ -6,6 +6,49 @@
 
 ============================================================
 
+## 23. 【2026-08-11 10:30】- Ctrl+Q 切换终端显示
+
+### 修改内容
+
+- 为 VS Code 添加 `Ctrl+Q` 快捷键，用于显示或隐藏集成终端面板。
+
+### 实现方式
+
+- 绑定 VS Code 内置命令 `workbench.action.terminal.toggleTerminal`，与已有 `Ctrl+\\` 终端切换行为一致。
+
+### 验证
+
+- Node.js JSONC 宽松解析 `keybindings.json` 通过。
+- `git diff --check -- keybindings.json HANDOFF.md` 通过。
+- 未进行图形界面验证；需在 VS Code 中按 `Ctrl+Q` 确认终端面板可显示和隐藏。
+
+### 潜在或遗留问题
+
+- 无。
+
+============================================================
+
+## 22. 【2026-08-10 23:16】- 选中代码时固定使用内置聊天
+
+### 修改内容
+
+- 为 Vim Visual 模式补充 `Cmd+L` 快捷键，选中代码后按下该组合键也只会打开或隐藏 VS Code 内置聊天。
+
+### 实现方式
+
+- 依据 `auxiliaryBarVisible` 分流：隐藏时运行 `workbench.action.chat.open`，显示时运行 `workbench.action.toggleAuxiliaryBar`。
+- 两条规则均限制于 `vim.mode == 'Visual' && editorTextFocus`，覆盖选中文本进入的 Vim Visual 模式。
+
+### 验证
+
+- 待执行 JSONC 解析与 `git diff --check`。
+- 未进行图形界面验证；需在 VS Code 选中代码后按 `Cmd+L` 确认打开内置聊天。
+
+### 潜在或遗留问题
+
+- 无。
+
+============================================================
 ## 21. 【2026-08-10 21:49】- 调整 Copilot 与 EasyMotion 快捷键
 
 ### 修改内容
@@ -189,51 +232,3 @@
 ### 潜在或遗留问题
 
 - 项目内的 `ruff.toml` 或 `pyproject.toml` 若定义 `[format] preview`，会覆盖用户级配置；应在项目配置中同步设为 `true`。
-============================================================
-
-## 13. 【2026-08-09 20:00】- 启用 GitHub Copilot 全语言补全
-
-### 修改内容
-
-- 在 `settings.json` 中为纯文本、Markdown 与源代码管理输入框启用 GitHub Copilot 补全，统一为所有语言和文本输入场景可用。
-
-### 实现方式
-
-- 保留已有的 Copilot Chat、Agent、代码搜索、内联建议与 Next Edit 配置，仅将 `github.copilot.enable` 中被显式禁用的三项改为 `true`。
-- 已确认当前 VS Code 内置 GitHub Copilot Chat 0.60.0，无需另行安装扩展。
-
-### 验证
-
-- Node.js 已解析 `settings.json`，确认 `github.copilot.enable` 的 `*`、`plaintext`、`markdown`、`scminput` 与 `python` 均为 `true`。
-- `git diff --check -- settings.json HANDOFF.md` 通过。
-
-### 潜在或遗留问题
-
-- Copilot 的实际可用性仍取决于 VS Code 中已登录具备 Copilot 权限的 GitHub 账户和网络连接。
-- 需要重载 VS Code 窗口后，已打开的编辑器和源代码管理输入框才会完整应用新配置。
-
-============================================================
-
-## 12. 【2026-08-09 19:53】- 关闭 GitLens 跟随行 Blame 显示
-
-### 修改内容
-
-- 在 `settings.json` 中将 `gitlens.currentLine.enabled` 设为 `false`，关闭光标所在行的内联 Git blame 注释。
-- 移除 `ipynbTranslator.zhipuApiKey` 的明文值，避免将凭据提交至远程仓库。
-
-### 实现方式
-
-- 使用 GitLens 18.3.0 的当前行注释开关，仅停用随光标变化的显示；手动打开文件 blame 注释的功能不受影响。
-
-### 验证
-
-- 已核对已安装 GitLens 扩展的配置定义，确认 `gitlens.currentLine.enabled` 为合法布尔设置。
-- Node.js JSON 解析通过，确认 `gitlens.currentLine.enabled` 为 `false`。
-- `git diff --check -- settings.json HANDOFF.md` 通过。
-
-### 潜在或遗留问题
-
-- 已打开的编辑器可能需要重载 VS Code 窗口或重新打开文件后，现有内联注释才会消失。
-- 已移除的 API 密钥应在对应服务端轮换，旧密钥仍可能存在于本机历史版本或此前同步的位置。
-
-============================================================

@@ -10,6 +10,10 @@
 		"key": "ctrl+\\",
 		"command": "workbench.action.terminal.toggleTerminal",
 	},
+	{
+		"key": "ctrl+q",
+		"command": "workbench.action.terminal.toggleTerminal",
+	},
 	// 标签页切换 (Option+-)
 	{
 		"key": "alt+=",
@@ -354,6 +358,17 @@
 		"key": "cmd+l",
 		"command": "workbench.action.toggleAuxiliaryBar",
 		"when": "vim.mode == 'Insert' && auxiliaryBarVisible"
+	},
+	// Vim Visual 模式 Cmd+L 打开或隐藏侧边 AI 聊天，确保选中代码时不会触发其他扩展。
+	{
+		"key": "cmd+l",
+		"command": "workbench.action.chat.open",
+		"when": "vim.mode == 'Visual' && editorTextFocus && !auxiliaryBarVisible"
+	},
+	{
+		"key": "cmd+l",
+		"command": "workbench.action.toggleAuxiliaryBar",
+		"when": "vim.mode == 'Visual' && editorTextFocus && auxiliaryBarVisible"
 	},
 	// Vim Normal 模式 Cmd+K 触发 EasyMotion 全屏字符跳转。
 	{

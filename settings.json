@@ -434,7 +434,6 @@
 	},
 	"terminal.integrated.shellIntegration.enabled": true,
 	"terminal.integrated.smoothScrolling": true,
-	"terminal.integrated.tabs.enabled": false,
 	"vim.autoSwitchInputMethod.defaultLanguage": "com.apple.keylayout.ABC",
 	"vim.autoSwitchInputMethod.enable": true,
 	"vim.blockCursorIsInInsertMode": false,
@@ -517,7 +516,7 @@
 	"workbench.colorCustomizations": {
 		"editorCursor.foreground": "#51d237"
 	},
-	"workbench.colorTheme": "GitHub Dark",
+	"workbench.colorTheme": "GitHub Light",
 	"workbench.editor.alwaysShowEditorActions": true,
 	"workbench.editor.enablePreview": false,
 	"workbench.editor.highlightModifiedTabs": true,
@@ -596,4 +595,11 @@
 	"chat.agent.collapseCompletedResponses": true,
 	"workbench.secondarySideBar.defaultVisibility": "visible",
 	"workbench.secondarySideBar.showLabels": false,
+	"window.autoDetectColorScheme": true,
+	"workbench.preferredDarkColorTheme": "GitHub Dark",
+	"workbench.preferredLightColorTheme": "GitHub Dark Dimmed",
+	"jupyter.themeMatplotlibPlots": true,
+	"terminal.integrated.suggest.providers": {
+		"lsp": true
+	},
 }
