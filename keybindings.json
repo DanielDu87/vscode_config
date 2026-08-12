@@ -387,5 +387,24 @@
 		"key": "cmd+a",
 		"command": "-extension.vim_cmd+a",
 		"when": "editorTextFocus && vim.active && vim.use<D-a> && !inDebugRepl && vim.mode != 'Insert'"
+	},
+	{
+		"key": "cmd+5",
+		"command": "workbench.action.debug.stepInto",
+		"when": "debugState != 'inactive'"
+	},
+	{
+		"key": "cmd+5",
+		"command": "-workbench.action.focusFifthEditorGroup"
+	},
+	{
+		"key": "cmd+5",
+		"command": "workbench.action.debug.restart",
+		"when": "inDebugMode"
+	},
+	{
+		"key": "shift+cmd+f5",
+		"command": "-workbench.action.debug.restart",
+		"when": "inDebugMode"
 	}
 ]

@@ -21,6 +21,9 @@
 			"source.organizeImports.ruff": "always"
 		},
 		"editor.defaultFormatter": "charliermarsh.ruff",
+		"editor.detectIndentation": false,
+		"editor.insertSpaces": true,
+		"editor.tabSize": 4,
 		"editor.parameterHints.enabled": true,
 		"editor.quickSuggestions": {
 			"comments": "on",
@@ -64,7 +67,7 @@
 	"editor.cursorSmoothCaretAnimation": "on",
 	"editor.cursorSurroundingLines": 10,
 	"editor.definitionLinkOpensInPeek": true,
-	"editor.detectIndentation": false,
+	"editor.detectIndentation": true,
 	"editor.experimentalInlineEdit.enabled": true,
 	"editor.fastScrollSensitivity": 2,
 	"editor.fontFamily": "'CodeNewRoman Nerd Font Mono', 'PingFang SC', 'Menlo', 'Monaco', monospace",
@@ -76,6 +79,7 @@
 	"editor.formatOnSaveMode": "file",
 	"editor.formatOnType": true,
 	"editor.glyphMargin": true,
+	"editor.guides.indentation": true,
 	"editor.guides.highlightActiveIndentation": "always",
 	"editor.inlayHints.maximumLength": 120,
 	"editor.insertSpaces": false,
@@ -602,4 +606,24 @@
 	"terminal.integrated.suggest.providers": {
 		"lsp": true
 	},
+	"chat.tools.urls.autoApprove": {
+		"https://code.visualstudio.com": true,
+		"https://github.com/microsoft/vscode/wiki/*": true,
+		"https://docs.langchain.com": {
+			"approveRequest": false,
+			"approveResponse": true
+		}
+	},
+	"markdown.extension.tableFormatter.normalizeIndentation": true,
+	"emmet.triggerExpansionOnTab": true,
+	"chat.agent.sandbox.enabled": "off",
+	"chat.tools.terminal.autoApprove": {
+		"/^python3 -m py_compile /Users/dyx/Code/Agent/dyx\\.py && echo 'pycompile: OK'$/": {
+			"approve": true,
+			"matchCommandLine": true
+		}
+	},
+	"codexSwitch.codexHome.enabled": true,
+	"codexSwitch.debugLogging": true,
+	"codexSwitch.reloadWindowAfterProfileSwitch": true
 }

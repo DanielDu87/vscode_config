@@ -75,9 +75,12 @@
 	{
 		"name": "OpenRouter",
 		"vendor": "openrouter",
-		"apiKey": "${input:chat.lm.secret.-34e97683}",
+		"apiKey": "${input:chat.lm.secret.7b51b75e}",
 		"settings": {
 			"deepseek/deepseek-v3.2": {
+				"reasoningEffort": "low"
+			},
+			"deepseek/deepseek-v4-flash-0731": {
 				"reasoningEffort": "low"
 			}
 		}

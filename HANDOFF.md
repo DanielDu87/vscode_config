@@ -6,6 +6,53 @@
 
 ============================================================
 
+## 25. 【2026-08-12 15:03】- 格式化时按文件现状推断缩进并强制 Python 4 空格
+
+### 修改内容
+
+- 全局开启「按文件内容推断缩进」；Python 文件单独锁定 4 空格，并在 Ruff 全局配置中强制空格缩进，使格式化时自动把 Tab / 2 空格的 Python 文件转为 4 空格。
+
+### 实现方式
+
+- `settings.json`：全局 `editor.detectIndentation` 从 `false` 改为 `true`，VS Code 打开文件时按已有内容推断 Tab / 空格与宽度。
+- `settings.json` 的 `[python]` 段新增 `editor.detectIndentation: false` + `editor.insertSpaces: true` + `editor.tabSize: 4`，避免 Python 文件被文件现状带偏，保证编辑时新敲缩进为 4 空格。
+- `~/.config/ruff/ruff.toml`：顶层新增 `indent-width = 4`，`[format]` 段新增 `indent-style = "space"`，强制 Ruff formatter 把 Tab / 2 空格的 Python 文件统一为 4 空格。
+- 本次提交同时包含之前会话遗留的未提交改动：`chatLanguageModels.json`（OpenRouter 新增 deepseek-v4-flash 模型）、`keybindings.json`（Cmd+5 单步进入 / 重启调试）、`settings.json` 的 emmet、codexSwitch、chat.tools 等条目。
+
+### 验证
+
+- 构造 Tab 缩进与 2 空格缩进的 Python 测试文件，`ruff format` 后 `cat -t` 确认均已转为 4 空格；测试文件已清理。
+- VS Code 设置为 JSONC 文本，人工核对键值正确。
+
+### 潜在或遗留问题
+
+- Ruff 全局配置位于 `~/.config/ruff/ruff.toml`，不在本仓库；若他机恢复需同步该文件。
+- 未在 VS Code 图形界面实测保存时的格式化效果，依赖 Ruff formatter 行为一致性。
+
+============================================================
+
+## 24. 【2026-08-11 13:46】- 显示不可见字符与缩进参考线
+
+### 修改内容
+
+- 在 `settings.json` 中显示空格与 Tab 的点状不可见字符，并显示缩进层级参考线。
+
+### 实现方式
+
+- 将 `editor.renderWhitespace` 设为 `"all"`，以点状标记显示不可见字符；将 `editor.guides.indentation` 设为 `true`，显示缩进参考线，不改变 Tab、自动缩进或格式化配置。
+
+### 验证
+
+- Node.js JSONC 宽松解析 `settings.json` 通过，并确认 `editor.renderWhitespace` 为 `"all"`、`editor.guides.indentation` 为 `true`。
+- `git diff --check -- settings.json HANDOFF.md` 通过。
+- 未进行图形界面验证；VS Code 通常会立即应用此设置。
+
+### 潜在或遗留问题
+
+- 无。
+
+============================================================
+
 ## 23. 【2026-08-11 10:30】- Ctrl+Q 切换终端显示
 
 ### 修改内容
@@ -209,26 +256,3 @@
 ### 潜在或遗留问题
 
 - VS Code 可能需要重新加载窗口后才会刷新已打开终端的侧边栏显示。
-
-============================================================
-
-## 14. 【2026-08-09 21:59】- 启用 Ruff Markdown 预览格式化
-
-### 修改内容
-
-- 在用户级 Ruff 配置 `~/.config/ruff/ruff.toml` 的 `[format]` 段启用 `preview = true`，允许 Ruff 格式化 Markdown 中的 Python 代码块。
-- 删除 VS Code 用户配置仓库根目录中仅用于临时验证的 `ruff.toml`。
-
-### 实现方式
-
-- 保留现有全局 Ruff 的 Python 版本、lint 与格式化规则，仅增加预览格式器开关，使未提供项目级 Ruff 配置的项目自动继承该行为。
-
-### 验证
-
-- `ruff format --check HANDOFF.md` 通过，确认 Ruff 自动发现用户级配置后可格式化 Markdown。
-- `ruff format --config ~/.config/ruff/ruff.toml --check HANDOFF.md` 通过。
-- 已确认临时 `ruff.toml` 不再存在于 VS Code 用户配置仓库根目录。
-
-### 潜在或遗留问题
-
-- 项目内的 `ruff.toml` 或 `pyproject.toml` 若定义 `[format] preview`，会覆盖用户级配置；应在项目配置中同步设为 `true`。
