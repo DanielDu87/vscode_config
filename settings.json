@@ -546,8 +546,6 @@
 	"claudeCode.allowDangerouslySkipPermissions": true,
 	"claudeCode.disableLoginPrompt": true,
 	"deepseek-copilot.experimental.stabilizeToolList": true,
-	"gitlens.ai.model": "vscode",
-	"gitlens.ai.vscode.model": "copilot:gpt-4o-mini",
 	"gitlens.currentLine.enabled": false,
 	"notebook.consolidatedRunButton": true,
 	"notebook.formatOnSave.enabled": true,
@@ -606,7 +604,8 @@
 	"terminal.integrated.suggest.providers": {
 		"lsp": true
 	},
-	"chat.tools.urls.autoApprove": {
+		"chat.permissions.default": "autoApprove",
+		"chat.tools.urls.autoApprove": {
 		"https://code.visualstudio.com": true,
 		"https://github.com/microsoft/vscode/wiki/*": true,
 		"https://docs.langchain.com": {
@@ -621,9 +620,14 @@
 		"/^python3 -m py_compile /Users/dyx/Code/Agent/dyx\\.py && echo 'pycompile: OK'$/": {
 			"approve": true,
 			"matchCommandLine": true
+		},
+		"/^cd /Users/dyx/Code/Agent && /usr/bin/env \\.venv/bin/python - <<'PY'\nimport sys\nprint\\(sys\\.executable\\)\ntry:\n    import langchain\n    print\\('langchain', langchain\\.__version__\\)\nexcept Exception as e:\n    print\\('langchain import error', repr\\(e\\)\\)\ntry:\n    from langchain\\.document_loaders import Docx2txtLoader\n    print\\('import ok from langchain\\.document_loaders'\\)\nexcept Exception as e:\n    print\\('langchain\\.document_loaders import error', repr\\(e\\)\\)\ntry:\n    import langchain_community\n    print\\('langchain_community version', getattr\\(langchain_community, '__version__', 'unknown'\\)\\)\nexcept Exception as e:\n    print\\('langchain_community import error', repr\\(e\\)\\)\nPY$/": {
+			"approve": true,
+			"matchCommandLine": true
 		}
 	},
 	"codexSwitch.codexHome.enabled": true,
 	"codexSwitch.debugLogging": true,
-	"codexSwitch.reloadWindowAfterProfileSwitch": true
+	"codexSwitch.reloadWindowAfterProfileSwitch": true,
+	"debug.breakpointsView.presentation": "tree"
 }

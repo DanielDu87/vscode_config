@@ -1,3 +1,75 @@
+============================================================
+
+## 28. 【2026-08-14 23:28】- 默认 Copilot 权限设为绕过审批
+
+### 修改内容
+
+- 将 VS Code 聊天的新会话默认权限等级设为「绕过审批」（Bypass Approvals），使聊天代理执行工具和终端命令时不再逐次弹窗确认。
+
+### 实现方式
+
+- `settings.json` 新增 `chat.permissions.default: "autoApprove"`，为所有新建聊天会话设置默认权限等级；会话内仍可随时通过权限选择器单独调整。
+
+### 验证
+
+- Node.js JSONC 宽松解析 `settings.json` 通过，确认 `chat.permissions.default` 为 `autoApprove`。
+- 未做图形界面端到端验证；需重启 VS Code 或新开聊天后，确认权限选择器显示「绕过审批」且工具调用不再弹确认框。
+
+### 潜在或遗留问题
+
+- 全局一键开关 `chat.tools.global.autoApprove`（YOLO，会忽略默认拒绝规则）未启用，保留终端命令默认拒绝清单等保护。
+- 组织策略若禁用绕过审批，新会话会退回默认审批，属预期。
+
+============================================================
+
+## 27. 【2026-08-14 21:12】- 提示词托管到仓库 prompts 目录（VS Code 官方默认目录）
+
+### 修改内容
+
+- 在 VS Code User 配置仓库内新建 `prompts/` 目录，托管单一 Copilot 说明指令文件（官方 `*.instructions.md` 格式），使提示词纳入本仓库版本管理。
+
+### 实现方式
+
+- `prompts/代码说明.instructions.md`：frontmatter `applyTo: '**'` 自动应用。输出仅保留两节：「一、作用说明」（作用与位置合并一行、调用链以从上到下的箭头展示）与「二、代码结构」（只展示关键函数/类定义、关键调用、关键变量；代码框中注释位于代码行上方，块间空行）。
+- 通用要求：中文、区分事实/推测/风险/建议、禁止工具调用与工具调用标记、不修改代码、代码符号反引号、只列实际存在元素不编造。
+- **关键发现**：`User/prompts/` 是 VS Code 1.133 的官方默认用户提示词目录（`promptsHome`，与 `snippets/`、`settings/` 并列，自动以 `storage:"user"` 扫描，并纳入 Settings Sync 同步范围），无需也不能在 `chat.instructionsFilesLocations` 中重复声明；初版重复声明导致 Configure Instructions 界面条目显示两次，移除配置项后由 `promptsHome` 默认发现。
+
+### 验证
+
+- 宽松 JSONC 解析 `settings.json` 通过；`git diff --check` 通过。
+- 指令 frontmatter 与官方字段一致。
+
+### 潜在或遗留问题
+
+- 内置 `/explain` 提示词写死为散文输出，需使用选中代码后手动输入「说明这段代码」触发结构化说明。
+- `prompts/` 目录已纳入 Settings Sync 同步范围（若用户开启），他机可自动同步，无需手工重建。
+
+============================================================
+
+## 26. 【2026-08-12 16:06】- Cmd+5 启动或重启调试并打开调试面板
+
+### 修改内容
+
+- 将 `Cmd+5` 统一设置为无论当前状态如何都启动或重启调试，并在操作后打开调试面板。
+
+### 实现方式
+
+- `keybindings.json`：移除 `Cmd+5` 的单步进入绑定及旧的直接启动/重启绑定。
+- 使用 `runCommands` 按状态分流：`inDebugMode` 时执行 `workbench.action.debug.restart`，未调试且有可用调试器时执行 `workbench.action.debug.start`；两条流程随后执行 `workbench.view.debug`。
+- 保留 `Cmd+5` 对第五编辑器组默认快捷键的解除，以及 `Shift+Cmd+F5` 默认重启调试快捷键的解除。
+
+### 验证
+
+- 使用 Node.js 清理 JSONC 注释和尾逗号后解析 `keybindings.json`，通过。
+- `git diff --check -- keybindings.json` 通过。
+- 未进行 VS Code 图形界面验证；需实际按下 `Cmd+5` 确认启动、重启和调试面板聚焦行为。
+
+### 潜在或遗留问题
+
+- 当当前工作区没有可用调试器时，`Cmd+5` 不会触发启动流程；这是 VS Code `debuggersAvailable` 条件的预期限制。
+
+============================================================
+
 # HANDOFF
 
 本文件记录最近 10 条关键修改。最新记录置顶，历史记录按时间从新到旧排列。
@@ -171,88 +243,3 @@
 ### 潜在或遗留问题
 
 - 若仍看到绿色高亮，可能来自查找匹配、语义高亮或主题色；可再关 `editor.find` 相关高亮或检查主题。
-
-============================================================
-
-## 18. 【2026-08-09 23:10】- 关闭中文输入法光标绿色方框
-
-### 修改内容
-
-- 在 `settings.json` 的 `smartInputPro.config` 中关闭光标装饰框，去掉文字上方的绿色方框显示。
-
-### 实现方式
-
-- 仅将 `smartInputPro.config.enableCursorDecorations` 从 `true` 改为 `false`，保留输入法自动切换、光标颜色和状态栏显示等其它设置不变。
-
-### 验证
-
-- 已完成配置修改，目标项为单一布尔开关。
-
-### 潜在或遗留问题
-
-- 如果绿色方框来自其他扩展或 VS Code 原生装饰，可能还需要再关对应的光标高亮项。
-
-============================================================
-
-## 17. 【2026-08-09 23:03】- 启用 Copilot Chat 全部代理入口
-
-### 修改内容
-
-- 在 `settings.json` 中显式启用 Copilot Chat 的代理模式与编辑会话入口。
-- 保持 Copilot 全语言补全、内联建议、Next Edit、代码搜索、探索代理和 Claude Agent 集成开启。
-
-### 实现方式
-
-- 新增 `github.copilot.chat.agentMode.enabled` 与 `github.copilot.chat.editingSession.enabled`，其余已有 Copilot 配置保持不变。
-- Continue 的 `continue.enableTabAutocomplete` 继续设为 `false`；控制台、快速操作与 Next Edit 功能维持开启。
-
-### 验证
-
-- Node.js 已成功解析 `settings.json`，确认全部 Copilot 目标开关为启用，且 Continue Tab 自动补全保持关闭。
-- `git diff --check -- settings.json` 通过。
-
-### 潜在或遗留问题
-
-- 个别 Copilot Chat 实验功能是否显示仍取决于当前 VS Code 版本、GitHub Copilot 订阅权限及服务端灰度状态。
-
-============================================================
-
-## 16. 【2026-08-09 22:53】- 恢复新终端在底部面板打开
-
-### 修改内容
-
-- 在 `settings.json` 中将 `terminal.integrated.defaultLocation` 从 `editor` 改为 `view`，恢复新建集成终端在底部面板打开。
-
-### 实现方式
-
-- 保留 `workbench.panel.defaultLocation: "bottom"`，使终端视图继续位于底部；`terminal.integrated.tabs.enabled: false` 保持不变，多个会话仍不显示终端实例侧边栏。
-
-### 验证
-
-- Node.js 已成功解析 `settings.json`，确认终端默认位置为 `view`、面板位置为 `bottom`，且终端实例标签保持关闭。
-- `git diff --check -- settings.json` 通过。
-
-### 潜在或遗留问题
-
-- 已打开的终端实例不一定会自动迁移；新建终端或重载 VS Code 窗口后应用该位置设置。
-
-============================================================
-
-## 15. 【2026-08-09 22:52】- 关闭多终端会话侧边栏
-
-### 修改内容
-
-- 在 `settings.json` 中将 `terminal.integrated.tabs.enabled` 设为 `false`，关闭多个集成终端会话时显示的终端实例侧边栏与标签列表。
-
-### 实现方式
-
-- 使用 VS Code 内置终端标签显示设置，仅隐藏终端会话列表；既有终端会话、创建终端和通过命令切换终端的功能不受影响。
-
-### 验证
-
-- Node.js 已成功解析 `settings.json`，并确认 `terminal.integrated.tabs.enabled` 为 `false`。
-- `git diff --check -- settings.json` 通过。
-
-### 潜在或遗留问题
-
-- VS Code 可能需要重新加载窗口后才会刷新已打开终端的侧边栏显示。
