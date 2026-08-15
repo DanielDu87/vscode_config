@@ -1,3 +1,38 @@
+# HANDOFF
+
+本文件记录最近 10 条关键修改。最新记录置顶，历史记录按时间从新到旧排列。
+记录标题格式为 `## 序号. 【YYYY-MM-DD HH:MM】- 标题`；序号持续递增，最大为 999，达到后从 1 开始。
+记录超过 10 条时自动删除底部最旧记录。实质修改完成并验证后更新一次；创建 commit 前核对并一起提交。
+
+============================================================
+
+## 29. 【2026-08-15 11:40】- 调用链仅保留调用元素与返回值
+
+### 修改内容
+
+- 调整 `prompts/代码说明.instructions.md` 的箭头调用顺序代码框：参数、变量和对象均不作为节点显示，只保留调用方、函数、方法、类和返回值。
+
+### 实现方式
+
+- 调用链节点统一使用 `<真实名称>（<类型>）` 格式，允许的类型仅为 `调用方`、`函数`、`方法`、`类`、`返回值`；禁止使用 `参数`、`变量` 和 `对象` 类型。
+- 示例链路已移除 `file_path（参数）`、`documents（变量）`、`document_chunks（变量）`、`text_splitter（对象）`、`vector_store（对象）`，保留“调用方（调用方） → `build_retriever（函数）` → `file_reader（函数）` → `RecursiveCharacterTextSplitter（类）` → `split_documents（方法）` → `InMemoryVectorStore（类）` → `add_documents（方法）` → `as_retriever（方法）` → `VectorStoreRetriever（返回值）`”。
+- 参数、变量和对象仍在代码框后的“调用说明”中结构化解释；对象可用于说明方法由谁调用，不影响完整性。
+- 保持整体作用 → 单独一行“调用链：” → 箭头调用顺序代码框 → “调用说明：”及结构化参数说明的顺序；「代码结构」继续使用“一行注释，一行代码”。
+- 提交时将 VS Code MCP Gallery 可再生成缓存目录 `mcp/` 加入 `.gitignore`；`mcp.json` 和 `settings.json` 的既有本地改动因尚未完成统一 MCP 同步、全端验证及用途确认，本次不暂存、不提交，也不丢弃。
+- 使用 `/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code --list-extensions` 刷新 `.vscode/extensions.json`：新增 LLDB、Swift、Chat Customizations Evaluations 和 Codex Switch，移除当前未安装的 Qwen IDE Companion。
+
+### 验证
+
+- `git diff --check -- '.gitignore' 'prompts/代码说明.instructions.md' HANDOFF.md` 通过。
+- 已通过脚本核对调用链示例不含参数、变量和对象节点，只保留调用方、函数、方法、类和返回值；“调用说明”及第二部分格式保持不变。
+- 已确认 `mcp/` 下 4 个未跟踪文件为 VS Code MCP Gallery 可再生成缓存并由 `.gitignore` 排除；`mcp.json` 与 `settings.json` 保留为未提交本地改动。
+- VS Code 内置 CLI 刷新扩展清单成功，共记录 53 个当前已安装扩展；清单已检查为非空、唯一且按名称排序。
+- 尚未在 VS Code 图形界面用真实代码选区验证模型输出。
+
+### 潜在或遗留问题
+
+- Copilot 最终格式仍受所选模型指令遵循能力影响；需在 VS Code 中重新触发「说明」确认实际输出。
+
 ============================================================
 
 ## 28. 【2026-08-14 23:28】- 默认 Copilot 权限设为绕过审批
@@ -69,12 +104,6 @@
 - 当当前工作区没有可用调试器时，`Cmd+5` 不会触发启动流程；这是 VS Code `debuggersAvailable` 条件的预期限制。
 
 ============================================================
-
-# HANDOFF
-
-本文件记录最近 10 条关键修改。最新记录置顶，历史记录按时间从新到旧排列。
-记录标题格式为 `## 序号. 【YYYY-MM-DD HH:MM】- 标题`；序号持续递增，最大为 999，达到后从 1 开始。
-记录超过 10 条时自动删除底部最旧记录。实质修改完成并验证后更新一次；创建 commit 前核对并一起提交。
 
 ============================================================
 
@@ -220,26 +249,3 @@
 - Copilot Chat 实际可用性仍取决于 VS Code 登录的 GitHub 账户具备 Copilot 权限。
 
 ============================================================
-
-## 19. 【2026-08-09 23:34】- 关闭相同单词绿色高亮框
-
-### 修改内容
-
-- 关闭 VS Code 光标落在文字上时，对相同单词 / 选中文本的绿色高亮框。
-- 恢复 Vim 普通模式块状光标，撤销本次误改。
-
-### 实现方式
-
-- 新增 `editor.occurrencesHighlight: "off"`，关闭同词出现高亮。
-- 设置 `editor.selectionHighlight: false`、`editor.selectionHighlightMultiline: false`，关闭选中文本匹配高亮。
-- 将 `vim.cursorStylePerMode.normal` 恢复为 `block`。
-
-### 验证
-
-- 以 JSONC 宽松解析校验 `settings.json` 通过。
-- 确认 `occurrencesHighlight=off`、`selectionHighlight=false`、`selectionHighlightMultiline=false`、`vim.cursorStylePerMode.normal=block`。
-- 未做图形界面端到端验证；VS Code 通常会立即应用这些编辑器设置。
-
-### 潜在或遗留问题
-
-- 若仍看到绿色高亮，可能来自查找匹配、语义高亮或主题色；可再关 `editor.find` 相关高亮或检查主题。

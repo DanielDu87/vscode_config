@@ -21,6 +21,7 @@ github.github-vscode-theme
 iahhai.ipynb-translator
 ikaros.glm-for-vscode-copilot
 lacroixdavid1.vscode-format-context-menu
+llvm-vs-code-extensions.lldb-dap
 mathematic.vscode-pdf
 ms-ceintl.vscode-language-pack-zh-hans
 ms-python.debugpy
@@ -33,16 +34,18 @@ ms-toolsai.jupyter-renderers
 ms-toolsai.vscode-jupyter-cell-tags
 ms-toolsai.vscode-jupyter-powertoys
 ms-toolsai.vscode-jupyter-slideshow
+ms-vscode.vscode-chat-customizations-evaluations
 openai.chatgpt
 pkief.material-icon-theme
 pkief.material-product-icons
-qwenlm.qwen-code-vscode-ide-companion
 ryuta46.multi-command
 shadowbq.context-commander
+swiftlang.swift-vscode
 undefined_publisher.remove-all-empty-lines
 vizards.deepseek-v4-for-copilot
 vscode-icons-team.vscode-icons
 vscodevim.vim
+woozy-masta.codex-switch
 xiaolvpuzi.smart-input-pro-vscode
 xshrim.txt-syntax
 yyyumeniku.vscode-codeqwen-copilot
