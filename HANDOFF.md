@@ -6,6 +6,31 @@
 
 ============================================================
 
+## 31. 【2026-08-15 19:40】- 提交 VS Code MCP 配置与模型授权
+
+### 修改内容
+
+- `mcp.json` 提交 VS Code MCP Gallery 安装的 Tavily 与 Firecrawl 服务器定义，凭据继续使用交互式输入占位符。
+- `settings.json` 提交 VS Code 为上述两个 MCP 服务器写入的 `chat.mcp.serverSampling` 模型授权清单。
+
+### 实现方式
+
+- 按全局提交要求重新审查当前 worktree 的全部改动，不再沿用上次提交时的临时排除范围。
+- 确认 Tavily 与 Firecrawl 已存在于 `~/.mcp/unified-mcp.yaml` 权威源；仓库 `mcp.json` 是 VS Code 用户配置文件，不是 `~/.mcp/sync.py` 当前管理的派生目标。
+- `mcp.json` 仅保存 `${input:...}` 形式的密钥输入引用，不包含真实 API Key。
+
+### 验证
+
+- `uv run --with pyyaml python3 ~/.mcp/sync.py --dry-run` 通过，权威源共包含 8 个 MCP，并覆盖现有统一分发目标。
+- `uv run --with pyyaml python3 ~/.mcp/test-connectivity.py` 通过，Bear、Computer Use、Context7、Firecrawl、Node REPL、Tailwind、Tavily 与 Vision 共 8 个 MCP 全部完成 initialize。
+- Python JSON 解析 `mcp.json` 与 `settings.json` 通过；敏感字段检查确认未发现真实密钥；`git diff --check` 通过。
+
+### 潜在或遗留问题
+
+- `chat.mcp.serverSampling` 是 VS Code 自动维护的模型白名单，后续安装模型或调整 MCP 授权时可能产生较大配置差异。
+
+============================================================
+
 ## 30. 【2026-08-15 19:25】- 更新图标主题与聊天会话视图
 
 ### 修改内容
@@ -219,31 +244,5 @@
 ### 潜在或遗留问题
 
 - 无。
-
-============================================================
-## 21. 【2026-08-10 21:49】- 调整 Copilot 与 EasyMotion 快捷键
-
-### 修改内容
-
-- 在 Vim Normal 与 Insert 模式中，将 `Cmd+I` 统一改为启动 Copilot 内联聊天生成代码。
-- 在 Vim Normal 与 Insert 模式中，将 `Cmd+L` 统一改为依据辅助侧边栏状态打开或隐藏 VS Code 侧边 AI 聊天；在聊天输入框内再次按下也会隐藏面板。
-- 显式解除 Continue 默认的 `Cmd+I` 和 `Cmd+L` 绑定，防止 Copilot 打开后快捷键被 Continue 面板接管。
-- 将原本绑定到 Normal 模式 `Cmd+I` 的 EasyMotion 全屏字符跳转改为 `Cmd+K`。
-
-### 实现方式
-
-- `Cmd+I` 使用 VS Code 内置 `inlineChat.start` 命令；`Cmd+L` 以 `auxiliaryBarVisible` 分流，隐藏时执行 `workbench.action.chat.open`，显示时执行 `workbench.action.toggleAuxiliaryBar`。
-- 通过 `-continue.focusEdit` 和 `-continue.focusContinueInput` 注销 Continue 提供的无条件默认键位。
-- 保留既有 `vim.remap` 的 `<leader><leader>s` 序列，仅替换其原生触发键位为 `Cmd+K`。
-
-### 验证
-
-- 已通过 Node.js JSONC 宽松解析校验 `keybindings.json`。
-- `git diff --check -- keybindings.json HANDOFF.md` 通过。
-- 未做图形界面端到端验证；需在 VS Code 的 Vim Normal 与 Insert 模式分别试按 `Cmd+I`、`Cmd+L`，再在 Normal 模式试按 `Cmd+K`。
-
-### 潜在或遗留问题
-
-- Copilot Chat 实际可用性仍取决于 VS Code 登录的 GitHub 账户具备 Copilot 权限。
 
 ============================================================

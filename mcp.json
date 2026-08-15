@@ -1,0 +1,44 @@
+{
+	"servers": {
+		"io.github.tavily-ai/tavily-mcp": {
+			"type": "stdio",
+			"command": "npx",
+			"args": [
+				"tavily-mcp@0.2.15"
+			],
+			"env": {
+				"TAVILY_API_KEY": "${input:TAVILY_API_KEY}",
+				"DEFAULT_PARAMETERS": "{\"search_depth\":\"advanced\",\"max_results\":10,\"include_images\":false,\"include_raw_content\":false}"
+			},
+			"gallery": "https://api.mcp.github.com",
+			"version": "0.2.15"
+		},
+		"firecrawl/firecrawl-mcp-server": {
+			"type": "stdio",
+			"command": "npx",
+			"args": [
+				"-y",
+				"firecrawl-mcp@latest"
+			],
+			"env": {
+				"FIRECRAWL_API_KEY": "${input:api_key}"
+			},
+			"gallery": "https://api.mcp.github.com",
+			"version": "1.0.0"
+		}
+	},
+	"inputs": [
+		{
+			"id": "TAVILY_API_KEY",
+			"type": "promptString",
+			"description": "Your Tavily API key from tavily.com",
+			"password": true
+		},
+		{
+			"id": "api_key",
+			"type": "promptString",
+			"description": "your API key",
+			"password": true
+		}
+	]
+}
