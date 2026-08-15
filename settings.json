@@ -535,7 +535,7 @@
 	},
 	"workbench.enableSounds": false,
 	"workbench.experimental.modernUI": true,
-	"workbench.iconTheme": "a-file-icon-vscode",
+	"workbench.iconTheme": "vscode-icons",
 	"workbench.list.smoothScrolling": true,
 	"workbench.localHistory.mergeWindow": 1,
 	"workbench.panel.defaultLocation": "bottom",
@@ -629,5 +629,6 @@
 	"codexSwitch.codexHome.enabled": true,
 	"codexSwitch.debugLogging": true,
 	"codexSwitch.reloadWindowAfterProfileSwitch": true,
-	"debug.breakpointsView.presentation": "tree"
+	"debug.breakpointsView.presentation": "tree",
+	"chat.viewSessions.enabled": false
 }

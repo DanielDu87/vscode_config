@@ -6,6 +6,30 @@
 
 ============================================================
 
+## 30. 【2026-08-15 19:25】- 更新图标主题与聊天会话视图
+
+### 修改内容
+
+- `settings.json` 将工作台图标主题从 `a-file-icon-vscode` 切换为 `vscode-icons`，并关闭聊天会话视图。
+
+### 实现方式
+
+- 提交 `workbench.iconTheme: "vscode-icons"` 与 `chat.viewSessions.enabled: false` 两项明确的用户偏好。
+- `chat.mcp.serverSampling` 属 VS Code 自动写回的机器相关模型白名单，本次不暂存、不提交，也不丢弃工作区内容。
+- `mcp.json` 中 Tavily/Firecrawl 已存在于 `~/.mcp/unified-mcp.yaml` 权威源，但 VS Code `mcp.json` 尚未纳入统一同步器宿主矩阵，因此本次继续保留为未提交本地改动。
+
+### 验证
+
+- `uv run --with pyyaml python3 ~/.mcp/sync.py --dry-run` 通过，确认 Tavily 和 Firecrawl 已在统一权威源及现有全端分发目标中。
+- 已核对 `settings.json` 相对 HEAD 仅有 `workbench.iconTheme`、`chat.viewSessions.enabled` 和 `chat.mcp.serverSampling` 三个顶层变化；本次索引只包含前两项。
+- VS Code 内置 CLI 返回的扩展清单与已提交 `.vscode/extensions.json` 一致。
+
+### 潜在或遗留问题
+
+- `mcp.json` 与 `chat.mcp.serverSampling` 仍是未提交本地改动；VS Code MCP 宿主需正式纳入统一同步矩阵并完成全端验证后再提交。
+
+============================================================
+
 ## 29. 【2026-08-15 11:40】- 调用链仅保留调用元素与返回值
 
 ### 修改内容
@@ -217,32 +241,6 @@
 - 已通过 Node.js JSONC 宽松解析校验 `keybindings.json`。
 - `git diff --check -- keybindings.json HANDOFF.md` 通过。
 - 未做图形界面端到端验证；需在 VS Code 的 Vim Normal 与 Insert 模式分别试按 `Cmd+I`、`Cmd+L`，再在 Normal 模式试按 `Cmd+K`。
-
-### 潜在或遗留问题
-
-- Copilot Chat 实际可用性仍取决于 VS Code 登录的 GitHub 账户具备 Copilot 权限。
-
-============================================================
-
-## 20. 【2026-08-10 14:41】- 区分 Vim 模式的 Cmd+I
-
-### 修改内容
-
-- 保留 Vim Normal 模式下 `Cmd+I` 触发 EasyMotion 全屏字符跳转。
-- 新增 Vim Insert 模式下 `Cmd+I` 打开 Copilot 内联聊天，用于生成或编辑当前代码。
-- 将 `deepseek-v4-flash` 推理强度设为 `low`，将 `glm-4.6v-flash` 设为 `none`。
-- 禁止恢复终端持久化进程，并关闭 Qwen Copilot 推理模式。
-
-### 实现方式
-
-- 在 `keybindings.json` 中为同一快捷键配置互斥的 `vim.mode` 条件；Insert 模式调用 VS Code 内置命令 `inlineChat.start`。
-- 通过 `chatLanguageModels.json` 的模型配置降低对应模型的推理开销；在 `settings.json` 中使用 VS Code 和 Qwen Copilot 的现有配置项。
-
-### 验证
-
-- Node.js JSONC 宽松解析 `keybindings.json` 通过。
-- `git diff --check -- keybindings.json` 通过。
-- 未做图形界面端到端验证；需在 VS Code 中分别进入 Vim Normal 与 Insert 模式试按 `Cmd+I`。
 
 ### 潜在或遗留问题
 
