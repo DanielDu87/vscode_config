@@ -535,7 +535,7 @@
 	},
 	"workbench.enableSounds": false,
 	"workbench.experimental.modernUI": true,
-	"workbench.iconTheme": "vscode-icons",
+	"workbench.iconTheme": "a-file-icon-vscode",
 	"workbench.list.smoothScrolling": true,
 	"workbench.localHistory.mergeWindow": 1,
 	"workbench.panel.defaultLocation": "bottom",
