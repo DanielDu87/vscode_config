@@ -564,16 +564,9 @@
 	"github.copilot.chat.agentMode.enabled": true,
 	"github.copilot.chat.editingSession.enabled": true,
 	"github.copilot.chat.exploreAgent.enabled": true,
-	"github.copilot.enable": {
-		"*": true,
-		"plaintext": true,
-		"markdown": true,
-		"scminput": true,
-		"python": true
-	},
 	"chat.disableAIFeatures": false,
-	"continue.enableTabAutocomplete": false,
-	"continue.enableNextEdit": true,
+	"continue.enableTabAutocomplete": true,
+	"continue.enableNextEdit": false,
 	"editor.inlineSuggest.enabled": true,
 	"github.copilot.nextEditSuggestions.enabled": true,
 	"window.newWindowProfile": "默认",
@@ -596,7 +589,7 @@
 	"workbench.secondarySideBar.showLabels": false,
 	"window.autoDetectColorScheme": true,
 	"workbench.preferredDarkColorTheme": "GitHub Dark",
-	"workbench.preferredLightColorTheme": "GitHub Light",
+	"workbench.preferredLightColorTheme": "GitHub Dark",
 	"jupyter.themeMatplotlibPlots": true,
 	"terminal.integrated.suggest.providers": {
 		"lsp": true
@@ -1355,4 +1348,7 @@
 	"chat.viewSessions.orientation": "stacked",
 	"github.copilot.completions.chat.enabled": true,
 	"terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono', 'PingFang SC', 'Menlo', monospace",
+	"github.copilot.enable": {
+		"python": true
+	},
 }
