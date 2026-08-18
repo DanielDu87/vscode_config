@@ -424,14 +424,10 @@
 		"PYTHON_COLORS": "1"
 	},
 	"terminal.integrated.fontSize": 14,
-	"terminal.integrated.fontWeight": "600",
+	"terminal.integrated.fontWeight": "normal",
 	"terminal.integrated.hideOnFocusLost": false,
 	"terminal.integrated.profiles.osx": {
 		"zsh": {
-			"args": [
-				"-c",
-				"for venv in .venv venv .venv37 .venv312; do if [ -d \"$venv\/bin\" ]; then source \"$venv\/bin\/activate\" && break; fi; done; exec zsh -l"
-			],
 			"path": "\/opt\/homebrew\/bin\/zsh"
 		}
 	},
@@ -542,7 +538,7 @@
 	"continue.enableConsole": true,
 	"claudeCode.allowDangerouslySkipPermissions": true,
 	"claudeCode.disableLoginPrompt": true,
-	"deepseek-copilot.experimental.stabilizeToolList": true,
+	"deepseek-copilot.experimental.stabilizeToolList": false,
 	"gitlens.currentLine.enabled": false,
 	"notebook.consolidatedRunButton": true,
 	"notebook.formatOnSave.enabled": true,
