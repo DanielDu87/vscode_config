@@ -522,7 +522,6 @@
 	},
 	"workbench.colorTheme": "GitHub Light",
 	"workbench.editor.alwaysShowEditorActions": true,
-	"workbench.editor.enablePreview": false,
 	"workbench.editor.highlightModifiedTabs": true,
 	"workbench.editor.preferHistoryBasedLanguageDetection": true,
 	"workbench.editor.sharedViewState": true,
@@ -599,7 +598,7 @@
 	"workbench.secondarySideBar.showLabels": false,
 	"window.autoDetectColorScheme": true,
 	"workbench.preferredDarkColorTheme": "GitHub Dark",
-	"workbench.preferredLightColorTheme": "GitHub Dark Dimmed",
+	"workbench.preferredLightColorTheme": "GitHub Light",
 	"jupyter.themeMatplotlibPlots": true,
 	"terminal.integrated.suggest.providers": {
 		"lsp": true
@@ -1342,5 +1341,18 @@
 			]
 		}
 	},
-	"chat.viewSessions.enabled": false
+	"workbench.editor.enablePreview": false,
+	"chat.agent.networkFilter": true,
+	"claudeCodeChat.wsl.enabled": false,
+	"claudeCodeChat.wsl.distro": "Ubuntu",
+	"claudeCodeChat.wsl.nodePath": "",
+	"claudeCodeChat.wsl.claudePath": "/usr/local/bin/claude",
+	"claudeCodeChat.executable.path": "",
+	"claudeCodeChat.environment.variables": {},
+	"claudeCodeChat.router.enabled": false,
+	"chat.viewProgressBadge.enabled": true,
+	"inlineChat.defaultModel": "Auto (copilot)",
+	"inlineChat.affordance": "editor",
+	"inlineChat.notebookAgent": true,
+	"chat.viewSessions.orientation": "stacked",
 }
