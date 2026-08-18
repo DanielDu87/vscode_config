@@ -66,7 +66,7 @@
 	},
 	"editor.cursorSmoothCaretAnimation": "on",
 	"editor.cursorSurroundingLines": 10,
-	"editor.definitionLinkOpensInPeek": true,
+	"editor.definitionLinkOpensInPeek": false,
 	"editor.detectIndentation": true,
 	"editor.experimentalInlineEdit.enabled": true,
 	"editor.fastScrollSensitivity": 2,
@@ -589,7 +589,7 @@
 	"workbench.secondarySideBar.showLabels": false,
 	"window.autoDetectColorScheme": true,
 	"workbench.preferredDarkColorTheme": "GitHub Dark",
-	"workbench.preferredLightColorTheme": "GitHub Dark",
+	"workbench.preferredLightColorTheme": "GitHub Dark Dimmed",
 	"jupyter.themeMatplotlibPlots": true,
 	"terminal.integrated.suggest.providers": {
 		"lsp": true
