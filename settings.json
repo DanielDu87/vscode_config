@@ -17,8 +17,10 @@
 	},
 	"[python]": {
 		"editor.codeActionsOnSave": {
-			"source.fixAll.ruff": "always",
-			"source.organizeImports.ruff": "always"
+			// 保存时只格式化不自动修复 lint，避免 Ruff 顺带删除未使用导入
+			"source.fixAll.ruff": "never",
+			// 保存时不自动整理导入，需要手动触发 Ruff: Organize Imports
+			"source.organizeImports.ruff": "never"
 		},
 		"editor.defaultFormatter": "charliermarsh.ruff",
 		"editor.detectIndentation": false,
@@ -199,7 +201,8 @@
 			"name": "服务器"
 		}
 	],
-	"python-envs.terminal.autoActivationType": "command",
+	// 打开终端时不自动激活 Python 环境；如需恢复改为 "command"
+	"python-envs.terminal.autoActivationType": "off",
 	"python.analysis.autoImportCompletions": true,
 	"python.analysis.autoSearchPaths": true,
 	"python.analysis.completeFunctionParens": true,

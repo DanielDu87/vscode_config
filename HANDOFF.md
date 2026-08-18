@@ -6,6 +6,30 @@
 
 ============================================================
 
+## 44. 【2026-08-18 23:48】- 保存不自动优化导入并关闭终端自动激活
+
+### 修改内容
+
+- `settings.json` 将 Python 保存动作调整为不自动修复、不自动整理导入，避免 Ruff 顺带删除未使用导入。
+- 关闭 Python Environments 扩展的终端自动激活，打开集成终端时不再自动进入 `/Users/dyx/Code/Agent/.venv`。
+
+### 实现方式
+
+- 修改 `[python].editor.codeActionsOnSave` 的 `source.fixAll.ruff` 与 `source.organizeImports.ruff` 为 `"never"`；Ruff 仍负责保存时格式化。
+- 将 `python-envs.terminal.autoActivationType` 由 `"command"` 改为 `"off"`。
+- 三处均保留注释说明原始/恢复值，方便以后改回 `"always"` 或 `"command"`。
+
+### 验证
+
+- 剔除注释与尾逗号后 JSONC 解析通过，目标配置值均为预期值。
+- `git diff --check` 通过，`settings.json` 最终 diff 仅含上述配置变更。
+
+### 潜在或遗留问题
+
+- 手动整理导入需通过命令面板或快捷键触发；`python-envs.terminal.autoActivationType` 属 machine 级设置，需重载窗口后生效。
+
+============================================================
+
 ## 43. 【2026-08-18】- 代码结构注释点明结果特征
 
 ### 修改内容
@@ -217,131 +241,5 @@
 ### 潜在或遗留问题
 
 - Copilot 最终输出仍受模型指令遵循能力影响；需要在 VS Code 中重新触发「说明」确认实际格式。
-
-============================================================
-
-## 34. 【2026-08-17 18:52】- 说明提示词拆分为三个章节
-
-### 修改内容
-
-- 调整 `prompts/代码说明.instructions.md`：删除「一、作用说明」中的调用链，将「调用说明」从「二、代码结构」中独立为「三、调用说明」。
-- 更新提示词描述，使其反映整体作用、代码结构和分区块调用说明三个输出部分。
-
-### 实现方式
-
-- 第一章只输出整体作用。
-- 第二章只输出按源码从上到下排列的代码结构代码框。
-- 第三章按函数或方法分隔，每个名称作为标题并在独立区块中说明，保持源码顺序。
-- 保留原有参数、返回值和不确定信息标注要求。
-
-### 验证
-
-- 待执行 `git diff --check` 和结构化文本检查。
-- 尚未在 VS Code 图形界面用真实代码选区验证模型输出。
-
-### 潜在或遗留问题
-
-- Copilot 最终输出仍受模型指令遵循能力影响；需要在 VS Code 中重新触发「说明」确认实际格式。
-
-============================================================
-
-## 33. 【2026-08-17 18:52】- 调用说明改为按函数分区块
-
-### 修改内容
-
-- 调整 `prompts/代码说明.instructions.md` 的「调用说明」要求：从逐条顺序说明改为以函数或方法为分隔，每个函数名或方法名单独作为标题和独立区块。
-
-### 实现方式
-
-- 保留 `调用说明：` 作为第二部分入口。
-- 新增标题格式约束：函数使用 `### <函数名>`，方法使用 `### <对象>.<方法名>`，且必须按源码从上到下顺序排列。
-- 保留原有的函数/方法定义与调用句式、参数结构化格式要求。
-
-### 验证
-
-- 已通过 `git diff -- "prompts/代码说明.instructions.md" HANDOFF.md` 确认仅修改目标提示词文件与交接记录。
-- 尚未在 VS Code 图形界面用真实代码选区验证模型输出。
-
-### 潜在或遗留问题
-
-- Copilot 最终输出仍受模型指令遵循能力影响；需要在 VS Code 中重新触发「说明」确认实际格式。
-
-============================================================
-
-## 31. 【2026-08-15 19:40】- 提交 VS Code MCP 配置与模型授权
-
-### 修改内容
-
-- `mcp.json` 提交 VS Code MCP Gallery 安装的 Tavily 与 Firecrawl 服务器定义，凭据继续使用交互式输入占位符。
-- `settings.json` 提交 VS Code 为上述两个 MCP 服务器写入的 `chat.mcp.serverSampling` 模型授权清单。
-
-### 实现方式
-
-- 按全局提交要求重新审查当前 worktree 的全部改动，不再沿用上次提交时的临时排除范围。
-- 确认 Tavily 与 Firecrawl 已存在于 `~/.mcp/unified-mcp.yaml` 权威源；仓库 `mcp.json` 是 VS Code 用户配置文件，不是 `~/.mcp/sync.py` 当前管理的派生目标。
-- `mcp.json` 仅保存 `${input:...}` 形式的密钥输入引用，不包含真实 API Key。
-
-### 验证
-
-- `uv run --with pyyaml python3 ~/.mcp/sync.py --dry-run` 通过，权威源共包含 8 个 MCP，并覆盖现有统一分发目标。
-- `uv run --with pyyaml python3 ~/.mcp/test-connectivity.py` 通过，Bear、Computer Use、Context7、Firecrawl、Node REPL、Tailwind、Tavily 与 Vision 共 8 个 MCP 全部完成 initialize。
-- Python JSON 解析 `mcp.json` 与 `settings.json` 通过；敏感字段检查确认未发现真实密钥；`git diff --check` 通过。
-
-### 潜在或遗留问题
-
-- `chat.mcp.serverSampling` 是 VS Code 自动维护的模型白名单，后续安装模型或调整 MCP 授权时可能产生较大配置差异。
-
-============================================================
-
-## 30. 【2026-08-15 19:25】- 更新图标主题与聊天会话视图
-
-### 修改内容
-
-- `settings.json` 将工作台图标主题从 `a-file-icon-vscode` 切换为 `vscode-icons`，并关闭聊天会话视图。
-
-### 实现方式
-
-- 提交 `workbench.iconTheme: "vscode-icons"` 与 `chat.viewSessions.enabled: false` 两项明确的用户偏好。
-- `chat.mcp.serverSampling` 属 VS Code 自动写回的机器相关模型白名单，本次不暂存、不提交，也不丢弃工作区内容。
-- `mcp.json` 中 Tavily/Firecrawl 已存在于 `~/.mcp/unified-mcp.yaml` 权威源，但 VS Code `mcp.json` 尚未纳入统一同步器宿主矩阵，因此本次继续保留为未提交本地改动。
-
-### 验证
-
-- `uv run --with pyyaml python3 ~/.mcp/sync.py --dry-run` 通过，确认 Tavily 和 Firecrawl 已在统一权威源及现有全端分发目标中。
-- 已核对 `settings.json` 相对 HEAD 仅有 `workbench.iconTheme`、`chat.viewSessions.enabled` 和 `chat.mcp.serverSampling` 三个顶层变化；本次索引只包含前两项。
-- VS Code 内置 CLI 返回的扩展清单与已提交 `.vscode/extensions.json` 一致。
-
-### 潜在或遗留问题
-
-- `mcp.json` 与 `chat.mcp.serverSampling` 仍是未提交本地改动；VS Code MCP 宿主需正式纳入统一同步矩阵并完成全端验证后再提交。
-
-============================================================
-
-## 29. 【2026-08-15 11:40】- 调用链仅保留调用元素与返回值
-
-### 修改内容
-
-- 调整 `prompts/代码说明.instructions.md` 的箭头调用顺序代码框：参数、变量和对象均不作为节点显示，只保留调用方、函数、方法、类和返回值。
-
-### 实现方式
-
-- 调用链节点统一使用 `<真实名称>（<类型>）` 格式，允许的类型仅为 `调用方`、`函数`、`方法`、`类`、`返回值`；禁止使用 `参数`、`变量` 和 `对象` 类型。
-- 示例链路已移除 `file_path（参数）`、`documents（变量）`、`document_chunks（变量）`、`text_splitter（对象）`、`vector_store（对象）`，保留“调用方（调用方） → `build_retriever（函数）` → `file_reader（函数）` → `RecursiveCharacterTextSplitter（类）` → `split_documents（方法）` → `InMemoryVectorStore（类）` → `add_documents（方法）` → `as_retriever（方法）` → `VectorStoreRetriever（返回值）`”。
-- 参数、变量和对象仍在代码框后的“调用说明”中结构化解释；对象可用于说明方法由谁调用，不影响完整性。
-- 保持整体作用 → 单独一行“调用链：” → 箭头调用顺序代码框 → “调用说明：”及结构化参数说明的顺序；「代码结构」继续使用“一行注释，一行代码”。
-- 提交时将 VS Code MCP Gallery 可再生成缓存目录 `mcp/` 加入 `.gitignore`；`mcp.json` 和 `settings.json` 的既有本地改动因尚未完成统一 MCP 同步、全端验证及用途确认，本次不暂存、不提交，也不丢弃。
-- 使用 `/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code --list-extensions` 刷新 `.vscode/extensions.json`：新增 LLDB、Swift、Chat Customizations Evaluations 和 Codex Switch，移除当前未安装的 Qwen IDE Companion。
-
-### 验证
-
-- `git diff --check -- '.gitignore' 'prompts/代码说明.instructions.md' HANDOFF.md` 通过。
-- 已通过脚本核对调用链示例不含参数、变量和对象节点，只保留调用方、函数、方法、类和返回值；“调用说明”及第二部分格式保持不变。
-- 已确认 `mcp/` 下 4 个未跟踪文件为 VS Code MCP Gallery 可再生成缓存并由 `.gitignore` 排除；`mcp.json` 与 `settings.json` 保留为未提交本地改动。
-- VS Code 内置 CLI 刷新扩展清单成功，共记录 53 个当前已安装扩展；清单已检查为非空、唯一且按名称排序。
-- 尚未在 VS Code 图形界面用真实代码选区验证模型输出。
-
-### 潜在或遗留问题
-
-- Copilot 最终格式仍受所选模型指令遵循能力影响；需在 VS Code 中重新触发「说明」确认实际输出。
 
 ============================================================
