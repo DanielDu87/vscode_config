@@ -210,7 +210,7 @@
 	"python.analysis.useLibraryCodeForTypes": true,
 	"python.languageServer": "Pylance",
 	"python.terminal.activateEnvInCurrentTerminal": false,
-	"python.terminal.activateEnvironment": true,
+	"python.terminal.activateEnvironment": false,
 	"python.terminal.useEnvFile": true,
 	"python.testing.pytestArgs": [
 		"-v"
@@ -1346,5 +1346,10 @@
 	"terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono', 'PingFang SC', 'Menlo', monospace",
 	"github.copilot.enable": {
 		"python": true
+	},
+	"yaml.schemas": {
+		"file:///Users/dyx/.vscode/extensions/continue.continue-2.0.0-darwin-arm64/config-yaml-schema.json": [
+			".continue/**/*.yaml"
+		]
 	},
 }
