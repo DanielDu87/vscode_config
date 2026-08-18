@@ -27,11 +27,30 @@
 	},
 	{
 		"name": "OpenRouter",
-		"vendor": "openrouter",
-		"apiKey": "${input:chat.lm.secret.-2ac5a280}",
+		"vendor": "customendpoint",
+		"apiKey": "${input:chat.lm.secret.5d8ba3eb}",
+		"apiType": "responses",
+		"models": [
+			{
+				"id": "deepseek/deepseek-v4-flash-0731",
+				"name": "deepseek/deepseek-v4-flash-0731",
+				"url": "https://openrouter.ai/api/v1",
+				"toolCalling": true,
+				"vision": true,
+				"maxInputTokens": 128000,
+				"maxOutputTokens": 16000
+			}
+		]
+	},
+	{
+		"name": "DeepSeek",
+		"vendor": "deepseek",
 		"settings": {
-			"z-ai/glm-4.7-flash": {
-				"reasoningEffort": "low"
+			"deepseek-v4-flash": {
+				"reasoningEffort": "none"
+			},
+			"deepseek-v4-pro": {
+				"reasoningEffort": "none"
 			}
 		}
 	}

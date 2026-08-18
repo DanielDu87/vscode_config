@@ -423,9 +423,8 @@
 	"terminal.integrated.env.osx": {
 		"PYTHON_COLORS": "1"
 	},
-	"terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono', 'PingFang SC', 'Menlo', monospace",
 	"terminal.integrated.fontSize": 14,
-	"terminal.integrated.fontWeight": "normal",
+	"terminal.integrated.fontWeight": "600",
 	"terminal.integrated.hideOnFocusLost": false,
 	"terminal.integrated.profiles.osx": {
 		"zsh": {
@@ -520,7 +519,6 @@
 	"workbench.colorCustomizations": {
 		"editorCursor.foreground": "#51d237"
 	},
-	"workbench.colorTheme": "GitHub Light",
 	"workbench.editor.alwaysShowEditorActions": true,
 	"workbench.editor.highlightModifiedTabs": true,
 	"workbench.editor.preferHistoryBasedLanguageDetection": true,
@@ -1355,4 +1353,6 @@
 	"inlineChat.affordance": "editor",
 	"inlineChat.notebookAgent": true,
 	"chat.viewSessions.orientation": "stacked",
+	"github.copilot.completions.chat.enabled": true,
+	"terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono', 'PingFang SC', 'Menlo', monospace",
 }
