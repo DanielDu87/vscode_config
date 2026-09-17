@@ -9,6 +9,7 @@ christian-kohler.npm-intellisense
 codezombiech.gitignore
 continue.continue
 cweijan.vscode-office
+denizhandaklr.glm-chat-provider
 denizhandaklr.kimi-lm-provider
 denizhandaklr.minimax-vscode
 donjayamanne.git-extension-pack
@@ -20,6 +21,7 @@ formulahendry.code-runner
 github.github-vscode-theme
 iahhai.ipynb-translator
 ikaros.glm-for-vscode-copilot
+kelvinwg.glm-status-vscode
 lacroixdavid1.vscode-format-context-menu
 llvm-vs-code-extensions.lldb-dap
 mathematic.vscode-pdf
@@ -38,8 +40,11 @@ ms-vscode.vscode-chat-customizations-evaluations
 openai.chatgpt
 pkief.material-icon-theme
 pkief.material-product-icons
+redhat.vscode-yaml
+redth.mobile-canvas
 ryuta46.multi-command
 shadowbq.context-commander
+shd101wyy.markdown-preview-enhanced
 swiftlang.swift-vscode
 undefined_publisher.remove-all-empty-lines
 vizards.deepseek-v4-for-copilot
@@ -49,5 +54,4 @@ woozy-masta.codex-switch
 xiaolvpuzi.smart-input-pro-vscode
 xshrim.txt-syntax
 yyyumeniku.vscode-codeqwen-copilot
-yzhang.markdown-all-in-one
 ziyasal.vscode-open-in-github

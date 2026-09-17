@@ -53,5 +53,31 @@
 				"reasoningEffort": "none"
 			}
 		}
+	},
+	{
+		"name": "公司账号",
+		"vendor": "customendpoint",
+		"apiKey": "${input:chat.lm.secret.-4550a1d1}",
+		"apiType": "chat-completions",
+		"models": [
+			{
+				"id": "glm-5.3",
+				"name": "glm-5.3",
+				"url": "http://36.134.75.125:33940",
+				"toolCalling": true,
+				"vision": true,
+				"maxInputTokens": 128000,
+				"maxOutputTokens": 16000
+			}
+		]
+	},
+	{
+		"name": "GLM",
+		"vendor": "glm",
+		"settings": {
+			"glm-5.3": {
+				"reasoningEffort": "max"
+			}
+		}
 	}
 ]

@@ -6,6 +6,32 @@
 
 ============================================================
 
+## 45. 【2026-09-17 13:01】- 关闭聊天输入框补全并新增模型与预览配置
+
+### 修改内容
+
+- `settings.json` 关闭 Copilot 聊天输入框的内联补全（`github.copilot.completions.chat.enabled` 改为 `false`），不影响编辑器代码补全。
+- `chatLanguageModels.json` 新增「公司账号」自定义端点（glm-5.3，chat-completions）与 GLM 供应商条目（`reasoningEffort: max`），并修复 GLM 条目重复的 `settings` 键。
+- `settings.json` 新增 markdown-preview-enhanced 系列配置、glmStatus 状态栏配置、关闭终端粘性滚动、开启 chat 检查点文件变更显示；PDF 改用 cweijan.officeViewer、Markdown 改用 cweijan.markdownViewer 打开；深色主题固定 GitHub Dark Dimmed；移除 `vscode-office.editMode` 与中文符号替换规则。
+- `.vscode/extensions.json` 同步实际安装列表：新增 glm-chat-provider、glm-status-vscode、vscode-yaml、mobile-canvas、markdown-preview-enhanced，移除 markdown-all-in-one。
+
+### 实现方式
+
+- `github.copilot.completions.chat.enabled` 的作用经内置 copilot 扩展 `package.json` 定义确认（"是否在聊天中启用内联补全"，默认 `false`），仅控制聊天输入框，不涉及 `editor.inlineSuggest.enabled`。
+- GLM 条目删除重复 `settings` 键中的空对象一份，保留含 `reasoningEffort` 的配置，与 JSONC 后键生效行为一致。
+
+### 验证
+
+- `git diff --check` 通过；`settings.json`、`chatLanguageModels.json` 剔除注释后 JSON 解析通过。
+- 扩展列表由 `code --list-extensions` 实时生成，diff 仅含上述 6 处增删。
+
+### 潜在或遗留问题
+
+- `glmStatus.apiKey` 与「公司账号」服务器地址已按用户确认随仓库提交到公开远程（GitHub/Gitee）。
+- `/usr/local/bin/code` 符号链接指向不存在的 `/Applications/VSCode.app`，本次改用实际路径执行；如需修复可重建该链接。
+
+============================================================
+
 ## 44. 【2026-08-18 23:48】- 保存不自动优化导入并关闭终端自动激活
 
 ### 修改内容
@@ -206,32 +232,6 @@
 - 在代码结构规则中明确保留真实名称、写法和缩进。
 - 禁止为了展示而将代码顶格、增减缩进或重新排版。
 - 保持注释行与代码行的展示结构不变。
-
-### 验证
-
-- 待执行 `git diff --check` 和目标文本检查。
-- 尚未在 VS Code 图形界面用真实代码选区验证模型输出。
-
-### 潜在或遗留问题
-
-- Copilot 最终输出仍受模型指令遵循能力影响；需要在 VS Code 中重新触发「说明」确认实际格式。
-
-============================================================
-
-## 35. 【2026-08-17 18:52】- 调用说明强制每个函数方法独立标题
-
-### 修改内容
-
-- 调整 `prompts/代码说明.instructions.md` 的「三、调用说明」：每一个函数、类实例化或方法调用都必须单独作为二级标题，其说明放在该标题下的独立区块中。
-- 标题只写原始函数名、类名或对象方法名，不使用反引号包裹。
-- 撤销针对 VS Code/Copilot 可点击源码跳转渲染行为的压制规则，不再在提示词中禁止源码引用元数据、引用卡片或可点击格式。
-
-### 实现方式
-
-- 加强第三章首条规则，明确不得把多个函数、类或方法合并到同一个标题下说明。
-- 标题格式改为 `## 函数名`、`## 类名`、`## 对象.方法名`。
-- 第三章最后一个区块结束后立即停止，不额外追加“整体来看”“关键思想”“总结”等段落。
-- 保持章节结构、参数结构化格式和源码顺序要求不变。
 
 ### 验证
 

@@ -322,38 +322,7 @@
 				"defaultLanguage": "ENGLISH"
 			}
 		],
-		"chineseSymbolReplaceRules": [
-			{
-				"name": "常用中文替换",
-				"fileTypes": [
-					".md"
-				],
-				"symbols": [
-					"《",
-					"》",
-					"「",
-					"」",
-					"『",
-					"』",
-					"【",
-					"】",
-					"（",
-					"）",
-					"“",
-					"”",
-					"‘",
-					"’",
-					"？",
-					"：",
-					"；",
-					"、",
-					"！",
-					"—",
-					"·",
-					"￥"
-				]
-			}
-		],
+		"chineseSymbolReplaceRules": [],
 		"regexMatchRules": [
 			{
 				"name": "中文之间",
@@ -512,7 +481,6 @@
 	"vim.useSystemClipboard": true,
 	"vim.vimrc.enable": true,
 	"vim.vimrc.path": "\/Users\/dyx\/.vimrc",
-	"vscode-office.editMode": "ir",
 	"window.autoDetectHighContrast": false,
 	"window.zoomLevel": 1.2,
 	"workbench.colorCustomizations": {
@@ -527,7 +495,8 @@
 		"*.copilotmd": "vscode.markdown.preview.editor",
 		"*.dat": "datViewer.tabularView",
 		"*.docx": "quickdoc.docxEditor",
-		"*.md": "vscode.markdown.preview.editor"
+		"*.pdf": "cweijan.officeViewer",
+		"*.md": "cweijan.markdownViewer"
 	},
 	"workbench.enableSounds": false,
 	"workbench.experimental.modernUI": true,
@@ -587,7 +556,7 @@
 	"workbench.secondarySideBar.defaultVisibility": "visible",
 	"workbench.secondarySideBar.showLabels": false,
 	"window.autoDetectColorScheme": true,
-	"workbench.preferredDarkColorTheme": "GitHub Dark",
+	"workbench.preferredDarkColorTheme": "GitHub Dark Dimmed",
 	"workbench.preferredLightColorTheme": "GitHub Dark Dimmed",
 	"jupyter.themeMatplotlibPlots": true,
 	"terminal.integrated.suggest.providers": {
@@ -1331,7 +1300,6 @@
 			]
 		}
 	},
-	"workbench.editor.enablePreview": false,
 	"chat.agent.networkFilter": true,
 	"claudeCodeChat.wsl.enabled": false,
 	"claudeCodeChat.wsl.distro": "Ubuntu",
@@ -1345,7 +1313,7 @@
 	"inlineChat.affordance": "editor",
 	"inlineChat.notebookAgent": true,
 	"chat.viewSessions.orientation": "stacked",
-	"github.copilot.completions.chat.enabled": true,
+	"github.copilot.completions.chat.enabled": false,
 	"terminal.integrated.fontFamily": "'JetBrainsMono Nerd Font Mono', 'PingFang SC', 'Menlo', monospace",
 	"github.copilot.enable": {
 		"python": true
@@ -1355,4 +1323,22 @@
 			".continue/**/*.yaml"
 		]
 	},
+	"markdown-preview-enhanced.alwaysShowBacklinksInPreview": true,
+	"markdown-preview-enhanced.d2Sketch": true,
+	"markdown-preview-enhanced.enableTypographer": true,
+	"markdown-preview-enhanced.frontMatterRenderingOption": "code block",
+	"workbench.editor.enablePreview": false,
+	"markdown-preview-enhanced.previewTheme": "vscode.css",
+	"markdown-preview-enhanced.enableExtendedTableSyntax": true,
+	"markdown-preview-enhanced.hideDefaultVSCodeMarkdownPreviewButtons": false,
+	"markdown-preview-enhanced.liveUpdate": false,
+	"markdown-preview-enhanced.useVSCodeThemeForContextMenu": true,
+	"markdown-preview-enhanced.useGitHubStylePipedLink": true,
+	"glmStatus.apiKey": "44cc80008a1544b3999ddfdd9c132c42.Ew74dtcXMw5kkiZV",
+	"glmStatus.refreshInterval": 30,
+	"glmStatus.showTooltip": true,
+	"glmStatus.modelName": "",
+	"glmStatus.language": "zh-CN",
+	"terminal.integrated.stickyScroll.enabled": false,
+	"chat.checkpoints.showFileChanges": true,
 }
