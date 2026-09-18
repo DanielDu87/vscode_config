@@ -9,7 +9,6 @@ christian-kohler.npm-intellisense
 codezombiech.gitignore
 continue.continue
 cweijan.vscode-office
-denizhandaklr.glm-chat-provider
 denizhandaklr.kimi-lm-provider
 denizhandaklr.minimax-vscode
 donjayamanne.git-extension-pack
@@ -21,7 +20,6 @@ formulahendry.code-runner
 github.github-vscode-theme
 iahhai.ipynb-translator
 ikaros.glm-for-vscode-copilot
-kelvinwg.glm-status-vscode
 lacroixdavid1.vscode-format-context-menu
 llvm-vs-code-extensions.lldb-dap
 mathematic.vscode-pdf

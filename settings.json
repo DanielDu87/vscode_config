@@ -1341,4 +1341,7 @@
 	"glmStatus.language": "zh-CN",
 	"terminal.integrated.stickyScroll.enabled": false,
 	"chat.checkpoints.showFileChanges": true,
+	"git.enableSmartCommit": true,
+	"stats.glmApiKey": "44cc80008a1544b3999ddfdd9c132c42.Ew74dtcXMw5kkiZV",
+	"stats.claudeApiKey": "44cc80008a1544b3999ddfdd9c132c42.Ew74dtcXMw5kkiZV",
 }
