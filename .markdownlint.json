@@ -1,0 +1,19 @@
+{
+	// markdownlint 按 Bear 熊掌记 Markdown 方言配置（经 markdownlint.configFile 引用）
+	// Bear 禁用 setext 标题，强制 ATX（#）样式
+	"MD003": { "style": "atx" },
+	// Bear 中行首 #tag 是标签不是标题，MD018 会误报标题缺空格
+	"MD018": false,
+	// Bear 软换行显示，段落内硬换行合法，不做行长度限制
+	"MD013": false,
+	// Bear 笔记中同级重复标题常见且合法（如多个"## 任务"）
+	"MD024": false,
+	// Bear 代码块可不带语言标注
+	"MD040": false,
+	// Bear 禁用缩进代码块，强制围栏（```）样式
+	"MD046": { "style": "fenced" },
+	// Bear 官方只支持反引号围栏；~ 是下划线语法，禁用 ~~~ 围栏
+	"MD048": { "style": "backtick" },
+	// Bear 笔记不一定以 # 标题开头（可能以正文、标签或 front matter 开头）
+	"MD041": false
+}

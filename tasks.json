@@ -14,6 +14,25 @@
 				"reveal": "never",
 				"close": true
 			}
+		},
+		{
+			"label": "运行当前 Python 文件（zshrc 环境）",
+			"type": "process",
+			"command": "/Users/dyx/.local/bin/python-run",
+			"args": [
+				"${file}"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [],
+			"presentation": {
+				"reveal": "always",
+				"panel": "dedicated",
+				"clear": true,
+				"showReuseMessage": false,
+				"close": false
+			}
 		}
 	]
 }

@@ -270,15 +270,9 @@
 	},
 		{
 			"key": "cmd+3",
-			"command": "runCommands",
-			"args": {
-				"commands": [
-					"workbench.action.terminal.focus",
-					"workbench.action.terminal.clear",
-					"python.execInTerminal"
-				]
-			},
-			"when": "editorLangId == python && editorTextFocus",
+			"command": "workbench.action.tasks.runTask",
+			"args": "运行当前 Python 文件（zshrc 环境）",
+			"when": "editorLangId == python && editorTextFocus"
 		},
 		{
 			"key": "cmd+3",

@@ -1,3 +1,4 @@
+00.python-paste-pro
 akamud.vscode-theme-onedark
 akamud.vscode-theme-onelight
 alefragnani.project-manager
@@ -9,6 +10,7 @@ christian-kohler.npm-intellisense
 codezombiech.gitignore
 continue.continue
 cweijan.vscode-office
+davidanson.vscode-markdownlint
 denizhandaklr.kimi-lm-provider
 denizhandaklr.minimax-vscode
 donjayamanne.git-extension-pack
@@ -28,6 +30,7 @@ ms-python.debugpy
 ms-python.python
 ms-python.vscode-pylance
 ms-python.vscode-python-envs
+ms-toolsai.datawrangler
 ms-toolsai.jupyter
 ms-toolsai.jupyter-keymap
 ms-toolsai.jupyter-renderers
@@ -36,6 +39,7 @@ ms-toolsai.vscode-jupyter-powertoys
 ms-toolsai.vscode-jupyter-slideshow
 ms-vscode.vscode-chat-customizations-evaluations
 openai.chatgpt
+openai.codex-audio
 pkief.material-icon-theme
 pkief.material-product-icons
 redhat.vscode-yaml

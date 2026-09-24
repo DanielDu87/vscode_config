@@ -6,6 +6,33 @@
 
 ============================================================
 
+## 47. 【2026-09-24 11:24】- markdownlint 按熊掌记 Markdown 方言配置并接管 Markdown 格式化
+
+### 修改内容
+
+- 新增 `.markdownlint.json`：按熊掌记（Bear）Markdown 方言调整规则——MD003 强制 ATX 标题（Bear 禁 setext）、MD018 关闭（行首 `#tag` 是标签非缺空格标题）、MD013 关闭（软换行不限行长）、MD024 关闭（同级重复标题合法）、MD040 关闭（代码块可不带语言）、MD046 强制 ``` 围栏（Bear 禁缩进代码块）、MD048 强制反引号围栏（官方仅支持 ```，`~` 是下划线语法）、MD041 关闭（笔记不必以标题开头）。
+- `settings.json`：`markdownlint.config` 弃用改为 `markdownlint.configFile` 指向同目录 `.markdownlint.json`（绝对路径绑定本机用户名，跨机器需改）；`[markdown].editor.defaultFormatter` 由 `charliermarsh.ruff`（Python 格式化器，无法处理 Markdown）改为 `davidanson.vscode-markdownlint`，配合全局 `editor.formatOnSave` 实现保存时按熊掌记规则自动修复。
+- 同一提交包含本任务前已存在的用户配置变更：`keybindings.json`+`tasks.json` 将 Cmd+3 Python 运行改为任务「运行当前 Python 文件（zshrc 环境）」（经 `/Users/dyx/.local/bin/python-run`）；`settings.json` 新增 `pasteAndIndent.selectAfter`；`.vscode/extensions.json` 同步实际安装列表，新增 00.python-paste-pro、davidanson.vscode-markdownlint、ms-toolsai.datawrangler、openai.codex-audio。
+
+### 实现方式
+
+- Bear 方言依据：官方 FAQ（bear.app/zh/faq/how-to-use-markdown-in-bear/）确认 CommonMark 基线、代码块仅 ``` 围栏；标题/删除线/下划线/高亮等语法与 markdownlint 默认规则不冲突，未调整。
+- markdownlint VSCode 扩展 v0.62.1 README 确认其注册为 Markdown 格式化器（格式化 = 应用规则修复），`markdownlint.config` 已弃用。
+- `markdownlint.run: onType`、severity 降级（Error→Warning→Information）均为插件默认值，未显式写入。
+
+### 验证
+
+- `.markdownlint.json` 与 `settings.json` 剔除注释后 JSON 解析通过；`markdownlint.configFile` 路径解析正确。
+- 扩展列表由实际安装路径 `code --list-extensions` 实时生成，diff 仅含上述 4 处新增。
+- 尚未在 VS Code 中实测保存 .md 文件的自动修复行为（需重载窗口）。
+
+### 潜在或遗留问题
+
+- `markdownlint.configFile` 为 `/Users/dyx/...` 绝对路径，仓库同步到其他用户名/系统机器时该行需按实际路径修改。
+- markdownlint「格式化」仅修复违规项，不重排表格/换行；如需排版级格式化需另配 Prettier（与熊掌记软换行段落有冲突风险，暂不引入）。
+
+============================================================
+
 ## 46. 【2026-09-18 13:12】- 收窄「代码说明」指令文件的触发条件
 
 ### 修改内容
@@ -210,31 +237,6 @@
 - 将“一行注释，一行代码，一行空行”明确为“一行注释，一行代码，一行真实空白行”。
 - 明确禁止输出 `<空行>`、`空行`、`blank line` 或任何表示空行的占位文字。
 - 示例代码块改为直接保留空白行。
-
-### 验证
-
-- 待执行 `git diff --check` 和目标文本检查。
-- 尚未在 VS Code 图形界面用真实代码选区验证模型输出。
-
-### 潜在或遗留问题
-
-- Copilot 最终输出仍受模型指令遵循能力影响；需要在 VS Code 中重新触发「说明」确认实际格式。
-
-============================================================
-
-## 37. 【2026-08-17 18:52】- 支持不完整代码选区说明
-
-### 修改内容
-
-- 调整 `prompts/代码说明.instructions.md` 的通用要求：用户选择的代码不完整时，先给必要提示，再只基于已选片段正常说明。
-
-### 实现方式
-
-- 明确不完整选区时先提示“以下只基于当前选中片段说明，未选中的上下文不展开解读”。
-- 明确不得要求用户重新选择完整函数或文件。
-- 只解读已选代码中实际出现的内容，不补全、推演或展开解释未选中的上文、下文、函数体、调用方或依赖实现。
-- 对缺失的上文、下文、调用方、类型、返回值或副作用，标注「无法确定」或「推测」。
-- 保持只基于选中代码回答、禁止读取文件和禁止工具调用的边界不变。
 
 ### 验证
 

@@ -12,9 +12,12 @@
 		"editor.defaultFormatter": "vscode.json-language-features"
 	},
 	"[markdown]": {
-		"editor.defaultFormatter": "charliermarsh.ruff",
+		// markdownlint 自带格式化器（格式化 = 按 .markdownlint.json 熊掌记规则自动修复）
+		"editor.defaultFormatter": "davidanson.vscode-markdownlint",
 		"markdown.preview.useMarkdownExtension": true
 	},
+	// markdownlint 按 Bear 熊掌记 Markdown 方言配置，规则见同目录 .markdownlint.json
+	"markdownlint.configFile": "/Users/dyx/Library/Application Support/Code/User/.markdownlint.json",
 	"[python]": {
 		"editor.codeActionsOnSave": {
 			// 保存时只格式化不自动修复 lint，避免 Ruff 顺带删除未使用导入
@@ -1344,4 +1347,5 @@
 	"git.enableSmartCommit": true,
 	"stats.glmApiKey": "44cc80008a1544b3999ddfdd9c132c42.Ew74dtcXMw5kkiZV",
 	"stats.claudeApiKey": "44cc80008a1544b3999ddfdd9c132c42.Ew74dtcXMw5kkiZV",
+	"pasteAndIndent.selectAfter": true,
 }
