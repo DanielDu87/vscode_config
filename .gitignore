@@ -47,5 +47,8 @@ local.json
 *.bak
 *.tmp
 
+# HANDOFF 修改前备份（handoff-prune.sh 生成）
+.handoff-backups/
+
 # 日志文件
 *.log

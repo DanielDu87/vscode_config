@@ -68,6 +68,17 @@
 		"command": "-editor.action.formatDocument",
 		"when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor",
 	},
+	// Shift+Cmd+I 优化导入：Python 走 Ruff（不弹 provider 选框），其他语言走 VSCode 内置
+	{
+		"key": "shift+cmd+i",
+		"command": "ruff.executeOrganizeImports",
+		"when": "editorTextFocus && editorLangId == python",
+	},
+	{
+		"key": "shift+cmd+i",
+		"command": "editor.action.organizeImports",
+		"when": "editorTextFocus && editorLangId != python",
+	},
 	{
 		"key": "cmd+r",
 		"command": "editor.action.startFindReplaceAction",

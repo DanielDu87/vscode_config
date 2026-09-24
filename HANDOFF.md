@@ -6,6 +6,36 @@
 
 ============================================================
 
+## 48. 【2026-09-24 15:14】- 新增本地扩展「清空行 + 优化导入 + 格式化」命令与右键入口
+
+### 修改内容
+
+- 新建本地 VS Code 扩展 `~/.vscode/extensions/remove-blank-lines/`（`package.json` + `src/extension.js`，当前 v0.2.0）：注册命令 `removeBlankLines.optimizeAndFormat`（命令面板显示 "Clean: Remove Blank Lines, Optimize Imports & Format"，可直接搜索），并贡献到编辑器右键菜单（`menus.editor/context`，`1_modification` 组）。执行链：删除全部空行（含纯空格/Tab 行，单个可撤销 edit）→ 优化导入 → 格式化。
+- `settings.json`：移除本轮过渡方案 `multiCommand.commands` 块（multi-command 动态注册的命令不出现在命令面板搜索，已被本地扩展替代）。
+- `keybindings.json`：新增 Shift+Cmd+I 优化导入——Python 文件映射 `ruff.executeOrganizeImports`，其他语言映射内置 `editor.action.organizeImports`。
+- `.vscode/extensions.json`：按字母序登记 `dyx.remove-blank-lines`。
+- `.gitignore`：补充 `.handoff-backups/`（`handoff-prune.sh` 修改前备份目录）。
+
+### 实现方式
+
+- 「没有效果」根因：`ryuta46.multi-command` 用 `vscode.commands.registerCommand` 动态注册的命令不会进入命令面板搜索，只能经 "Multi command: Execute multi command" 两步选择器触发；本地扩展通过 `contributes.commands` + `contributes.menus` 直接提供命令面板与右键两个入口。
+- 扩展内部每一步 `await`：规避 `remove-all-empty-lines` 扩展不 `await editor.edit` 导致的时序竞态；`safeExec` 吞掉「命令不存在/无 provider」错误防止链条中断。
+- v0.2.0 时序修复：用户实测报 "Ruff was unable to apply edits: unspecified reason"——大改动落盘后 Ruff LSP 尚未同步 `didChange`，基于旧文档版本计算的 edits 经 `workspace.applyEdit` 应用失败（Ruff 扩展未实现过期请求取消）。修法：删空行后与 Ruff 两步命令之间各加 300ms `delay`。
+- 语言路由：Python 走 `ruff.executeOrganizeImports` / `ruff.executeFormat`（不弹 provider 选择框），其他语言回退内置 `editor.action.organizeImports` / `editor.action.formatDocument`。
+- 扩展位于仓库外（`~/.vscode/extensions/`），删除该文件夹即卸载；参考同目录已工作的 `remove-all-empty-lines`（无版本号后缀文件夹也能被扫描加载）。
+
+### 验证
+
+- `node --check` 通过（extension.js）；`package.json` JSON 解析通过；`settings.json` 尾部确认 `multiCommand` 块移除干净；`keybindings.json` 去注释去尾逗号后解析通过，Shift+Cmd+I 两条绑定确认存在。
+- VS Code 实际加载与命令执行待用户重载窗口后确认（扩展目录改动需 Developer: Reload Window 生效）。
+
+### 潜在或遗留问题
+
+- 扩展源码在仓库外，本仓库无备份；换机需按 HANDOFF 本条记录重建，或后续将源码副本入库。
+- 顶部菜单栏（File/Edit 等主菜单）为封闭 API，本地扩展无法注入，本次仅提供命令面板 + 右键两个入口。
+
+============================================================
+
 ## 47. 【2026-09-24 11:24】- markdownlint 按熊掌记 Markdown 方言配置并接管 Markdown 格式化
 
 ### 修改内容
@@ -109,7 +139,7 @@
 
 ============================================================
 
-## 43. 【2026-08-18】- 代码结构注释点明结果特征
+## 43. 【2026-08-18 11:47】- 代码结构注释点明结果特征
 
 ### 修改内容
 
@@ -131,7 +161,7 @@
 
 ============================================================
 
-## 42. 【2026-08-18】- 代码结构注释参数用词规范化
+## 42. 【2026-08-18 11:47】- 代码结构注释参数用词规范化
 
 ### 修改内容
 
@@ -154,7 +184,7 @@
 
 ============================================================
 
-## 41. 【2026-08-18】- 整体作用每步交代操作与产物
+## 41. 【2026-08-18 11:47】- 整体作用每步交代操作与产物
 
 ### 修改内容
 
@@ -217,30 +247,6 @@
 
 - `git diff --check -- prompts/代码说明.instructions.md` 通过。
 - `rg -n '每个标题下第一行|调用 `函数或对象\.方法名`|构建/创建/获取/读取/生成/更新' prompts/代码说明.instructions.md` 已确认目标规则存在。
-- 尚未在 VS Code 图形界面用真实代码选区验证模型输出。
-
-### 潜在或遗留问题
-
-- Copilot 最终输出仍受模型指令遵循能力影响；需要在 VS Code 中重新触发「说明」确认实际格式。
-
-============================================================
-
-## 38. 【2026-08-17 18:52】- 代码结构空行改为真实空白行
-
-### 修改内容
-
-- 调整 `prompts/代码说明.instructions.md` 的「二、代码结构（从上到下）」：要求代码结构中的分隔空行必须是真实空白行。
-- 删除示例代码块里的 `<空行>` 占位文字。
-
-### 实现方式
-
-- 将“一行注释，一行代码，一行空行”明确为“一行注释，一行代码，一行真实空白行”。
-- 明确禁止输出 `<空行>`、`空行`、`blank line` 或任何表示空行的占位文字。
-- 示例代码块改为直接保留空白行。
-
-### 验证
-
-- 待执行 `git diff --check` 和目标文本检查。
 - 尚未在 VS Code 图形界面用真实代码选区验证模型输出。
 
 ### 潜在或遗留问题
